@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+  .isBalanseTabs {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .noBalanceTabs {
+    display: none;
+  }
+}
