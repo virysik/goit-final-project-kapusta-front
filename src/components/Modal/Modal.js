@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
 
@@ -34,6 +34,10 @@ function Modal({
     }
   };
 
+  let text = useRef(null);
+
+  let buttons = useRef(null);
+
   return createPortal(
     <div className={styles.modalWrapper} onClick={handleOverlayClick}>
       <div className={`${styles.modalContainer} ${styleReg}`}>
@@ -41,17 +45,19 @@ function Modal({
           &#10006;
         </span>
 
-        <div className={styles.title}>
+        <div className={styles.title} ef={el => (text = el)}>
           <p>{modalTitle}</p>
         </div>
 
         <div className={styles.buttons}>
-          <button className={styles.buttonStyles} onClick={handleClickLeft}>
-            {modalButtonleft}
-          </button>
-          <button className={styles.buttonStyles} onClick={handleClickRight}>
-            {modalButtonRight}
-          </button>
+          <div ref={el => (buttons = el)}>
+            <button className={styles.buttonStyles} onClick={handleClickLeft}>
+              {modalButtonleft}
+            </button>
+            <button className={styles.buttonStyles} onClick={handleClickRight}>
+              {modalButtonRight}
+            </button>
+          </div>
         </div>
       </div>
     </div>,
