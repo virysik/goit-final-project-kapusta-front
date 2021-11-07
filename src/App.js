@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import OnLoader from 'components/OnLoader';
+// import Balance from "components/Balance";
 import './App.css';
 
 const HomePageView = lazy(() =>
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Switch>
+        {/* <Balance /> */}
         <Suspense fallback={<OnLoader />}>
           <Route path="/" exact component={HomePageView} />
           <Route path="/balance" component={BalanceView} />
