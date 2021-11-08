@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container } from 'components/Container';
-import OnLoader from 'components/OnLoader';
+import Container from 'components/Container';
+import s from './BalanceView.module.css';
 
 const BalanceView = () => {
   return (
-    <Container>
-      <OnLoader />
-    </Container>
+    <section className={s.section}>
+      <Container></Container>
+    </section>
   );
 };
 
