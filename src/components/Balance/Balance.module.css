@@ -1,0 +1,65 @@
+@media screen and (min-width: 320px) {
+  .containerBalanse {
+    display: block;
+    position: relative;
+    background: inherit;
+    width: 248px;
+    margin: 30px auto 40px auto;
+    justify-content: center;
+    background-color: #f5f6fb;
+  }
+  .formBalance {
+    display: flex;
+    justify-content: space-between;
+  }
+  .balanceAndBtn {
+    display: flex;
+    margin-top: 6px;
+  }
+
+  .balanceLabel {
+    position: relative;
+
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.02em;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6px;
+    text-align: center;
+
+    color: var(--primary-text-color);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .containerBalanse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 668px;
+    height: 44px;
+  }
+  .confirmBalance {
+    display: flex;
+  }
+  .balanceLabel {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    padding-top: 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .containerBalance {
+    width: 1060px;
+    height: 44px;
+  }
+}

@@ -1,0 +1,42 @@
+@media screen and (min-width: 320px) {
+  .confirmButton {
+    background-color: transparent;
+    /* padding-right: 20px; */
+    text-align: center;
+    width: 125px;
+    height: 44px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    border: 2px solid #ffffff;
+    border-radius: 0 22px 22px 0;
+    outline: none;
+    color: var(--primary-text-color);
+  }
+  .confirmButton:hover,
+  .confirmButton:focus {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+  }
+}
+@media screen and (min-width: 768px) {
+  .confirmButton {
+    background-color: transparent;
+    border-radius: 16px;
+    margin-left: 15px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .confirmButton,
+  .ReportsConfirmButton {
+    background-color: transparent;
+    border-radius: 16px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .ReportsConfirmButton {
+    display: none;
+  }
+}

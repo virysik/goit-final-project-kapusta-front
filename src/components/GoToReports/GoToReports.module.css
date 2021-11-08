@@ -1,0 +1,20 @@
+.link {
+  display: flex;
+  text-decoration: none;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: baseline;
+  color: var(--primary-text-color);
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+}
+.svg {
+  margin-left: 15px;
+  width: 14px;
+  height: 14px;
+  fill: var(--primary-text-color);
+  align-items: baseline;
+}

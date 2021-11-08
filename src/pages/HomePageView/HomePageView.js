@@ -3,7 +3,7 @@ import s from './HomePage.module.css';
 import imgText from '../../images/svg/Kapusta.svg';
 
 const HomePageView = () => {
-  return (
+  return ( 
     <section className={s.section}>
       <Container>
         <div className={s.textWrapper}>
