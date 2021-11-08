@@ -17,11 +17,10 @@ const ReportsView = lazy(() =>
 function App() {
   return (
     <>
-      <Switch>
-        {/* <Balance /> */}
+      <Switch>       
         <Suspense fallback={<OnLoader />}>
-          <Route path="/dfgg" exact component={HomePageView} />
-          <Route path="/" component={BalanceView} />
+          <Route path="/" exact component={HomePageView} />
+          <Route path="/balance" component={BalanceView} />
           <Route path="/reports" component={ReportsView} />
           <Redirect to="/" />
         </Suspense>
