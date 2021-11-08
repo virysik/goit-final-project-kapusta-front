@@ -1,10 +1,12 @@
 import React from 'react';
 import Container from 'components/Container';
+import s from './BalanceView.module.css';
 
 const BalanceView = () => {
   return (
-    <Container>      
-    </Container>
+    <section className={s.section}>
+      <Container></Container>
+    </section>
   );
 };
 

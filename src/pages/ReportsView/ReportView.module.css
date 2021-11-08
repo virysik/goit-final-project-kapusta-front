@@ -1,0 +1,27 @@
+.section {
+  background-image: url('../../images/homepage/bg-main.svg');
+  background-repeat: no-repeat;
+  background-position: left top -240px;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding-top: 40px;
+    padding-bottom: 75px;
+
+    background-image: url('../../images/homepage/bg-main.svg'),
+      url('../../images/homepage/bg-desk-bot.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, right 88px bottom -40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section {
+    background-image: url('../../images/homepage/bg-main.svg'),
+      url('../../images/balance/bg-balance-bot.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: center top, center bottom -4px;
+  }
+}
+
