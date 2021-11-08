@@ -1,0 +1,68 @@
+@media screen and (min-width: 320px) {
+  .navigationWrapper {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .reportMonth {
+    font-size: 12px;
+    line-height: 1.17;
+    display: table-header-group;
+    height: 39px;
+    align-items: center;
+  }
+
+  .title {
+    color: rgba(82, 85, 95, 0.7);
+    margin-bottom: 5px;
+  }
+
+  .transactionWrapper {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-align: 1.17;
+  }
+
+  .reportMonthTitle {
+    width: 110px;
+    height: 20px;
+    text-transform: uppercase;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navigationWrapper {
+    display: flex;
+    margin-top: 0px;
+    width: 65%;
+  }
+
+  .reportMonth {
+    margin-left: auto;
+  }
+
+  .transactionWrapper {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+@media screen and (min-width: 1280px) {
+  .navigationWrapper {
+    width: 69%;
+  }
+
+  .reportMonth {
+    margin-left: auto;
+  }
+}
