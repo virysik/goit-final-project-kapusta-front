@@ -1,17 +1,4 @@
 @media screen and (min-width: 320px) {
-  .balanceSpan {
-    display: flex;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.02em;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 6px;
-
-    color: var(--primary-text-color);
-  }
   .balanceInput {
     display: flex;
     padding-left: 20px;
@@ -30,23 +17,24 @@
     outline: none;
     background-color: transparent;
   }
-  .link {
-    display: flex;
-    text-decoration: none;
-    margin-bottom: 40px;
-    justify-content: center;
-    color: var(--primary-text-color);
+}
 
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.17;
+@media screen and (min-width: 768px) {
+  .balanceInput {
+    margin-left: 21px;
+    margin-top: 0px;
+    border-radius: 16px;
+    text-align: center;
+    color: black;
   }
-  .link::after {
-    content: '';
-  }
-  .goBalance {
-    display: flex;
-    color: var(--primary-text-color);
-    align-items: center;
+}
+@media screen and (min-width: 1280px) {
+  .balanceInput {
+    margin-left: 40px;
+    margin-right: 15px;
+    color: black;
+    background-color: transparent;
+    border-radius: 16px;
+    text-align: center;
   }
 }

@@ -12,9 +12,15 @@
     display: flex;
     justify-content: space-between;
   }
-
-  .balanceSpan {
+  .balanceAndBtn {
     display: flex;
+    margin-top: 6px;
+  }
+
+  .balanceLabel {
+    position: relative;
+
+    display: block;
     font-weight: 400;
     font-size: 12px;
     line-height: 1.17;
@@ -23,52 +29,12 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 6px;
-
-    color: var(--primary-text-color);
-  }
-  .balanceInput {
-    display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
     text-align: center;
-    align-items: center;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.17;
-    letter-spacing: 0.02em;
-    color: black;
-    width: 125px;
-    height: 44px;
-    border: 2px solid #ffffff;
-    border-radius: 22px 0 0 22px;
-    outline: none;
-    background-color: transparent;
-  }
-  .link {
-    display: flex;
-    text-decoration: none;
-    margin-bottom: 40px;
-    justify-content: center;
-    align-items: baseline;
-    color: var(--primary-text-color);
 
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.17;
-  }
-  /* .goBalance { */
-  /* display: flex; */
-  /* color: var(--primary-text-color); */
-  /* align-items: center; */
-  /* } */
-  .svg {
-    margin-left: 15px;
-    width: 14px;
-    height: 14px;
-    fill: var(--primary-text-color);
-    align-items: baseline;
+    color: var(--primary-text-color);
   }
 }
+
 @media screen and (min-width: 768px) {
   .containerBalanse {
     display: flex;
@@ -81,7 +47,7 @@
   .confirmBalance {
     display: flex;
   }
-  .balanceSpan {
+  .balanceLabel {
     display: flex;
     align-items: center;
     margin-left: auto;
@@ -89,30 +55,11 @@
     margin-bottom: 0px;
     padding-top: 0px;
   }
-  .balanceInput {
-    margin-left: 21px;
-    margin-top: 0px;
-    border-radius: 16px;
-    text-align: center;
-    color: black;
-  }
 }
+
 @media screen and (min-width: 1280px) {
   .containerBalance {
     width: 1060px;
     height: 44px;
-  }
-
-  .balanceSpan {
-    display: flex;
-    align-items: center;
-  }
-  .balanceInput {
-    margin-left: 40px;
-    margin-right: 15px;
-    color: black;
-    background-color: transparent;
-    border-radius: 16px;
-    text-align: center;
   }
 }

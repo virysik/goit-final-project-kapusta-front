@@ -27,9 +27,16 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .confirmButton {
+  .confirmButton,
+  .ReportsConfirmButton {
     background-color: transparent;
     border-radius: 16px;
     margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .ReportsConfirmButton {
+    display: none;
   }
 }
