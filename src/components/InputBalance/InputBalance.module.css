@@ -1,0 +1,52 @@
+@media screen and (min-width: 320px) {
+  .balanceSpan {
+    display: flex;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.02em;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6px;
+
+    color: var(--primary-text-color);
+  }
+  .balanceInput {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.17;
+    letter-spacing: 0.02em;
+    color: black;
+    width: 125px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    border-radius: 22px 0 0 22px;
+    outline: none;
+    background-color: transparent;
+  }
+  .link {
+    display: flex;
+    text-decoration: none;
+    margin-bottom: 40px;
+    justify-content: center;
+    color: var(--primary-text-color);
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+  }
+  .link::after {
+    content: '';
+  }
+  .goBalance {
+    display: flex;
+    color: var(--primary-text-color);
+    align-items: center;
+  }
+}

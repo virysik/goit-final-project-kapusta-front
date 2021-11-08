@@ -44,45 +44,29 @@
     outline: none;
     background-color: transparent;
   }
-  .confirmButton {
-    background-color: transparent;
-    /* padding-right: 20px; */
-    text-align: center;
-    width: 125px;
-    height: 44px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-    border: 2px solid #ffffff;
-    border-radius: 0 22px 22px 0;
-    outline: none;
-    color: #52555f;
-  }
-  .confirmButton:hover,
-  .confirmButton:focus {
-    background-color: var(--accent-color);
-    color: var(--white-color);
-  }
   .link {
     display: flex;
     text-decoration: none;
     margin-bottom: 40px;
     justify-content: center;
+    align-items: baseline;
     color: var(--primary-text-color);
 
     font-weight: 400;
     font-size: 12px;
     line-height: 1.17;
   }
-  .goBalance {
-    display: flex;
-    color: var(--primary-text-color);
-    align-items: center;
-  }
+  /* .goBalance { */
+  /* display: flex; */
+  /* color: var(--primary-text-color); */
+  /* align-items: center; */
+  /* } */
   .svg {
+    margin-left: 15px;
     width: 14px;
     height: 14px;
     fill: var(--primary-text-color);
+    align-items: baseline;
   }
 }
 @media screen and (min-width: 768px) {
@@ -112,11 +96,6 @@
     text-align: center;
     color: black;
   }
-  .confirmButton {
-    background-color: transparent;
-    border-radius: 16px;
-    margin-left: 15px;
-  }
 }
 @media screen and (min-width: 1280px) {
   .containerBalance {
@@ -135,10 +114,5 @@
     background-color: transparent;
     border-radius: 16px;
     text-align: center;
-  }
-  .confirmButton {
-    background-color: transparent;
-    border-radius: 16px;
-    margin-left: 0px;
   }
 }

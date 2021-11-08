@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import s from "./Balance.module.css";
-import Notification from "components/Notification"
+import ConfirmButtonBalance from "components/ConfirmButtonBalance";
+import GoToReports from "components/GoToReports";
+import Notification from "components/Notification";
 const Balance = ({ onSubmit }) => {
     const [balance, setBalance] = useState("")
 
@@ -13,12 +15,7 @@ const Balance = ({ onSubmit }) => {
     }
     return (
         <div className={s.containerBalanse}>
-            <a className={s.link} href="/">Перейти к отчетам
-                {/* <span className={s.goBalance}>Перейти к отчетам</span> */}
-                <svg className={s.svg} width="14px" height="14px">
-                    <use href="../../images/svg/Vector.svg"></use>
-                </svg>
-            </a>
+            <GoToReports />            
             <div className={s.confirmBalance}>
                 <span className={s.balanceSpan}>Баланс:</span>
                 <form className={s.formBalance} onSubmit={handleSubmit}>
@@ -34,7 +31,7 @@ const Balance = ({ onSubmit }) => {
                         autoComplete="off"
                     />
                     <Notification />
-                    <button className={s.confirmButton}>ПОДТВЕРДИТЬ</button>
+                    <ConfirmButtonBalance onSubmit={handleSubmit} />
                     {/* </label> */}
                 </form>
             </div>
