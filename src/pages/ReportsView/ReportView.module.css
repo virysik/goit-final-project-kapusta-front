@@ -1,13 +1,16 @@
 .section {
+  padding-top: 15px;
+  text-align: center;
   background-image: url('../../images/homepage/bg-main.svg');
   background-repeat: no-repeat;
   background-position: left top -240px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .section {
     padding-top: 40px;
     padding-bottom: 75px;
+    text-align: left;
 
     background-image: url('../../images/homepage/bg-main.svg'),
       url('../../images/homepage/bg-desk-bot.svg');
@@ -25,3 +28,21 @@
   }
 }
 
+.insideWrapper {
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .insideWrapper {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
