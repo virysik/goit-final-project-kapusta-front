@@ -1,10 +1,9 @@
 import React from 'react';
-import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import s from './Report.module.css';
 
 import months from '../../data/month';
-console.log(months)
 
 const CurrentMonth = ({
   currentMonth,
@@ -26,10 +25,6 @@ const CurrentMonth = ({
           <span
             className={s.reportMonthTitle}
           >{`${selectMonth[0]} ${currentYear}`}</span>
-
-          // <span
-          //   className={s.reportMonthTitle}
-          // >{`${selectMonth[0].name} ${currentYear}`}</span>
         }
         <IoIosArrowForward
           style={{ color: '#FF751D', width: '12' }}
