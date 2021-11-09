@@ -1,4 +1,4 @@
-import Container from 'components/Container';
+import Container from '../../components/Container';
 import s from './HomePage.module.css';
 import imgText from '../../images/svg/Kapusta.svg';
 
