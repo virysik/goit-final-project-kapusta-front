@@ -2,6 +2,7 @@
   display: flex;
   text-decoration: none;
   margin-bottom: 40px;
+  
   justify-content: center;
   align-items: baseline;
   color: var(--primary-text-color);
@@ -17,4 +18,14 @@
   height: 14px;
   fill: var(--primary-text-color);
   align-items: baseline;
+}
+@media screen and (max-width: 767px) {
+  .link {
+    padding-top: 30px;
+  }
+}
+@media screen and (min-width: 768px){
+  .link {
+      margin-bottom: 0px;
+    }
 }

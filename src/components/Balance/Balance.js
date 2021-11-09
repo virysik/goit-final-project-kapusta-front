@@ -6,9 +6,8 @@ import InputBalance from 'components/InputBalance';
 import Notification from 'components/Notification';
 const Balance = () => {
   return (
-    <div className={s.containerBalanse}>
+    <div className={s.containerBalance}>
       <GoToReports />
-      <div className={s.confirmBalance}>
         <form className={s.formBalance}>
           <label htmlFor="balance" className={s.balanceLabel}>
             Баланс:
@@ -18,8 +17,7 @@ const Balance = () => {
               <ConfirmButtonBalance />
             </div>
           </label>
-        </form>
-      </div>
+        </form>  
     </div>
   );
 };

@@ -18,8 +18,8 @@ function App() {
     <>
       <Switch>
         <Suspense fallback={<OnLoader />}>
-          <Route path="/" exact component={HomePageView} />
-          <Route path="/balance" component={BalanceView} />
+          <Route path="/v" exact component={HomePageView} />
+          <Route path="/" component={BalanceView} />
           <Route path="/reports" component={ReportsView} />
           <Redirect to="/" />
         </Suspense>
