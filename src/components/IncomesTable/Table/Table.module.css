@@ -1,0 +1,79 @@
+.tableContainer {
+  width: 605px;
+  height: 344px;
+  margin-top: 60px;
+  box-shadow: none;
+  border-radius: 20px 20px 0 0;
+  outline: 2px solid #f5f6fb;
+}
+ @media screen and (min-width: 768px) {
+   .tableContainer {
+     margin: 0 auto;
+     width: 605px;
+   }
+  }
+  @media screen and (min-width: 1280px) {
+    .tableContainer {
+      width: 760px;
+      margin-left: 20px;
+      margin-right: 30px;
+      }
+  }
+
+.table {
+   width: 605px;
+  text-align: center;
+  outline: 2px solid #f5f6fb;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+ @media screen and (min-width: 1280px) {
+   .table{
+     width: 760px;
+   }
+ }
+.headerTable {
+   font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  background-color: #f5f6fb;
+}
+
+.tableTh {
+  height: 40px;
+  padding: 5px;
+  
+}
+.tableTd {
+  padding: 5px;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  border-top: solid 2px #F5F6FB;
+}
+.tableTd:last-child {
+  border-bottom: 2px solid #f5f6fb;
+}
+.spanItemTable {
+  color: #e7192e;
+  font-weight: bold;
+}
+.delIcon {
+   width: 18px;
+  height: 18px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.delIcon:hover {
+  background-color: #F5F6FB;
+}

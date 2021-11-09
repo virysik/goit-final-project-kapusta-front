@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import OnLoader from 'components/OnLoader';
 import './App.css';
+// import MobileTable from 'components/IncomesTable/MobileTable/MobileTable';
+import TableDesktop from 'components/IncomesTable/Table/Table';
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -17,10 +19,12 @@ function App() {
   return (
     <>
       <Switch>
+        {/* <MobileTable /> */}
+        <TableDesktop />
         <Suspense fallback={<OnLoader />}>
-          <Route path="/v" exact component={HomePageView} />
-          <Route path="/" component={BalanceView} />
-          <Route path="/reports" component={ReportsView} />
+          <Route path="/" exact component={HomePageView} />
+          <Route path="/balance" component={BalanceView} />
+          <Route path="/f" component={ReportsView} />
           <Redirect to="/" />
         </Suspense>
       </Switch>
