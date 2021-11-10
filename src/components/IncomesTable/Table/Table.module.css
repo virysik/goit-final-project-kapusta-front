@@ -23,7 +23,7 @@
 .table {
    width: 605px;
   text-align: center;
-  outline: 2px solid #f5f6fb;
+ 
   border-radius: 20px 20px 0 0;
   overflow: hidden;
   border-collapse: collapse;
@@ -34,8 +34,10 @@
    }
  }
 .headerTable {
+  font-style: normal;
+  font-weight: bold;
    font-size: 12px;
-  line-height: 14px;
+  line-height: 1.17;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #000000;
@@ -49,31 +51,54 @@
 }
 .tableTd {
   padding: 5px;
+  font-style: normal;
+  font-weight: normal;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #52555f;
   border-top: solid 2px #F5F6FB;
-}
-.tableTd:last-child {
   border-bottom: 2px solid #f5f6fb;
+  justify-content: center;
 }
+
 .spanItemTable {
   color: #e7192e;
   font-weight: bold;
 }
-.delIcon {
-   width: 18px;
-  height: 18px;
-  display: flex;
-  padding: 5px;
+.icon {
+  padding: 10px 5px 3px 5px;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: none;
-  border-radius: 50%;
   cursor: pointer;
 }
-.delIcon:hover {
+.text {
+  
+	
+		
+}
+/* .text::after { */
+  /* content: ""; */
+  /* text-align: right; */
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* right: 0; */
+  /* left: 0; */
+  /* height: 1.2em; */
+/*    */
+
+/* } */
+.delIcon{
+  width: 18px;
+  height: 18px;
+  /* border-radius: 50%; */
+}
+.icon:hover .delIcon {
   background-color: #F5F6FB;
+  /* border-radius: 50%; */
+}
+.icon:hover {
+  background-color: #F5F6FB;
+  border-radius: 50%;
 }

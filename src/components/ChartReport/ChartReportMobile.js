@@ -31,9 +31,6 @@ const data = {
       borderWidth: 1,
       datalabels: {
         formatter: function (value, context) {
-          // console.log(
-          //   context.chart.data.datasets[0].data[context.dataIndex].nested.value
-          // );
           return (
             context.chart.data.datasets[0].data[context.dataIndex].nested
               .value + " грн"
@@ -52,9 +49,9 @@ const options = {
   indexAxis: "y",
   layout: {
     padding: {
-      left: 30,
+      left: 15,
       right: 30,
-      top: 30,
+      top: 25,
     },
   },
   parsing: {
