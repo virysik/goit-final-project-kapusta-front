@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { authOperations } from '.';
+import { register, logIn, logOut, fetchCurrentUser } from './auth-operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -12,51 +12,51 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [authOperations.register.fulfilled](state, action) {
+    [register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
     },
-    [authOperations.register.pending](state) {
+    [register.pending](state) {
       state.error = null;
     },
-    [authOperations.register.rejected](state, action) {
+    [register.rejected](state, action) {
       if (action.payload) {
         state.error = action.payload.errors.message;
       } else {
         state.error = action.error.message;
       }
     },
-    [authOperations.logIn.fulfilled](state, action) {
+    [logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
     },
-    [authOperations.logIn.pending](state) {
+    [logIn.pending](state) {
       state.error = null;
     },
-    [authOperations.logIn.rejected](state, action) {
+    [logIn.rejected](state, action) {
       if (action.payload) {
         state.error = action.payload.errors.message;
       } else {
         state.error = action.error.message;
       }
     },
-    [authOperations.logOut.fulfilled](state) {
+    [logOut.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
       state.error = null;
     },
-    [authOperations.logOut.pending](state) {
+    [logOut.pending](state) {
       state.error = null;
     },
-    [authOperations.logOut.rejected](state, action) {
+    [logOut.rejected](state, action) {
       state.error = action.error.message;
     },
-    [authOperations.fetchCurrentUser.fulfilled](state, action) {
+    [fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
     },
