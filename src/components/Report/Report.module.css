@@ -1,0 +1,27 @@
+.reportHistory {
+    width: 230px;
+    border-radius: 15px;
+    background-color: #F5F6FB;
+    border-collapse: collapse;
+}
+
+tr {
+    font-size: 12px;
+    font-weight: 700;
+    font: Roboto;
+    font-size: 12px;
+    font-weight: 400; 
+    text-align: center;
+}
+
+td {
+    border-bottom: 2px solid white;
+
+}
+
+
+
+
+
+
+
