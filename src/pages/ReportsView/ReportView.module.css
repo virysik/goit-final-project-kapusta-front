@@ -19,7 +19,7 @@
     background-image: url('../../images/homepage/bg-main.svg'),
       url('../../images/homepage/bg-desk-bot.svg');
     background-repeat: no-repeat, no-repeat;
-    background-position: left top, right 88px bottom -40px;
+    background-position: left top -40px, right 88px bottom -40px;
   }
 
   .contentWrapper {
@@ -44,6 +44,6 @@
     background-image: url('../../images/homepage/bg-main.svg'),
       url('../../images/balance/bg-balance-bot.svg');
     background-repeat: no-repeat, no-repeat;
-    background-position: center top, center bottom -4px;
+    background-position: center top -40px, center bottom -4px;
   }
 }

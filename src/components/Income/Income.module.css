@@ -1,4 +1,10 @@
+.arrowLink {
+  display: block;
+  cursor: pointer;
+}
+
 .navigation {
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
@@ -28,6 +34,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   list-style: none;
   list-style-type: none;
@@ -45,44 +52,43 @@
   width: 65px;
   height: 56px;
 }
-  .icon:hover,
-  .icon:focus {
-    fill: var(--accent-color);
-  }
+.icon:hover,
+.icon:focus {
+  fill: var(--accent-color);
+}
 
-  .icon:focus:after {
-    background-image: linear-gradient(
-      var(--secondary-accent-color),
-      var(--secondary-accent-color)
-    );
-  }
-
+.icon:focus:after {
+  background-image: linear-gradient(
+    var(--secondary-accent-color),
+    var(--secondary-accent-color)
+  );
+}
 
 .bg {
   position: relative;
 }
-  .bg:after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: -1;
-    background: linear-gradient(
-      var(--grey-bg-home-color),
-      var(--grey-bg-home-color)
-    );
-    border-radius: 20px;
-    width: 59px;
-    height: 46px;
-  }
+.bg:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: -1;
+  background: linear-gradient(
+    var(--grey-bg-home-color),
+    var(--grey-bg-home-color)
+  );
+  border-radius: 20px;
+  width: 59px;
+  height: 46px;
+}
 
-  .bg:hover:after {
-    background-image: linear-gradient(
-      var(--secondary-accent-color),
-      var(--secondary-accent-color)
-    );
-  }
+.bg:hover:after {
+  background-image: linear-gradient(
+    var(--secondary-accent-color),
+    var(--secondary-accent-color)
+  );
+}
 
 .price {
   font-size: 12px;
@@ -102,6 +108,9 @@
   color: var(--primary-text-color);
 }
 
+.blok {
+  background: var(--white-color);
+}
 
 @media screen and (min-width: 768px) {
   .blok {
@@ -113,12 +122,10 @@
     margin-bottom: 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 30px;
-
   }
   .blok:last-child {
     margin-bottom: 0px;
   }
-  
 
   .item {
     margin-right: 20px;

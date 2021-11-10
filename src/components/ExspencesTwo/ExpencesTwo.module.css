@@ -1,0 +1,50 @@
+.btnL {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 20px;
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  background-image: url('../../images/svg/arr-left.svg');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.btnR {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 20px;
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  background-image: url('../../images/svg/arr-right.svg');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  margin-left: 30px;
+  margin-right: 30px;
+  color: rgba(82, 85, 95, 0.7);
+  margin-bottom: 5px;
+  letter-spacing: 0.04em;
+}
+
+.reportMonthTitle {
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 1.142;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+
+  color: var(--black-text-color);
+}
