@@ -1,11 +1,12 @@
 .section {
-  width: 100%;
-  max-width: 320px;
-  padding-left: 19px;
-  padding-right: 19px;
+  /* margin-bottom: 40px; */
 }
 
 .amount {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 40px;
+
   position: relative;
   display: flex;
   justify-content: center;
@@ -13,8 +14,6 @@
   text-align: center;
   width: 282px;
   height: 85px;
-  margin-top: 30px;
-  margin-bottom: 30px;
 
   background: var(--white-color);
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
@@ -24,7 +23,7 @@
   line-height: 16px;
 }
 .amount:before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 7px;
@@ -33,7 +32,6 @@
   height: 70.5px;
   background: var(--grey-bg-home-color);
 }
-
 
 .amountExpenses {
   margin-right: 25px;
@@ -67,7 +65,6 @@
     width: 668px;
     height: 50px;
     margin: 30px auto;
-
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 30px;
   }

@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import OnLoader from 'components/OnLoader';
+import Header from 'components/Header';
 import './App.css';
 
 const HomePageView = lazy(() =>
@@ -16,6 +17,7 @@ const ReportsView = lazy(() =>
 function App() {
   return (
     <>
+      <Header />
       <Switch>
         <Suspense fallback={<OnLoader />}>
           <Route path="/a" exact component={HomePageView} />

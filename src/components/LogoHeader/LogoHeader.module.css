@@ -1,5 +1,8 @@
-.logoIcon {
-    box-sizing: border-box;
-    display: block;
-    color: black;
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 31px;
+  background-image: url('../../images/svg/logoKapusta.svg');
 }

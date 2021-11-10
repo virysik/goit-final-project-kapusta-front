@@ -1,11 +1,9 @@
 import s from './ExpensesIncome.module.css';
 import SwitchExpensesIncome from '../SwitchExpensesIncome/SwitchExpensesIncome';
-import KeyboardBackspace from '../KeyboardBackspace/KeyboardBackspace';
 
 export default function ExpensesIncome() {
   return (
     <section className={s.section}>
-      <KeyboardBackspace />
       <div className={s.amount}>
         <div className={s.amountExpenses}>
           <h3 className={s.amountTitle}>Расходы:</h3>
