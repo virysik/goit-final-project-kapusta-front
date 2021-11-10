@@ -1,0 +1,35 @@
+/* .comeBackeContainer{
+} */
+
+.comeBackeHome{
+    display: flex;
+    align-items: center;
+    font-size: 0;
+}
+
+.iconKeyboardBackspace{
+    width: 24px;
+    height: 24px;
+}
+
+.textComeBacke{
+    color: rgba(82, 85, 95, 0.7);;
+    margin-left: 15px;
+}
+
+@media screen and (min-width: 768px) {
+    .comeBackeHome {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+        margin-left: 30px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .comeBackeHome {
+        font-size: 12px;
+        margin-left: 87px;
+    }
+}
+

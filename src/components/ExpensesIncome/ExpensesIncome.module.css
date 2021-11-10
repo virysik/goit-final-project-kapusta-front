@@ -1,0 +1,115 @@
+.section {
+  width: 100%;
+  max-width: 320px;
+  padding-left: 19px;
+  padding-right: 19px;
+}
+
+.amount {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 282px;
+  height: 85px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  background: var(--white-color);
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 20px;
+
+  font-size: 14px;
+  line-height: 16px;
+}
+.amount:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 1px;
+  height: 70.5px;
+  background: var(--grey-bg-home-color);
+}
+
+
+.amountExpenses {
+  margin-right: 25px;
+}
+
+.amountTitle {
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.amountExpensesSum {
+  font-weight: bold;
+  color: var(--balance-minus);
+}
+
+.amountIncomeSum {
+  font-weight: bold;
+  color: var(--plus-balance-color);
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 768px;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+
+  .amount {
+    width: 668px;
+    height: 50px;
+    margin: 30px auto;
+
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+
+  .amount:before {
+    height: 36px;
+    background: var(--grey-bg-home-color);
+  }
+
+  .amountExpenses {
+    display: flex;
+    margin-right: 40px;
+  }
+
+  .amountExpensesSum {
+    margin-left: 15px;
+  }
+
+  .amountIncome {
+    display: flex;
+  }
+
+  .amountIncomeSum {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .amount {
+    width: 1060px;
+  }
+
+  .amountExpensesSum {
+    margin-left: 20px;
+  }
+
+  .amountIncomeSum {
+    margin-left: 20px;
+  }
+}
