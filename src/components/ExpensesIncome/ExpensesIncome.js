@@ -1,5 +1,5 @@
 import s from './ExpensesIncome.module.css';
-import SwitchExpensesIncome from '../SwitchExpensesIncome/SwitchExpensesIncome';
+import SwitchExpensesIncome from 'components/SwitchExpensesIncome';
 
 export default function ExpensesIncome() {
   return (
