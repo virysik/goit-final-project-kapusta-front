@@ -3,7 +3,6 @@ import s from "./Table.module.css"
 import EllipsisText from "react-ellipsis-text";
 import items from './data.json';
 
-window.React = React;
 
 const TableDesktop = () => {
   return (
@@ -25,7 +24,7 @@ const TableDesktop = () => {
                 {new Date(item.date).toLocaleString().slice(0, 10)}
               </td>
               <td className={s.tableTd}>
-                <EllipsisText text={item.description} length={"15"} tail />
+                <EllipsisText text={item.description} length={"15"}  />
                 {item.description}</td>
               <td className={s.tableTd}>{item.category}</td>
               <td className={s.tableTd}>
@@ -57,6 +56,5 @@ const TableDesktop = () => {
     </div>
   )
 }
-
 
 export default TableDesktop;

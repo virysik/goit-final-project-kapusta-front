@@ -61,7 +61,9 @@
   border-bottom: 2px solid #f5f6fb;
   justify-content: center;
 }
-
+.more {
+background-color: #e7192e;
+}
 .spanItemTable {
   color: #e7192e;
   font-weight: bold;
@@ -73,22 +75,6 @@
   text-align: center;
   cursor: pointer;
 }
-.text {
-  
-	
-		
-}
-/* .text::after { */
-  /* content: ""; */
-  /* text-align: right; */
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* right: 0; */
-  /* left: 0; */
-  /* height: 1.2em; */
-/*    */
-
-/* } */
 .delIcon{
   width: 18px;
   height: 18px;
