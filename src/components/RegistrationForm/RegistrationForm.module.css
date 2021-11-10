@@ -1,0 +1,161 @@
+.formRegistr {
+    position: absolute;
+    left: 50%;
+    top: -84px;
+    transform: translate(-50%, 0);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 18px 53px 18px;
+    width: 300px;
+
+    background-color: #fff;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 30px;
+}
+
+.promtText {
+    font-family: Roboto;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #52555f;
+    margin-bottom: 24px;
+}
+
+.btnGoogle {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f6f7fb;
+    border-radius: 26px;
+    border: 0;
+    width: 122px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.btnGoogle::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+
+    margin-right: 10px;
+    margin-left: 20px;
+    background-image: url(../../images/svg/Group.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.labelText {
+    margin-bottom: 12px;
+    width: 100%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    color: black;
+}
+
+.labelTextSecond {
+    text-align: left;
+}
+
+.formInput {
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #f6f7fb;
+    padding: 20px 17px;
+}
+
+.containerButton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 125px;
+    height: 44px;
+    background-color: #f5f6fb;
+    border-radius: 16px;
+    border: none;
+    padding: 0;
+    color: #52555f;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: #52555f;
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ff751d;
+    color: #fff;
+    filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+    transition: 0.5s linear;
+}
+
+.animationGoogle {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .formRegistr {
+        z-index: 4;
+        width: 436px;
+        height: 535px;
+        top: -64%;
+        padding: 50px 85px 53px 85px;
+    }
+
+    .fontText {
+        margin: 5px 0 0 225px;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .promtText {
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 20px;
+        text-align: left;
+        text-align: center;
+    }
+
+    .labelText {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .formRegistr {
+        margin: 0;
+        width: 436px;
+        min-height: 535px;
+        top: -409px;
+        left: 75%;
+    }
+}
