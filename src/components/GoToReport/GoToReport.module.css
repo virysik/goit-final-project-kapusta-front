@@ -1,0 +1,21 @@
+@media screen and (min-width: 768px) {
+    .goToReport {
+        display: flex;
+        width: 154px;
+        height: 24px;
+        align-items: center;
+    }
+
+    .title {
+        letter-spacing: 0.04em;
+    }
+
+    .link {
+        display: flex;
+        
+        letter-spacing: 0.04em;
+
+        color: #52555f;
+        cursor: pointer;
+    }
+}

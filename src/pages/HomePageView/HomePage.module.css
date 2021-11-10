@@ -62,7 +62,7 @@
   .section {
     padding-top: 117px;
     padding-bottom: 117px;
-    background-position: center top 28px, center top, left 230px bottom 50px;
+    background-position: center top 28px, center top, left 18% bottom 50px;
   }
 
   .kapusta {
@@ -76,5 +76,6 @@
 
   .textWrapper {
     margin-top: 252px;
+    margin-right: 127px;
   }
 }
