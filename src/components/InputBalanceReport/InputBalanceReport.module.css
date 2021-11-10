@@ -1,0 +1,61 @@
+.balans {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.balanceInput {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  color: black;
+  width: 183px;
+  height: 44px;
+  border: 2px solid #ffffff;
+  border-radius: 22px;
+  outline: none;
+  background-color: transparent;
+}
+
+.balanceInput::placeholder {
+  color: black;
+}
+
+@media screen and (max-width: 767px) {
+  .balans {
+    margin-bottom: 6px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .balanceInput {
+    margin-left: 21px;
+    margin-top: 0px;
+    width: 129px;
+    border-radius: 16px;
+    text-align: center;
+    color: black;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .balanceInput {
+    margin-left: 40px;
+    margin-right: 15px;
+    color: black;
+    background-color: transparent;
+    border-radius: 16px;
+    text-align: center;
+  }
+}
