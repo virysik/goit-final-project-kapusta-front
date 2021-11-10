@@ -6,6 +6,10 @@
   background-position: left top -240px;
 }
 
+.insideWrapper {
+  margin-bottom: 30px;
+}
+
 @media screen and (min-width: 768px) {
   .section {
     padding-top: 40px;
@@ -17,6 +21,22 @@
     background-repeat: no-repeat, no-repeat;
     background-position: left top, right 88px bottom -40px;
   }
+
+  .contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .insideWrapper {
+    margin-bottom: 0;
+    margin-left: 82px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -25,24 +45,5 @@
       url('../../images/balance/bg-balance-bot.svg');
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center bottom -4px;
-  }
-}
-
-.insideWrapper {
-  margin-bottom: 30px;
-}
-
-@media screen and (min-width: 768px) {
-  .contentWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .insideWrapper {
-    margin-bottom: 0;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
   }
 }

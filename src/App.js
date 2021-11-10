@@ -18,9 +18,9 @@ function App() {
     <>
       <Switch>
         <Suspense fallback={<OnLoader />}>
-          <Route path="/" exact component={HomePageView} />
+          <Route path="/a" exact component={HomePageView} />
           <Route path="/balance" component={BalanceView} />
-          <Route path="/reports" component={ReportsView} />
+          <Route path="/" component={ReportsView} />
           <Redirect to="/" />
         </Suspense>
       </Switch>

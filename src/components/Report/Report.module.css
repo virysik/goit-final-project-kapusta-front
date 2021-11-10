@@ -36,6 +36,7 @@
     display: flex;
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-left: 59px;
     width: 65%;
   }
 
@@ -47,6 +48,7 @@
 @media screen and (min-width: 1280px) {
   .navigationWrapper {
     width: 69%;
+    margin-left: 295px;
   }
 
   .reportMonth {
