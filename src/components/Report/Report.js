@@ -5,12 +5,12 @@ const Report = ({ items }) => {
     return (
         <table className={s.reportHistory}>
                 <tr>
-                    <th colspan="3">Сводка</th>
+                    <th className={s.reportHeader} colspan="3">Сводка</th>
                 </tr>
                 {items.map((x) => (
                     <tr key={x.id}>
-                    <td>{x.month}</td>
-                    <td>{x.sum}</td>
+                    <td className={s.reportData}>{x.month}</td>
+                    <td className={s.reportData}>{x.sum}</td>
                     </tr>
                 ))}
         </table>

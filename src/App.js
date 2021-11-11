@@ -3,7 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import OnLoader from 'components/OnLoader';
 import './App.css';
 import reports from 'components/Report/reports.json';
-import Report from 'components/Report';
+import Report from 'components/Report'
+import ChartReport from 'components/ChartReport'
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
     <Report items={reports}/>
+    <ChartReport/>
       <Switch>
         <Suspense fallback={<OnLoader />}>
           <Route path="/" exact component={HomePageView} />
