@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Report.module.css'
+import s from './Report.module.css';
 
 const Report = ({ items }) => {
     return (
@@ -16,4 +16,4 @@ const Report = ({ items }) => {
         </table>
     );
 }
-export default Report
+export default Report;

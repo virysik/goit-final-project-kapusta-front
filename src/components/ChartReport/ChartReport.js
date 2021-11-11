@@ -23,7 +23,7 @@ const data = {
         return b.nested.value - a.nested.value;
       }),
 
-      maxBarThickness: 40,
+      maxBarThickness: 38,
       borderRadius: 20,
       minBarLength: 2,
       backgroundColor: ["#FF751D", "#FFDAC0", "#FFDAC0"],
