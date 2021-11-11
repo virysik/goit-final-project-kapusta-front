@@ -37,12 +37,12 @@ function App() {
       <Header />
       <Switch>
         <Suspense fallback={<OnLoader />}>
-          <PublicRoute exact path="/s">
+          <PublicRoute exact path="/">
             <HomePageView />
           </PublicRoute>
-          <PublicRoute path="/" redirectTo="/">
+          <PrivateRoute path="/balance" redirectTo="/">
             <BalanceView />
-          </PublicRoute>
+          </PrivateRoute>
           <PrivateRoute path="/reports" redirectTo="/">
             <ReportsView />
           </PrivateRoute>
