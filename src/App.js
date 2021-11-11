@@ -16,9 +16,7 @@ const BalanceView = lazy(() =>
   import('pages/BalanceView' /*webpackChunkName: "balance-view" */),
 );
 const ReportsView = lazy(() =>
-  import(
-    'pages/ReportsView' /*webpackChunkName: "reports-view" */
-  ),
+  import('pages/ReportsView' /*webpackChunkName: "reports-view" */),
 );
 const DevelopersView = lazy(() =>
   import(
