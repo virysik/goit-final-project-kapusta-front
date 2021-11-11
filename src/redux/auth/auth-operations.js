@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
 
 const token = {
   set(token) {
@@ -13,7 +13,7 @@ const token = {
 };
 
 export const register = createAsyncThunk(
-  'auth/register',
+  '/users/signup',
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
@@ -29,7 +29,7 @@ export const register = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-  'auth/login',
+  '/users/login',
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
@@ -45,7 +45,7 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk(
-  'auth/logout',
+  '/users/logout',
   async (_, { rejectWithValue }) => {
     try {
       await axios.post('/users/logout');
@@ -57,7 +57,7 @@ export const logOut = createAsyncThunk(
 );
 
 export const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
+  '/users/',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;

@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { register } from '../../redux/auth/auth-operations'
 import s from './RegistrationForm.module.css';
 
 const RegisterForm = ({ onClickComeBack }) => {
+  const dispatch = useDispatch()
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -79,10 +82,14 @@ const RegisterForm = ({ onClickComeBack }) => {
     setPassword('');
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    clearInput();
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(register({ name, email, password }))
+    setName('')
+    setEmail('')
+      setPassword('')
+      clearInput();
+  }
 
   return (
     <div className={s.formRegistr}>

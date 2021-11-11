@@ -1,4 +1,6 @@
 .section {
+  max-width: 1260px;
+  margin: 0 auto;
   padding-top: 86px;
   padding-bottom: 76px;
   background-image: url('../../images/homepage/bg-mob-top.svg'),
@@ -37,7 +39,7 @@
       url('../../images/homepage/bg-main.svg'),
       url('../../images/homepage/bg-desk-bot.svg');
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: left top 28px, left top, left 103px bottom 56px;
+    background-position: left top 28px, left top, left 103px bottom 140px;
   }
 
   .kapusta {
@@ -66,7 +68,7 @@
   .section {
     padding-top: 117px;
     padding-bottom: 117px;
-    background-position: center top 28px, center top, left 18% bottom 50px;
+    background-position: center top 28px, center top, left 18%, bottom 70px;
   }
 
   .kapusta {
