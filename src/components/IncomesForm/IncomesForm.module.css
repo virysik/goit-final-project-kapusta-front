@@ -1,0 +1,68 @@
+.form {
+}
+
+.inputDescribe {
+  height: 44px;
+  width: 100%;
+  padding: 13px 107px 0px 26px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-bottom: none;
+
+  border-radius: 16px 16px 0px 0px;
+}
+
+.inputDescribe::placeholder {
+  color: #c7ccdc;
+}
+
+.priceInput {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 103px;
+  padding: 10px 40px;
+
+  width: 183px;
+  height: 44px;
+
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: var(--black-text-color);
+  background-color: transparent;
+  border: 2px solid #ffffff;
+
+  border-radius: 22px;
+}
+
+.btn {
+  padding: 12px 25px;
+  width: 125px;
+  height: 44px;
+
+  font-weight: bold;
+
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: var(--primary-text-color);
+  background: #f5f6fb;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+  border-radius: 16px;
+}
+
+.btn:hover,
+.btn:focus {
+  color: var(--white-color);
+  background-color: var(--accent-color);
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 170px;
+}
