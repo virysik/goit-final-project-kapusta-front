@@ -1,6 +1,8 @@
 import React from 'react';
 import items from '../Table/data.json';
 import s from './MobileTable.module.css';
+import cliTruncate from 'cli-truncate';
+import ReactTooltip from 'react-tooltip';
 
 const MobileTable = () => {
     return (
@@ -8,7 +10,9 @@ const MobileTable = () => {
       {items.map((item) => (
         <li key={item.id} className={s.tableItem}>
           <div className={s.boxDescription}>
-            <p className={s.description}>{item.description}</p>
+            <p className={s.description} data-tip={item.description}>{cliTruncate(item.description, 6)}</p>
+            <button onClick={() => { ReactTooltip.show(this.fooRef) }}></button>
+            <ReactTooltip />
             <div className={s.boxCategoryAndDate}>
               <span className={s.itemDate}>
                 {new Date(item.date).toLocaleString().slice(0, 10)}

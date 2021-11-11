@@ -36,6 +36,7 @@ function App() {
 
   return (
     <>
+      
       <Header />
       <Switch>
         <Suspense fallback={<OnLoader />}>
