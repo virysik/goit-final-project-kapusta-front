@@ -24,7 +24,7 @@ const TableDesktop = () => {
                 {new Date(item.date).toLocaleString().slice(0, 10)}
               </td>
               <td className={s.tableTd}>
-                <EllipsisText text={item.description} length={"15"}  />
+                <EllipsisText text={item.description} length={"15"} />
                 {item.description}</td>
               <td className={s.tableTd}>{item.category}</td>
               <td className={s.tableTd}>
