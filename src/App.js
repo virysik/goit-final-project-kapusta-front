@@ -8,6 +8,9 @@ import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
 import Header from 'components/Header';
 import './App.css';
+// import reports from 'components/Report/reports.json';
+// import Report from 'components/Report';
+// import ChartReport from 'components/ChartReport';
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -35,6 +38,7 @@ function App() {
   return (
     <>
       <Header />
+
       <Switch>
         <Suspense fallback={<OnLoader />}>
           <PublicRoute exact path="/">
