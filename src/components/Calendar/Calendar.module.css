@@ -1,0 +1,41 @@
+.calendarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 254px;
+}
+
+.calendarWrapper > div {
+  width: auto;
+}
+
+.calendarWrapper input {
+  width: 82px;
+  background-color: transparent;
+}
+.watch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+  background-image: url('images/svg/calendar.svg');
+}
+
+.datePicker {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  /* line-height: 1.67; */
+  letter-spacing: 0.04em;
+  margin-left: 10px;
+  color: inherit;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .calendarWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}

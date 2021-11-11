@@ -1,0 +1,18 @@
+.link {
+  display: flex;
+  align-items: center;
+
+  font-size: 12px;
+  line-height: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+  cursor: pointer;
+}
+
+.svgWrapper {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+}

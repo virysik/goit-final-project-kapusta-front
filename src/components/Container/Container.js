@@ -1,10 +1,7 @@
-import BackgroundContainer from './BackgroundContainer';
 import s from './Container.module.css';
 
-const Container = ({ children }) => (
-  <BackgroundContainer>
-    <div className={s.container}>{children}</div>
-  </BackgroundContainer>
-);
+function Container({ children }) {
+  return <div className={s.container}>{children}</div>;
+}
 
 export default Container;

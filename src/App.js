@@ -1,10 +1,16 @@
-import React, { lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch } from 'react-router-dom';
+import { fetchCurrentUser } from './redux/auth/auth-operations';
+import { getIsFetchingCurrent } from './redux/auth/auth-selectors';
+import PublicRoute from './components/PublicRoute';
+import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
+import Header from 'components/Header';
 import './App.css';
-import reports from 'components/Report/reports.json';
-import Report from 'components/Report'
-import ChartReport from 'components/ChartReport'
+// import reports from 'components/Report/reports.json';
+// import Report from 'components/Report';
+// import ChartReport from 'components/ChartReport';
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -15,18 +21,38 @@ const BalanceView = lazy(() =>
 const ReportsView = lazy(() =>
   import('pages/ReportsView' /*webpackChunkName: "reports-view" */),
 );
+const DevelopersView = lazy(() =>
+  import(
+    'pages/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */
+  ),
+);
 
 function App() {
+  const dispatch = useDispatch();
+  const isFetchingCurrent = useSelector(getIsFetchingCurrent);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
-    <Report items={reports}/>
-    <ChartReport/>
+      <Header />
+
       <Switch>
         <Suspense fallback={<OnLoader />}>
-          <Route path="/" exact component={HomePageView} />
-          <Route path="/balance" component={BalanceView} />
-          <Route path="/reports" component={ReportsView} />
-          <Redirect to="/" />
+          <PublicRoute exact path="/">
+            <HomePageView />
+          </PublicRoute>
+          <PrivateRoute path="/balance" redirectTo="/">
+            <BalanceView />
+          </PrivateRoute>
+          <PrivateRoute path="/reports" redirectTo="/">
+            <ReportsView />
+          </PrivateRoute>
+          <PublicRoute path="/developers" redirectTo="/">
+            <DevelopersView />
+          </PublicRoute>
         </Suspense>
       </Switch>
     </>

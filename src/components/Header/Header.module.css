@@ -1,0 +1,37 @@
+.header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    padding-left: 19px;
+    padding-right: 19px;
+}
+
+.headerContaiener {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+}
+
+.team {
+    font-family: 'Segoe UI';
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: middle;
+    outline: none;
+    color: var(--primary-text-color);
+}
+
+.team:hover,
+.team:focus {
+    box-shadow: 3px aqua;
+}

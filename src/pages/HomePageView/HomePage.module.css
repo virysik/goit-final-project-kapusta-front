@@ -1,170 +1,96 @@
-.container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.firstSection {
-  position: relative;
-  background-color: #f5f6fb;
-  overflow: hidden;
-  height: 286px;
-  border-radius: 0 0 0 45px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.secondSection {
-  height: 514px;
-  position: relative;
-}
-
-.text {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+.section {
+  max-width: 1260px;
+  margin: 0 auto;
   padding-top: 86px;
+  padding-bottom: 76px;
+  background-image: url('../../images/homepage/bg-mob-top.svg'),
+    url('../../images/homepage/bg-main.svg'),
+    url('../../images/homepage/bg-mob-bottom.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: right 104px, left top -240px, 35px bottom;
 }
 
-.imgText {
+.kapusta {
   width: 183px;
-  height: 46.34px;
-  margin-left: 49px;
+  height: 47px;
+  margin-bottom: 5px;
 }
 
-.fontText {
-  margin: 5px 0 0 60px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: bold;
+.title {
+  margin-left: 11px;
+
+  font-weight: 900;
   font-size: 13px;
-  line-height: 15px;
+  line-height: 1.15;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #52555f;
 }
 
-/* Adaptive */
-@media screen and (min-width: 320px) {
-  .container {
-    width: 320px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .backgroundImage {
-    position: absolute;
-    z-index: 2;
-    background-image: url('../../images/svg/Vector.svg');
-    width: 83px;
-    height: 89px;
-    top: 104px;
-    left: 271px;
-    transform: rotate(-180deg);
-  }
-
-  .backgroundImageBottom {
-    position: absolute;
-    width: 83px;
-    height: 89px;
-    top: 425px;
-    left: 35px;
-    background-image: url('../../images/svg/Vector.svg');
-  }
+.textWrapper {
+  margin-left: 39px;
+  margin-bottom: 50px;
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    width: 768px;
+  .section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    background-image: url('../../images/homepage/bg-desk-top.svg'),
+      url('../../images/homepage/bg-main.svg'),
+      url('../../images/homepage/bg-desk-bot.svg');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: left top 28px, left top, left 103px bottom 140px;
   }
 
-  .imgText {
+  .kapusta {
     width: 307px;
     height: 78px;
-    margin-left: 171px;
   }
 
-  .firstSection {
-    height: 526px;
-    position: relative;
+  .title {
+    margin-left: 44px;
+
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.18em;
   }
 
-  .secondSection {
-    height: 442px;
+  .textWrapper {
+    margin-left: 120px;
   }
 
-  .backgroundImage {
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 232px;
-    top: 28px;
-    left: 10px;
-    background-image: url('../../images/svg/bcgImage.svg');
-  }
-
-  .text {
-    z-index: 3;
-  }
-
-  .fontText {
-    margin: 5px 0 0 225px;
-  }
-
-  .backgroundImageBottom {
-    position: absolute;
-    z-index: 99;
-    width: 183px;
-    height: 142px;
-    top: 56%;
-    left: 13%;
-    background-image: url('../../images/svg/bcgImageBottom.svg');
+  .loginWrapper {
+    margin-bottom: 191px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
-    width: 1280px;
+  .section {
+    padding-top: 117px;
+    padding-bottom: 117px;
+    background-position: center top 28px, center top, left 18%, bottom 70px;
   }
 
-  .firstSection {
-    position: relative;
-  }
-
-  .secondSection {
-    height: 268px;
-  }
-
-  .backgroundImage {
-    position: absolute;
-    z-index: 2;
-    width: 1334px;
-    height: 232px;
-    top: 28px;
-    left: 10px;
-    background-image: url('../../images/svg/bcgImage.svg');
-  }
-
-  .imgText {
+  .kapusta {
     width: 377px;
-    height: 120px;
-    margin-left: 230px;
-    padding: 20px 1px 2px 3px;
+    height: auto;
   }
 
-  .text {
-    padding-top: 308px;
+  .title {
+    margin-left: 72px;
   }
 
-  .fontText {
-    margin: 5px 0 0 302px;
-    font-size: 16px;
-    line-height: 19px;
+  .textWrapper {
+    margin-top: 252px;
+    margin-right: 127px;
+    margin-bottom: 347px;
   }
 
-  .backgroundImageBottom {
-    width: 183px;
-    height: 142px;
-    left: 230px;
-    top: 76px;
+  .mainWrapper {
+    display: flex;
+  }
+
+  .loginWrapper {
+    margin-bottom: 0px;
   }
 }
