@@ -1,0 +1,123 @@
+.linkLogOut {
+    padding-top: 4px;
+    display: block;
+    text-align: center;
+}
+
+.logOutIcon {
+    fill: #cbccd0;
+}
+
+.logOutIcon:hover,
+.logOutIcon:focus {
+    fill: var(--accent-color);
+}
+
+.wrapper {
+    display: flex;
+    text-align: center;
+    position: relative;
+}
+
+.wrapper:before {
+    content: " ";
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    background-color: #f5f6fa;
+    position: absolute;
+    margin-right: 15px;
+    border-radius: 50%;
+    top: -5px;
+    left: -11px;
+}
+
+.logOutText {
+    display: none;
+}
+
+.firstLetterUser {
+    color: #52555f;
+    margin-right: 27px;
+    z-index: 2000;
+
+    padding-top: 2px;
+    position: relative;
+}
+
+.userName {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .userName {
+        display: block;
+        padding-right: 40px;
+
+        font-size: 12px;
+        line-height: 1.2;
+
+        letter-spacing: 0.04em;
+
+        color: var(--primary-text-color);
+    }
+
+    .linkLogOut {
+        padding-top: 0;
+    }
+
+    .wrapper:before {
+        top: -6px;
+    }
+
+    .firstLetterUser {
+        margin-right: 23px;
+
+        padding-top: 0px;
+    }
+
+    .logOutIcon {
+        display: none;
+    }
+
+    .logOutText {
+        display: block;
+
+        font-size: 12px;
+        line-height: 1.2;
+        position: relative;
+
+        letter-spacing: 0.04em;
+        text-decoration: underline;
+
+        color: var(--primary-text-color);
+    }
+
+    .logOutText:hover,
+    .logOutText:focus {
+        color: var(--accent-color);
+    }
+
+    .wrapper:after {
+        content: " ";
+        display: inline-block;
+        height: 36px;
+        width: 1px;
+        background-color: #f5f6fa;
+        position: absolute;
+
+        top: -8px;
+        left: 114px;
+    }
+
+    /* .logOutText::before {
+    content: ' ';
+    display: inline-block;
+    height: 1px;
+    width: 40px;
+    background-color: var(--primary-text-color);
+    position: absolute;
+    top: 14px;
+    left: 0px;
+  } */
+}
