@@ -24,31 +24,30 @@ const DevelopersView = lazy(() =>
   ),
 );
 
-
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrent = useSelector(getIsFetchingCurrent);
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(fetchCurrentUser());
-    }, [dispatch]);
-  
+  }, [dispatch]);
+
   return (
     <>
       <Header />
       <Switch>
         <Suspense fallback={<OnLoader />}>
           <PublicRoute exact path="/">
-            <HomePageView/>
+            <HomePageView />
           </PublicRoute>
-          <PrivateRoute path='/balance' redirectTo='/'>
-              <BalanceView />
+          <PrivateRoute path="/balance" redirectTo="/">
+            <BalanceView />
           </PrivateRoute>
-          <PrivateRoute path='/reports' redirectTo='/'>
-              <ReportsView />
+          <PrivateRoute path="/reports" redirectTo="/">
+            <ReportsView />
           </PrivateRoute>
-          <PublicRoute path='/developers' redirectTo='/'>
-              <DevelopersView/>
+          <PublicRoute path="/developers" redirectTo="/">
+            <DevelopersView />
           </PublicRoute>
         </Suspense>
       </Switch>
