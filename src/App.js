@@ -17,7 +17,7 @@ const BalanceView = lazy(() =>
 );
 const ReportsView = lazy(() =>
   import(
-    'pagegit checkout devs/ReportsView' /*webpackChunkName: "reports-view" */
+    'pages/ReportsView' /*webpackChunkName: "reports-view" */
   ),
 );
 const DevelopersView = lazy(() =>
