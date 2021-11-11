@@ -4,6 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import s from './BasicSelect.module.css';
 
 export default function BasicSelect() {
   const [category, setCategory] = React.useState('');
@@ -13,9 +14,11 @@ export default function BasicSelect() {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Категория товара</InputLabel>
+    <Box sx={{ minWidth: 120 }} className={s.box}>
+      <FormControl fullWidth className={s.form}>
+        <InputLabel id="demo-simple-select-label" className={s.dropdownInput}>
+          Категория товара
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
