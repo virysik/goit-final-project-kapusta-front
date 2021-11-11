@@ -1,58 +1,46 @@
-.linkLogOut {
-    padding-top: 4px;
-    display: block;
-    text-align: center;
+button {
+    border: transparent;
 }
 
-.logOutIcon {
-    fill: #cbccd0;
-}
-
+.logOutIcon{
+  padding-top: 6px;
+} 
 .logOutIcon:hover,
 .logOutIcon:focus {
-    fill: var(--accent-color);
+    color: var(--accent-color);
 }
 
 .wrapper {
     display: flex;
-    text-align: center;
-    position: relative;
+    align-items: center;
 }
 
-.wrapper:before {
-    content: " ";
-    display: inline-block;
-    height: 32px;
-    width: 32px;
-    background-color: #f5f6fa;
-    position: absolute;
-    margin-right: 15px;
-    border-radius: 50%;
-    top: -5px;
-    left: -11px;
-}
-
-.logOutText {
+.logOutBtn {
     display: none;
 }
 
 .firstLetterUser {
     color: #52555f;
-    margin-right: 27px;
+    margin-right: 10px;
     z-index: 2000;
-
-    padding-top: 2px;
+    background-color: #F5F6FA;
+    padding: 5px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    border-radius: 50%;
     position: relative;
 }
 
 .userName {
     display: none;
+    border-right: 1px solid #e0e5eb;
 }
 
 @media screen and (min-width: 768px) {
     .userName {
         display: block;
-        padding-right: 40px;
+        padding-right: 20px;
 
         font-size: 12px;
         line-height: 1.2;
@@ -60,64 +48,37 @@
         letter-spacing: 0.04em;
 
         color: var(--primary-text-color);
+        border-right: 1px solid #e0e5eb;
+
     }
 
     .linkLogOut {
         padding-top: 0;
-    }
-
-    .wrapper:before {
-        top: -6px;
-    }
-
-    .firstLetterUser {
-        margin-right: 23px;
-
-        padding-top: 0px;
+        padding-left: 20px;
     }
 
     .logOutIcon {
         display: none;
+        padding-left: 20px;
     }
 
-    .logOutText {
+    .logOutBtn {
         display: block;
-
-        font-size: 12px;
-        line-height: 1.2;
-        position: relative;
-
-        letter-spacing: 0.04em;
-        text-decoration: underline;
-
-        color: var(--primary-text-color);
+        background: transparent;
+        padding-left: 20px;
     }
 
-    .logOutText:hover,
-    .logOutText:focus {
-        color: var(--accent-color);
-    }
+}
 
-    .wrapper:after {
-        content: " ";
-        display: inline-block;
-        height: 36px;
-        width: 1px;
-        background-color: #f5f6fa;
-        position: absolute;
+.logOutTextBtn {
+    font-size: 12px;
+    color: #52555f;
+    cursor: pointer;
+    border-bottom: 1px solid #52555f;
+}
 
-        top: -8px;
-        left: 114px;
-    }
-
-    /* .logOutText::before {
-    content: ' ';
-    display: inline-block;
-    height: 1px;
-    width: 40px;
-    background-color: var(--primary-text-color);
-    position: absolute;
-    top: 14px;
-    left: 0px;
-  } */
+.logOutTextBtn:hover,
+.logOutTextBtn:focus {
+    color: #FF751D;
+    border-color: #FF751D;
 }

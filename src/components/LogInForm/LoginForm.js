@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import s from './LoginForm.module.css';
-import GoogleAuth from '../GoogleAuth'
+import GoogleAuth from '../GoogleAuth';
+import { logIn } from '../../redux/auth/auth-operations';
 
 const LoginForm = ({ onClickRegister }) => {
+  const dispatch = useDispatch();
+  
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -78,6 +82,7 @@ const LoginForm = ({ onClickRegister }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(logIn({ email, password }));
     clearInput();
   };
 
@@ -138,7 +143,7 @@ const LoginForm = ({ onClickRegister }) => {
               type="password"
               name="password"
               value={password}
-              placeholder="Пароль"
+              placeholder="password"
               className={s.formInput}
               pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
               title="Пароль может, сoстоять не меньше чем из шести букв цифр и символов '!@#$%^&*'"

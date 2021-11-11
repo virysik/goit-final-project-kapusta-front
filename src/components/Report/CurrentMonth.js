@@ -12,7 +12,7 @@ export const CurrentMonth = ({
   onHandleClickLeft,
 }) => {
   const monthToString = String(currentMonth);
-  const selectMonth = months.filter(el => el.id === monthToString);
+  // const selectMonth = months.filter(el => el.id === monthToString);
   return (
     <div className={s.reportMonth}>
       <p className={s.title}>Текущий период:</p>
