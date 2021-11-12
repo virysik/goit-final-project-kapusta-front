@@ -16,22 +16,19 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
-
-  const blurHandler = e => {
-    switch (e.target.name) {
+ 
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
       case 'name':
-        setNameDirty(true);
-        break;
+        return setNameDirty(value)
       case 'email':
-        setEmailDirty(true);
-        break;
+        return setEmailDirty(value)
       case 'password':
-        setPasswordDirty(true);
-        break;
+        return setPasswordDirty(value)
       default:
-        return;
+        return
     }
-  };
+  }
 
   const nameHandler = e => {
     setName(e.target.value);
@@ -84,10 +81,7 @@ const RegisterForm = ({ onClickComeBack }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(register({ name, email, password }))
-    setName('')
-    setEmail('')
-      setPassword('')
+    dispatch(register({ email, password }))
       clearInput();
   }
 
@@ -106,7 +100,7 @@ const RegisterForm = ({ onClickComeBack }) => {
               Имя:
             </p>
             <input
-              onBlur={blurHandler}
+              onBlur={handleChange}
               onChange={nameHandler}
               type="text"
               name="name"
@@ -142,7 +136,7 @@ const RegisterForm = ({ onClickComeBack }) => {
               Электронная почта:
             </p>
             <input
-              onBlur={blurHandler}
+              onBlur={handleChange}
               onChange={emailHandler}
               type="text"
               name="email"
@@ -171,7 +165,7 @@ const RegisterForm = ({ onClickComeBack }) => {
               Пароль:
             </p>
             <input
-              onBlur={blurHandler}
+              onBlur={handleChange}
               onChange={passwordHandler}
               type="password"
               name="password"

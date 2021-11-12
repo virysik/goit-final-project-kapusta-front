@@ -1,31 +1,22 @@
-import sprite from '../../images/svg/sprite.svg';
-import styles from './UserMenuHeader.module.css';
-import {RiLogoutBoxRLine} from 'react-icons/ri' 
+import { Link, NavLink } from 'react-router-dom';
+import styles from '../Header/Header.module.css';
+import LogoHeader from 'components/LogoHeader';
+import UserLogOut from './UserLogOut/UserLogOut';
 
 export default function UserMenuHeader() {
   return (
     <>
-    <div className={styles.wrapper}>
-      <p className={styles.firstLetterUser}>U</p>
-      <p className={styles.userName}>User name</p>
-      {/* <a href="#" className={styles.linkLogOut}> */}
-        <button type="button" className={styles.logOutBtn}>
-          <p className={styles.logOutTextBtn}>Выйти</p>
-        </button>
-        <div className={styles.logOutIcon}>
-          <RiLogoutBoxRLine color={"#CBCCD0"} size={"16px"}/>
+      <header className={styles.header}>
+        <div className={styles.headerContaiener}>
+          <Link to="/" alt="homepage">
+            <LogoHeader />
+          </Link>
+          <NavLink to="/developers" className={styles.team}>
+            <h1>𝕋𝕖𝕒𝕞</h1>
+          </NavLink>
+          <UserLogOut/>
         </div>
-  
-        {/* <svg
-          className={styles.logOutIcon}
-          data-link="home"
-          width="16px"
-          height="16px"
-        >
-          <use data-link="home" href={"../../images/svg/logOutSprite.svg"} />
-        </svg> */}
-      {/* </a> */}
-    </div>
+      </header>
     </>
   );
 }

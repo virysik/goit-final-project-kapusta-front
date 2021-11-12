@@ -1,7 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 import LogoHeader from 'components/LogoHeader';
-import UserMenuHeader from 'components/UserMenuHeader';
 
 export default function Header() {
   
@@ -13,10 +12,8 @@ export default function Header() {
             <LogoHeader />
           </Link>
           <NavLink to="/developers" className={styles.team}>
-            Team
+            <h1>𝕋𝕖𝕒𝕞</h1>
           </NavLink>
-          <UserMenuHeader />
-
         </div>
       </header>
     </>

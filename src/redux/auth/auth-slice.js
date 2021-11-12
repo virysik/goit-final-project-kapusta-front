@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, fetchCurrentUser } from './auth-operations';
+import { authOperations } from '.';
 
 const initialState = {
   user: { name: null, email: null },
@@ -12,55 +12,55 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-      state.error = null;
+    [authOperations.register.fulfilled](state, action) {
+      state.user = action.payload.user
+      state.token = action.payload.token
+      state.isLoggedIn = true
+      state.error = null
     },
-    [register.pending](state) {
-      state.error = null;
+    [authOperations.register.pending](state) {
+      state.error = null
     },
-    [register.rejected](state, action) {
+    [authOperations.register.rejected](state, action) {
       if (action.payload) {
-        state.error = action.payload.errors.message;
+        state.error = action.payload.errors.message
       } else {
-        state.error = action.error.message;
+        state.error = action.error.message
       }
     },
-    [logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-      state.error = null;
+    [authOperations.logIn.fulfilled](state, action) {
+      state.user = action.payload.user
+      state.token = action.payload.token
+      state.isLoggedIn = true
+      state.error = null
     },
-    [logIn.pending](state) {
-      state.error = null;
+    [authOperations.logIn.pending](state) {
+      state.error = null
     },
-    [logIn.rejected](state, action) {
+    [authOperations.logIn.rejected](state, action) {
       if (action.payload) {
-        state.error = action.payload.errors.message;
+        state.error = action.payload.errors.message
       } else {
-        state.error = action.error.message;
+        state.error = action.error.message
       }
     },
-    [logOut.fulfilled](state) {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-      state.error = null;
+    [authOperations.logOut.fulfilled](state) {
+      state.user = { name: null, email: null }
+      state.token = null
+      state.isLoggedIn = false
+      state.error = null
     },
-    [logOut.pending](state) {
-      state.error = null;
+    [authOperations.logOut.pending](state) {
+      state.error = null
     },
-    [logOut.rejected](state, action) {
-      state.error = action.error.message;
+    [authOperations.logOut.rejected](state, action) {
+      state.error = action.error.message
     },
-    [fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
-      state.isLoggedIn = true;
+    [authOperations.fetchCurrentUser.fulfilled](state, action) {
+      state.user = action.payload
+      state.isLoggedIn = true
     },
   },
-});
+})
 
-export default authSlice.reducer;
+export default authSlice.reducer

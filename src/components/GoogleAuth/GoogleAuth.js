@@ -17,6 +17,7 @@ const GoogleAuth = () => {
     dispatch(logIn(newUser));
   };
   return (
+    <>
     <GoogleLogin
       clientId="441702863210-d6bc9fnvd7p92me9dedsb90r9fcsggdg.apps.googleusercontent.com"
       render={({ onClick, disabled }) => (
@@ -24,7 +25,8 @@ const GoogleAuth = () => {
       )}
       onSuccess={successLogin}
       cookiePolicy={'single_host_origin'}
-    />
+      />
+    </>
   );
 };
 
