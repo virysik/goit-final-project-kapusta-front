@@ -1,22 +1,22 @@
-import sprite from '../../images/svg/sprite.svg';
-import styles from './UserMenuHeader.module.css';
+import { Link, NavLink } from 'react-router-dom';
+import styles from '../Header/Header.module.css';
+import LogoHeader from 'components/LogoHeader';
+import UserLogOut from './UserLogOut/UserLogOut';
 
 export default function UserMenuHeader() {
   return (
-    <div className={styles.wrapper}>
-      <span className={styles.firstLetterUser}>U</span>
-      <span className={styles.userName}>User name</span>
-      <a href="#" className={styles.linkLogOut}>
-        <span className={styles.logOutText}>Выйти </span>
-        <svg
-          className={styles.logOutIcon}
-          data-link="home"
-          width="16px"
-          height="16px"
-        >
-          <use data-link="home" href={sprite + '#icon-logout'} />
-        </svg>
-      </a>
-    </div>
+    <>
+      <header className={styles.header}>
+        <div className={styles.headerContaiener}>
+          <Link to="/" alt="homepage">
+            <LogoHeader />
+          </Link>
+          <NavLink to="/developers" className={styles.team}>
+            <h1>𝕋𝕖𝕒𝕞</h1>
+          </NavLink>
+          <UserLogOut/>
+        </div>
+      </header>
+    </>
   );
 }
