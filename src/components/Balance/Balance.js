@@ -5,11 +5,22 @@ import GoToReports from 'components/GoToReports';
 import Notification from 'components/Notification';
 
 const Balance = () => {
-  const [noBalance, setNoBalance] = useState(true);
+  const balanceState = 12;
+  const [balance, setBalance] = useState('');
+
+  const handleInputChange = e => {
+    setBalance(e.target.value);
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setNoBalance(false);
+
+    if (!balance || Number(balance) === 0) {
+      alert('Внесите пожалуста сумму в баланс больше нуля');
+    }
+    console.log(e.target.value);
+    console.log(balance);
+    setBalance('');
   };
 
   return (
@@ -21,6 +32,8 @@ const Balance = () => {
           <input
             type="text"
             name="balance"
+            value={balance}
+            onChange={handleInputChange}
             maxLength="10"
             placeholder="00.00 UAH"
             className={s.balanceInput}
@@ -31,7 +44,7 @@ const Balance = () => {
           </button>
         </div>
       </form>
-      {noBalance && <Notification />}
+      {balanceState === 0 && <Notification />}
     </div>
   );
 };
