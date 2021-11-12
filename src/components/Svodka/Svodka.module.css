@@ -1,0 +1,20 @@
+.reportHistory {
+  width: 230px;
+  border-radius: 15px;
+  background-color: var(--grey-bg-home-color);
+  border-collapse: collapse;
+}
+
+.reportHeader {
+  font-weight: 700;
+  font-size: 12 px;
+  font: Roboto;
+  text-align: center;
+  border-bottom: 2px solid var(--white-color);
+}
+
+.reportData {
+  font-weight: 400;
+  border-bottom: 2px solid var(--white-color);
+  text-align: center;
+}

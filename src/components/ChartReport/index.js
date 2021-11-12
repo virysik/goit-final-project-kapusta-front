@@ -1,1 +1,1 @@
-export { default } from './ChartReportMobile';
+export { default } from './ChartReport';

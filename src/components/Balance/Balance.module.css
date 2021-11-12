@@ -1,38 +1,24 @@
-@media screen and (min-width: 320px) {
-  .containerBalance {
-    display: block;
-    position: relative;
-    background: inherit;
-    width: 248px;
-    margin: 0 auto 0px auto;
-    justify-content: center;
-    background-color: #f5f6fb;
-  }
-  .formBalance {
-    display: flex;
-    justify-content: space-between;
-  }
-  .balanceAndBtn {
-    display: flex;
-    margin-top: 6px;
-  }
+.containerBalance {
+  width: 248px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.formBalance {
+  text-align: center;
+}
+.balanceAndBtn {
+  display: flex;
+  margin-top: 6px;
+}
 
-  .balanceLabel {
-    position: relative;
-    display: block;
+.balanceLabel {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
 
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.02em;
-    
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 6px;
-    text-align: center;
-    color: var(--primary-text-color);
-  }
+  margin-bottom: 6px;
+  color: var(--primary-text-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -54,7 +40,7 @@
   }
   .balanceAndBtn {
     margin-top: 0px;
-}
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -62,5 +48,101 @@
     width: 1060px;
     height: 44px;
     justify-content: end;
+  }
+}
+
+/* InputBalance Styles */
+
+@media screen and (min-width: 320px) {
+  .balanceInput {
+    position: relative;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.17;
+    letter-spacing: 0.02em;
+    color: var(--black-text-color);
+    width: 125px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    border-right: none;
+    border-radius: 22px 0 0 22px;
+    outline: none;
+    background-color: transparent;
+  }
+  ::placeholder {
+    color: var(--black-text-color);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .balanceInput {
+    display: flex;
+    margin-left: 21px;
+    margin-top: 0px;
+    border-radius: 16px;
+    text-align: center;
+    color: black;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .balanceInput {
+    margin-left: 40px;
+    margin-right: 15px;
+    color: black;
+    background-color: transparent;
+    border-radius: 16px;
+    text-align: center;
+  }
+}
+
+/* ConfirmButton Styles  */
+
+@media screen and (min-width: 320px) {
+  .confirmButton {
+    background-color: transparent;
+    /* padding-right: 20px; */
+    text-align: center;
+    width: 125px;
+    height: 44px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+    border: 2px solid #ffffff;
+    border-radius: 0 22px 22px 0;
+    outline: none;
+    color: var(--primary-text-color);
+  }
+  .confirmButton:hover,
+  .confirmButton:focus {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+  }
+}
+@media screen and (min-width: 768px) {
+  .confirmButton {
+    background-color: transparent;
+    border-radius: 16px;
+    margin-left: 15px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .confirmButton,
+  .ReportsConfirmButton {
+    background-color: transparent;
+    border-radius: 16px;
+    margin-left: 0px;
+    margin-right: 205px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .ReportsConfirmButton {
+    display: none;
   }
 }

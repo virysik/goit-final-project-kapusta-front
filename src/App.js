@@ -8,6 +8,9 @@ import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
 import Header from 'components/Header';
 import './App.css';
+// import reports from 'components/Report/reports.json';
+// import Report from 'components/Report';
+// import ChartReport from 'components/ChartReport';
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -16,9 +19,7 @@ const BalanceView = lazy(() =>
   import('pages/BalanceView' /*webpackChunkName: "balance-view" */),
 );
 const ReportsView = lazy(() =>
-  import(
-    'pages/ReportsView' /*webpackChunkName: "reports-view" */
-  ),
+  import('pages/ReportsView' /*webpackChunkName: "reports-view" */),
 );
 const DevelopersView = lazy(() =>
   import(
@@ -38,6 +39,7 @@ function App() {
     <>
       
       <Header />
+
       <Switch>
         <Suspense fallback={<OnLoader />}>
           <PublicRoute exact path="/">

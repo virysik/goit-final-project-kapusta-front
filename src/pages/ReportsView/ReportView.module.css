@@ -1,5 +1,6 @@
 .section {
   padding-top: 15px;
+  padding-bottom: 50px;
   text-align: center;
   background-image: url('../../images/homepage/bg-main.svg');
   background-repeat: no-repeat;
@@ -19,7 +20,7 @@
     background-image: url('../../images/homepage/bg-main.svg'),
       url('../../images/homepage/bg-desk-bot.svg');
     background-repeat: no-repeat, no-repeat;
-    background-position: left top -40px, right 88px bottom -40px;
+    background-position: left top -50px, right 88px bottom -40px;
   }
 
   .contentWrapper {
@@ -31,7 +32,7 @@
 
   .insideWrapper {
     margin-bottom: 0;
-    margin-left: 82px;
+    margin-left: 50px;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;

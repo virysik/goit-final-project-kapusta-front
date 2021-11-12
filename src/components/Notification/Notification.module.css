@@ -11,7 +11,8 @@
   border-radius: 30px;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
-  top: 117%;
+  top: 240px;
+  left: 20px;
   z-index: 99;
   cursor: pointer;
 }
