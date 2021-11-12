@@ -1,7 +1,5 @@
-import React from 'react';
-import s from './Report.module.css';
-
 import { CurrentMonth } from './CurrentMonth';
+import s from './Report.module.css';
 
 const Report = ({ month, year, onHandleClickRight, onHandleClickLeft }) => {
   return (
@@ -15,4 +13,5 @@ const Report = ({ month, year, onHandleClickRight, onHandleClickLeft }) => {
     </div>
   );
 };
+
 export default Report;

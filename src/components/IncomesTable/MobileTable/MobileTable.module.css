@@ -1,0 +1,77 @@
+.listTable {
+  padding: 10px 20px;
+  height: 100%;
+  overflow-y: scroll;
+}
+.tableItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.boxDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.description {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  max-width: 52.5vw;
+  overflow: hidden;
+}
+.boxCategoryAndDate {
+   display: flex;
+}
+.itemDate {
+  margin-right: 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #52555f;
+}
+.category {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+.boxAmount {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;  
+  letter-spacing: 0.04em;
+  color: #e7192e;
+}
+.delIcon {
+  width: 18px;
+  height: 18px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #f5f6fb;
+  cursor: pointer;
+}
+.delIcon:hover {
+  background-color: #ffdac0;
+  transform: scale(1.1);
+}
+@media screen and (min-width: 768px) {
+  .listTable {
+    display: none;
+  }
+}

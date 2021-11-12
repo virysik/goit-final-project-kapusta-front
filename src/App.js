@@ -7,6 +7,9 @@ import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
 import AppBar from './components/AppBar';
 import './App.css';
+// import reports from 'components/Report/reports.json';
+// import Report from 'components/Report';
+// import ChartReport from 'components/ChartReport';
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -23,11 +26,10 @@ const DevelopersView = lazy(() =>
   ),
 );
 
-
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(state => getIsFetchingCurrent(state));
-
+  
   const onToken = useSelector(getToken)
   
  useEffect(() => {
