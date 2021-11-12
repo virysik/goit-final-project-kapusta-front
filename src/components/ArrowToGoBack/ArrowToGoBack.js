@@ -20,7 +20,7 @@ const ArrowToGoBack = () => {
           />
         </svg>
       </span>
-      <span style={{ marginLeft: 18 }} className={s.arrow}>
+      <span style={{ marginLeft: 15 }} className={s.arrow}>
         {viewPort.width > 767 && 'Вернуться на главную'}
       </span>
     </NavLink>
