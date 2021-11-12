@@ -1,35 +1,28 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/auth'
 import s from './LoginForm.module.css';
 import GoogleAuth from '../GoogleAuth';
-import { logIn } from '../../redux/auth/auth-operations';
 
 const LoginForm = ({ onClickRegister }) => {
   const dispatch = useDispatch();
   
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [confirm, setConfirm] = useState('');
   const [emailDirty, setEmailDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
-  // const [confirmDirty, setConfirmDirty] = useState(false);
   const [emailError, setEmaiError] = useState('Это обязательное поле');
   const [passwordError, setPasswordError] = useState('Это обязательное поле');
-  // const [confirmError, setConfirmError] = useState('Это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
 
-  const blurHandler = e => {
-    switch (e.target.name) {
+  const handleChange = ({ target: { name, value }}) => {
+    switch (name) {
       case 'email':
-        setEmailDirty(true);
+        setEmailDirty(value);
         break;
       case 'password':
-        setPasswordDirty(true);
+        setPasswordDirty(value);
         break;
-      // case 'confirm':
-      //   setConfirmDirty(true);
-      //   break;
       default:
         return;
     }
@@ -39,7 +32,7 @@ const LoginForm = ({ onClickRegister }) => {
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
-      setEmaiError('Некорректный емейл');
+      setEmaiError('Некорректный email');
       setErrorSymbol('*');
       if (!e.target.value) {
         setEmaiError('Это обязательное поле');
@@ -62,27 +55,14 @@ const LoginForm = ({ onClickRegister }) => {
     }
   };
 
-  // const confirmdHandler = e => {
-  //   setConfirm(e.target.value);
-  //   if (e.target.value.length < 6) {
-  //     setConfirmError('Пароль должен быть не меньше 6 символов');
-  //     if (!e.target.value) {
-  //       setConfirmError('Это обязательное поле');
-  //     }
-  //   } else {
-  //     setConfirmError('');
-  //   }
-  // };
-
   const clearInput = () => {
     setEmail('');
     setPassword('');
-    // setConfirm('');
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     clearInput();
   };
 
@@ -109,7 +89,7 @@ const LoginForm = ({ onClickRegister }) => {
               Электронная почта:
             </p>
             <input
-              onBlur={blurHandler}
+              onBlur={handleChange}
               onChange={emailHandler}
               type="email"
               name="email"
@@ -138,7 +118,7 @@ const LoginForm = ({ onClickRegister }) => {
               Пароль:
             </span>
             <input
-              onBlur={blurHandler}
+              onBlur={handleChange}
               onChange={passwordHandler}
               type="password"
               name="password"
@@ -156,46 +136,6 @@ const LoginForm = ({ onClickRegister }) => {
             )}
           </label>
         </div>
-          {/* <div>
-          <label className={s.formLabel} htmlFor="">
-            <p className={s.labelText}>
-              {passwordDirty && passwordError && (
-                <span style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                  {errorSymbol}{' '}
-                </span>
-              )}
-              Повторный пароль:
-            </p>
-            <input
-              onBlur={blurHandler}
-              onChange={confirmdHandler}
-              dependencies={['password']}
-              type="password"
-              name="confirm"
-              value={confirm}
-              placeholder="Confirm password"
-              className={s.formInput}
-              pattern="[0-9A-Za-zА-Яа-яЁёЄєЇї!@#$%^&*]{6,}"
-              title="Повторный пароль должен совпадать с паролем"
-              required
-              rules={[
-                 ({ getFieldValue }) => ({
-                   validator(_, value) {
-                     if (value || confirm) {
-                       return Promise.resolve();
-                     }
-                     return Promise.reject(new Error('Повторный пароль НЕ СОВПАДАЕТ с паролем!'))
-                   },
-                 }),
-               ]}
-            />
-            {confirmDirty && confirmError && (
-              <div style={{ color: 'red', fontSize: 10, paddingTop: 4 }}>
-                {confirmError}{' '}
-              </div>
-            )}
-          </label>
-        </div> */}
         <div className={s.containerButton}>
           <button type="submit" className={s.button}>
             ВОЙТИ

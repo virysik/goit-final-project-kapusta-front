@@ -11,7 +11,7 @@ const team = [
     {
     id: 1,
     fullName: 'Vera Kuzjo',
-    position: 'Team Lead',
+    position: 'Team Leader',
     photo: `./${Vera}`,
     linkedIn: 'https://www.linkedin.com/in/vera-kuzjo-b6b9285a/',
     gitHub: 'https://github.com/virysik',

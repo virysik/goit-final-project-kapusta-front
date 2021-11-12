@@ -22,10 +22,10 @@ export default function OurTeam() {
               <span>{team.position}</span>
             </h3>
             <div className={s.icons}>
-              <a target="_blank" href={team.linkedIn}>
+              <a rel='norederrer' target="_blank" href={team.linkedIn}>
                 <i className="ion-social-linkedin-outline"></i>
               </a>
-              <a target="_blank" href={team.gitHub}>
+              <a rel='norederrer' target="_blank" href={team.gitHub}>
                 <i className="ion-social-github-outline"></i>
               </a>
             </div>
