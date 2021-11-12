@@ -44,12 +44,6 @@ export default function BasicSelect({ type, onSelect }) {
               {el}
             </MenuItem>
           ))}
-
-          {/* <MenuItem value={10} onClick={handleClick}>
-            Ten
-          </MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem> */}
         </Select>
       </FormControl>
     </Box>
