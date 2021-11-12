@@ -7,20 +7,23 @@ import ArrowToGoBack from 'components/ArrowToGoBack';
 import 'react-tabs/style/react-tabs.css';
 import s from './IncomesBalance.module.css';
 
-export default function Incomes() {
+export default function IncomesBalance() {
+  const balanceState = 12;
+  let [balance, setBalance] = useState(0);
   let [showTabs, setShowTabs] = useState(false);
+  let [showTable, setShowTable] = useState(false);
 
   const handleTabClick = e => {
-    setShowTabs(true);
+    setShowTabs(false);
   };
 
   const onHandleClick = () => {
-    setShowTabs(false);
+    setShowTabs(true);
   };
 
   return (
     <>
-      {!showTabs && (
+      {balanceState && showTabs && (
         <>
           <Balance />
           <Calendar />
@@ -28,7 +31,7 @@ export default function Incomes() {
       )}
 
       <Tabs>
-        <TabList className={!showTabs ? s.tabListMobile : s.tabListMobileNot}>
+        <TabList className={showTabs ? s.tabListMobile : s.tabListMobileNot}>
           <Tab className={s.tabsMobileL} onClick={handleTabClick}>
             Расход
           </Tab>
@@ -38,21 +41,21 @@ export default function Incomes() {
         </TabList>
 
         <TabPanel
-          className={showTabs ? s.tabPanelMobBalance : s.tabPanelMobNoBalance}
+          className={!showTabs ? s.tabPanelMobBalance : s.tabPanelMobNoBalance}
         >
           <div className={s.arrowWrapper}>
             <ArrowToGoBack />
           </div>
-          <IncomesForm onHandleClick={onHandleClick} />
+          <IncomesForm onHandleClick={onHandleClick} type="expenses" />
         </TabPanel>
 
         <TabPanel
-          className={showTabs ? s.tabPanelMobBalance : s.tabPanelMobNoBalance}
+          className={!showTabs ? s.tabPanelMobBalance : s.tabPanelMobNoBalance}
         >
           <div className={s.arrowWrapper}>
             <ArrowToGoBack />
           </div>
-          <IncomesForm onHandleClick={onHandleClick} />
+          <IncomesForm onHandleClick={onHandleClick} type="incomes" />
         </TabPanel>
       </Tabs>
     </>
