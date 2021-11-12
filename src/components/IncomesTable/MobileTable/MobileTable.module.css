@@ -70,3 +70,8 @@
   background-color: #ffdac0;
   transform: scale(1.1);
 }
+@media screen and (min-width: 768px) {
+  .listTable {
+    display: none;
+  }
+}

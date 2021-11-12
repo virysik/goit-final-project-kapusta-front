@@ -1,1 +1,1 @@
-export { default } from './ChartReport'
+export { default } from './ChartReport';

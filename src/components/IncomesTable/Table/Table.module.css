@@ -86,3 +86,8 @@
   background-color: #F5F6FB;
   border-radius: 50%;
 }
+@media screen and (max-width: 767px) {
+  .tableContainer {
+    display: none;
+  }
+}
