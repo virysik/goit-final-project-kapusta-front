@@ -9,6 +9,7 @@ import {
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
+import ExpensesIncome from './components/ExpensesIncome/ExpensesIncome';
 import AppBar from './components/AppBar';
 import './App.css';
 // import reports from 'components/Report/reports.json';
@@ -67,6 +68,7 @@ function App() {
           </Switch>
         )}
       </Suspense>
+      <ExpensesIncome/>
     </>
   );
 }

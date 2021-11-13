@@ -30,7 +30,7 @@
   line-height: 16px;
 
 }
-.amount :before {
+.amount:before {
     content: "";
     display: block;
     position: absolute;
@@ -79,6 +79,7 @@
     border-radius: 30px;
   }
     .amount:before {
+      content: "";
       height: 36px;
     }
   
