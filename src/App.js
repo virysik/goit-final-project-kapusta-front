@@ -52,18 +52,18 @@ function App() {
           <OnLoader />
         ) : (
           <Switch>
-             <PublicRoute exact path="/"  redirectTo='/balance'>
-                <HomePageView />
-              </PublicRoute>
-              <PrivateRoute path='/balance' redirectTo='/'>
-                <BalanceView />
-              </PrivateRoute>
-              <PrivateRoute path='/reports' redirectTo='/'>
-                <ReportsView />
-              </PrivateRoute>
-              <PublicRoute path='/developers' redirectTo='/'>
-                <DevelopersView />
-              </PublicRoute>
+            <PublicRoute exact path="/ff" restricted redirectTo="/balance">
+              <HomePageView />
+            </PublicRoute>
+            <PrivateRoute path="/balance" redirectTo="/">
+              <BalanceView />
+            </PrivateRoute>
+            <PublicRoute path="/" redirectTo="/">
+              <ReportsView />
+            </PublicRoute>
+            <PublicRoute path="/developers" redirectTo="/">
+              <DevelopersView />
+            </PublicRoute>
           </Switch>
         )}
       </Suspense>
