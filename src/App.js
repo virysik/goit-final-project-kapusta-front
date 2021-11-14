@@ -52,15 +52,15 @@ function App() {
           <OnLoader />
         ) : (
           <Switch>
-            <PublicRoute exact path="/ff" restricted redirectTo="/balance">
+            <PublicRoute exact path="/" restricted redirectTo="/balance">
               <HomePageView />
             </PublicRoute>
             <PrivateRoute path="/balance" redirectTo="/">
               <BalanceView />
             </PrivateRoute>
-            <PublicRoute path="/" redirectTo="/">
+            <PrivateRoute path="/reports" redirectTo="/">
               <ReportsView />
-            </PublicRoute>
+            </PrivateRoute>
             <PublicRoute path="/developers" redirectTo="/">
               <DevelopersView />
             </PublicRoute>

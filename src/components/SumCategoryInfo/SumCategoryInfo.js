@@ -2,7 +2,7 @@ import s from './SumCategoryInfo.module.css';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import CategoryInfo from 'components/CategoryInfo';
 
-const typeTrans = 'incomes';
+const typeTrans = 'expenses';
 
 const expenses = [
   { _id: 1, category: 'Продукты', value: 0.0, isActive: false },
