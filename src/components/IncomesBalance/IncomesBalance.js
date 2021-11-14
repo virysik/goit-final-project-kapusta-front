@@ -6,9 +6,12 @@ import Balance from 'components/Balance';
 import ArrowToGoBack from 'components/ArrowToGoBack';
 import 'react-tabs/style/react-tabs.css';
 import s from './IncomesBalance.module.css';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 
 export default function IncomesBalance() {
-  const balanceState = 12;
+  // const userBalance = useSelector(authSelectors.getUserBalance);
+  const userBalance = 12;
   let [balance, setBalance] = useState(0);
   let [showTabs, setShowTabs] = useState(false);
   let [showTable, setShowTable] = useState(false);
@@ -23,7 +26,7 @@ export default function IncomesBalance() {
 
   return (
     <>
-      {balanceState && showTabs && (
+      {userBalance && showTabs && (
         <>
           <Balance />
           <Calendar />

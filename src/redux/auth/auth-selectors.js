@@ -6,6 +6,8 @@ export const getCurrentUser = state => state.current.user.name;
 
 export const getUserEmail = state => state.auth.user.email;
 
+export const getUserBalance = state => state.auth.user.balance;
+
 export const getToken = state => state.token;
 
 export const getIsFetchingCurrent = state => state.isFetchingCurrent;

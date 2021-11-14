@@ -1,34 +1,59 @@
 import BasicSelect from 'components/BasicSelect';
+import {
+  transactionsSelectors,
+  transactionsOperations,
+} from 'redux/transactions';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import s from './IncomesForm.module.css';
 
 export default function IncomesForm({ onHandleClick, type }) {
-  const [product, setProduct] = useState('');
-  const [option, setOption] = useState('');
-  const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [amount, setAmount] = useState('');
+  const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
 
-  const description =
-    type === 'incomes' ? 'Описание дохода' : 'Описание товара';
+  const dispatch = useDispatch();
+
+  const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
   const onSelect = option => {
-    setOption(option);
+    setCategory(option);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(product, option, price);
+    console.log(description, category, amount, type);
+    const newOperation = {
+      typeOfTransaction: type,
+      category,
+      description,
+      amount,
+      day,
+      month,
+      year,
+    };
+
+    dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
     onHandleClick();
-    setPrice('');
-    setProduct('');
+    setAmount('');
+    setDescription('');
   };
+
+  const handleBtnClear = e => {
+    setAmount('');
+  };
+
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
 
     switch (name) {
       case 'product':
-        return setProduct(value);
+        return setDescription(value);
 
       case 'price':
-        return setPrice(value);
+        return setAmount(value);
 
       default:
         throw new Error(`there is no such name as ${name}`);
@@ -41,9 +66,9 @@ export default function IncomesForm({ onHandleClick, type }) {
         type="text"
         name="product"
         onChange={handleInputChange}
-        value={product}
+        value={description}
         className={s.inputDescribe}
-        placeholder={description}
+        placeholder={desc}
         autoFocus="off"
       />
       <BasicSelect onSelect={onSelect} type={type} />
@@ -53,7 +78,7 @@ export default function IncomesForm({ onHandleClick, type }) {
         className={s.priceInput}
         name="price"
         onChange={handleInputChange}
-        value={price}
+        value={amount}
         placeholder="00.00 UAH"
         autoFocus="off"
       />
@@ -62,7 +87,7 @@ export default function IncomesForm({ onHandleClick, type }) {
         <button type="submit" className={s.btn}>
           Ввод
         </button>
-        <button type="button" className={s.btn}>
+        <button type="button" className={s.btn} onClick={handleBtnClear}>
           Очистить
         </button>
       </div>

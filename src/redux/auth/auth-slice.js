@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { authOperations } from '.';
 
 const initialState = {
-  user: { email: null },
+  user: { name: null, email: null, balance: null },
   token: null,
   isLoggedIn: false,
   error: null,
@@ -22,14 +22,12 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.register.rejected](state, action) {
-      if (action.payload) {
-        state.error = action.payload.errors.message;
-      } else {
-        state.error = action.error.message;
-      }
+      state.error = action.error.message;
     },
     [authOperations.logIn.fulfilled](state, action) {
+      state.user.name = action.payload.name;
       state.user.email = action.payload.email;
+      state.user.balance = action.payload.balance;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
@@ -59,6 +57,16 @@ const authSlice = createSlice({
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
+    },
+    [authOperations.setUserBalance.fulfilled](state, action) {
+      state.user.balance = action.payload.payload;
+      state.error = null;
+    },
+    [authOperations.setUserBalance.pending](state, action) {
+      state.error = null;
+    },
+    [authOperations.setUserBalance.rejected](state, action) {
+      state.error = action.error.message;
     },
   },
 });

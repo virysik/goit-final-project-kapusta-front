@@ -33,6 +33,7 @@ export const logIn = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
+      console.log(data.token);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -40,6 +41,18 @@ export const logIn = createAsyncThunk(
         throw new Error('LogIn failed');
       }
       return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const setUserBalance = createAsyncThunk(
+  '/users/setUserBalance',
+  async (newBalance, { rejectWithValue }) => {
+    try {
+      const res = await axios.post('/users', newBalance);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   },
 );
@@ -81,5 +94,6 @@ const operations = {
   logOut,
   logIn,
   fetchCurrentUser,
+  setUserBalance,
 };
 export default operations;
