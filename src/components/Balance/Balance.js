@@ -1,26 +1,34 @@
-import React from 'react';
-import { useState } from 'react';
 import s from './Balance.module.css';
 import GoToReports from 'components/GoToReports';
 import Notification from 'components/Notification';
+import { authSelectors, authOperations } from 'redux/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
 
 const Balance = () => {
-  const balanceState = 12;
-  const [balance, setBalance] = useState('');
+  const getUserBalance = useSelector(authSelectors.getUserBalance);
+  const dispatch = useDispatch();
+
+  const [balance, setBalance] = useState(getUserBalance);
 
   const handleInputChange = e => {
-    setBalance(e.target.value);
+    setBalance(Number(e.target.value.slice(0, -4)));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (!balance || Number(balance) === 0) {
-      alert('Внесите пожалуста сумму в баланс больше нуля');
+      // toast.error('Внесите пожалуйста сумму на баланс больше нуля');
+      alert('Внесите пожалуйста сумму на баланс больше нуля');
     }
-    console.log(e.target.value);
-    console.log(balance);
-    setBalance('');
+    const newBalance = Number(e.target.elements[0].value.slice(0, -4));
+    console.log(e.target.elements[0].value);
+    dispatch(authOperations.setUserBalance({ balance: newBalance }));
+    setBalance(newBalance);
   };
 
   return (
@@ -32,7 +40,8 @@ const Balance = () => {
           <input
             type="text"
             name="balance"
-            value={balance}
+            value={`${Number(balance).toFixed(2)} UAH`}
+            // value={balance}
             onChange={handleInputChange}
             maxLength="10"
             placeholder="00.00 UAH"
@@ -44,7 +53,7 @@ const Balance = () => {
           </button>
         </div>
       </form>
-      {balanceState === 0 && <Notification />}
+      {/* {balanceState === 0 && <Notification />} */}
     </div>
   );
 };

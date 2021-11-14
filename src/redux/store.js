@@ -12,13 +12,13 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-slice';
+import transReducer from './transactions/transactions-slice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
-
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,6 +32,7 @@ const middleware = [
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    transactions: transReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
