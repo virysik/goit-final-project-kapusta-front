@@ -18,7 +18,7 @@ const initialState = {
 const transactionSlice = createSlice({
   name: 'transactions',
   initialState,
-  reducer: {
+  reducers: {
     addDate: (state, action) => {
       state.date.day = action.payload.day;
       state.date.month = action.payload.month;
@@ -37,5 +37,5 @@ const transactionSlice = createSlice({
   },
 });
 
-export const { addDate } = transactionSlice.actions;
+export const addDate = transactionSlice.actions;
 export default transactionSlice.reducer;
