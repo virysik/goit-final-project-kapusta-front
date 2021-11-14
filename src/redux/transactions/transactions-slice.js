@@ -25,16 +25,16 @@ const transactionSlice = createSlice({
       state.date.year = action.payload.year;
     },
   },
-  //   extraReducers: {
-  //     [getTransactionsByDay.fulfilled](state, action) {},
-  //     [addOutgoingTransaction.fulfilled](state, action) {
-  //       state.transactions = state.transactions.push(action.paylod);
-  //     },
-  //     [addOutgoingTransaction.pending](state, action) {},
-  //     [addOutgoingTransaction.rejected](state, action) {},
-  //     [addIncomingTransaction.fulfilled](state, action) {},
-  //     [deleteTransaction.fulfilled](state, action) {},
-  //   },
+  extraReducers: {
+    [getTransactionsByDay.fulfilled](state, action) {},
+    [addOutgoingTransaction.fulfilled](state, action) {
+      state.transactions = state.transactions.push(action.paylod);
+    },
+    [addOutgoingTransaction.pending](state, action) {},
+    [addOutgoingTransaction.rejected](state, action) {},
+    [addIncomingTransaction.fulfilled](state, action) {},
+    [deleteTransaction.fulfilled](state, action) {},
+  },
 });
 console.log(transactionSlice);
 export const { addDate } = transactionSlice.actions;
