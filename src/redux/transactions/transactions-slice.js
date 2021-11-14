@@ -36,6 +36,8 @@ const transactionSlice = createSlice({
     [deleteTransaction.fulfilled](state, action) {},
   },
 });
-console.log(transactionSlice);
-export const { addDate } = transactionSlice.actions;
+
+
+export const addDate = transactionSlice.actions;
+
 export default transactionSlice.reducer;
