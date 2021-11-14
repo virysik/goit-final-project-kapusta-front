@@ -37,5 +37,7 @@ const transactionSlice = createSlice({
   },
 });
 
+
 export const addDate = transactionSlice.actions;
+
 export default transactionSlice.reducer;

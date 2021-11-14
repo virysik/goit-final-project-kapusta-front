@@ -19,9 +19,11 @@ export default function Calendar() {
     setMonth(splitDate[1]);
     setDay(splitDate[2]);
     setYear(splitDate[3]);
+
     console.log(dispatch);
     // dispatch(addDate({ x: 3 }));
   }, [dispatch, splitDate]);
+
 
   console.log(month);
   console.log(day);
