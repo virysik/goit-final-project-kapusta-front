@@ -1,29 +1,28 @@
-import s from "./ExpensesIncome.module.css";
-import SumCategoryInfo from "../SumCategoryInfo/SumCategoryInfo";
+import s from './ExpensesIncome.module.css';
+import SumCategoryInfo from 'components/SumCategoryInfo';
 
 export default function ExpensesIncome() {
   const totalExpences = 0;
   const totalIncomes = 0;
 
+  let type = 'expenses';
+
   return (
-    <section className={s.section}>
-      <div className={s.amount}>
-        <div className={s.amountExpenses}>
-          <h3 className={s.amountTitle}>Расходы:</h3>
-          <span
-            className={s.amountExpensesSum}
-          >{`- ${totalExpences}.00 грн.`}</span>
+    <div className={s.wrapper}>
+      <section className={s.section}>
+        <div className={s.divExp}>
+          <p className={s.desc}> Расходы:</p>
+          <span className={s.expenses}>-18 000. 00 грн</span>
         </div>
 
-        <div className={s.amountIncome}>
-          <h3 className={s.amountTitle}>Доходы:</h3>
-          <span
-            className={s.amountIncomeSum}
-          >{`+ ${totalIncomes}.00 грн.`}</span>
+        <div className={s.divInc}>
+          <p className={s.desc}>Доходы:</p>
+          <span className={s.incomes}>+25 000. 00 грн</span>
         </div>
-      </div>
+      </section>
 
       <SumCategoryInfo />
-    </section>
+    </div>
+    //       >{`+ ${totalIncomes}.00 грн.`}</span>
   );
 }
