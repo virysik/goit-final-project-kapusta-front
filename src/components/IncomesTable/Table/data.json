@@ -4,27 +4,27 @@
     "date": "2021/11/09 17:17:01",
     "description": "Посуда(тарелки, вилки, ложки, бокалы, ножи)",
     "category": "Все для дома",
-    "amount": "-980 UAH"
+    "amount": "980 UAH"
   },
   {
     "id": 2,
     "date": "2021/11/09 17:17:02",
     "description": "Мясо",
     "category": "Продукты",
-    "amount": "-550 UAH"
+    "amount": "550 UAH"
   },
   {
     "id": 3,
     "date": "2021/11/09 21:10:02",
     "description": "Сауна",
     "category": "Развлечения",
-    "amount": "-900 UAH"
+    "amount": "900 UAH"
   },
   {
     "id": 4,
     "date": "2021/11/09 21:10:01",
     "description": "Масаж",
     "category": "Здоровье",
-    "amount": "-300 UAH"
+    "amount": "300 UAH"
   }
 ]

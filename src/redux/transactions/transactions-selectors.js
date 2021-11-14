@@ -4,6 +4,15 @@ const getTransactionsPerDay = state => {};
 const getTransactionsPerMonth = state => {};
 const getLoader = state => {};
 const getTransactionError = state => {};
+
+// получить день, месяц,год
+
+const getMonth = state => state.transactions.date.month;
+const getYear = state => state.transactions.date.year;
+const getDay = state => state.transactions.date.day;
+
+///////////////////////////////
+
 export {
   getTotalBalance,
   getMonthlyBalances,
@@ -11,4 +20,7 @@ export {
   getTransactionsPerMonth,
   getLoader,
   getTransactionError,
+  getMonth,
+  getYear,
+  getDay,
 };

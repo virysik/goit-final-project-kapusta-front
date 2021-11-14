@@ -7,7 +7,10 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--grey-bg-home-color);
 }
+
 .boxDescription {
   display: flex;
   flex-direction: column;
@@ -26,7 +29,7 @@
   overflow: hidden;
 }
 .boxCategoryAndDate {
-   display: flex;
+  display: flex;
 }
 .itemDate {
   margin-right: 20px;
@@ -47,11 +50,22 @@
   color: #52555f;
 }
 .boxAmount {
+  display: flex;
+  align-items: center;
   font-weight: bold;
   font-size: 12px;
-  line-height: 14px;  
+  line-height: 14px;
   letter-spacing: 0.04em;
   color: #e7192e;
+}
+.boxAmountGreen {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: var(--plus-balance-color);
 }
 .delIcon {
   width: 18px;
@@ -70,6 +84,12 @@
   background-color: #ffdac0;
   transform: scale(1.1);
 }
+
+.btn {
+  background-color: transparent;
+  border: none;
+}
+
 @media screen and (min-width: 768px) {
   .listTable {
     display: none;

@@ -10,6 +10,6 @@ export const getUserBalance = state => state.auth.user.balance;
 
 export const getToken = state => state.token;
 
-export const getIsFetchingCurrent = state => state.isFetchingCurrent;
+export const getIsFetchingCurrent = state => state.auth.isFetchingCurrentUser;
 
 export const getError = state => state.error;

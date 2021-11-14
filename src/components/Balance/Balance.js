@@ -1,12 +1,11 @@
 import s from './Balance.module.css';
+import toast from 'react-hot-toast';
 import GoToReports from 'components/GoToReports';
 import Notification from 'components/Notification';
 import { authSelectors, authOperations } from 'redux/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
+import { Redirect } from 'react-router';
 
 const Balance = () => {
   const getUserBalance = useSelector(authSelectors.getUserBalance);
@@ -14,21 +13,23 @@ const Balance = () => {
 
   const [balance, setBalance] = useState(getUserBalance);
 
-  const handleInputChange = e => {
-    setBalance(Number(e.target.value.slice(0, -4)));
-  };
+  // const handleInputChange = () => {
+
+  // }
 
   const handleSubmit = e => {
     e.preventDefault();
+    let balance = e.target.elements.balance.value;
 
     if (!balance || Number(balance) === 0) {
-      // toast.error('Внесите пожалуйста сумму на баланс больше нуля');
-      alert('Внесите пожалуйста сумму на баланс больше нуля');
+      return toast.error('Внесите пожалуйста сумму на баланс больше нуля');
     }
-    const newBalance = Number(e.target.elements[0].value.slice(0, -4));
-    console.log(e.target.elements[0].value);
+
+    const newBalance = Number(balance);
     dispatch(authOperations.setUserBalance({ balance: newBalance }));
     setBalance(newBalance);
+    e.target.elements.balance.value = '';
+    // Redirectto;
   };
 
   return (
@@ -40,11 +41,8 @@ const Balance = () => {
           <input
             type="text"
             name="balance"
-            value={`${Number(balance).toFixed(2)} UAH`}
-            // value={balance}
-            onChange={handleInputChange}
             maxLength="10"
-            placeholder="00.00 UAH"
+            placeholder={balance ? `${balance} UAH` : `00.00 UAH`}
             className={s.balanceInput}
             autoComplete="off"
           />
@@ -53,7 +51,7 @@ const Balance = () => {
           </button>
         </div>
       </form>
-      {/* {balanceState === 0 && <Notification />} */}
+      {Number(balance) === 0 && <Notification />}
     </div>
   );
 };

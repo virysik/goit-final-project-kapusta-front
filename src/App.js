@@ -1,19 +1,12 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-router-dom';
-import {
-  getIsFetchingCurrent,
-  getToken,
-  getCurrentUser,
-} from './redux/auth/auth-selectors';
+import { authOperations, authSelectors } from 'redux/auth';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
 import AppBar from './components/AppBar';
 import './App.css';
-// import reports from 'components/Report/reports.json';
-// import Report from 'components/Report';
-// import ChartReport from 'components/ChartReport';
 
 const HomePageView = lazy(() =>
   import('pages/HomePageView' /*webpackChunkName: "home-page-view" */),
@@ -31,28 +24,22 @@ const DevelopersView = lazy(() =>
 );
 
 function App() {
+  const isFetchingUser = useSelector(authSelectors.getIsFetchingCurrent);
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(state =>
-    getIsFetchingCurrent(state),
-  );
-
-  const onToken = useSelector(getToken);
 
   useEffect(() => {
-    if (onToken) {
-      dispatch(getCurrentUser());
-    }
-  }, [dispatch, onToken]);
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <>
       <AppBar />
-      <Suspense fallback={<OnLoader />}>
-        {isFetchingCurrentUser ? (
-          <OnLoader />
-        ) : (
+      {isFetchingUser ? (
+        <OnLoader />
+      ) : (
+        <Suspense fallback={<OnLoader />}>
           <Switch>
-            <PublicRoute exact path="/" restricted redirectTo="/balance">
+            <PublicRoute exact path="/" redirectTo="/balance">
               <HomePageView />
             </PublicRoute>
             <PrivateRoute path="/balance" redirectTo="/">
@@ -65,8 +52,8 @@ function App() {
               <DevelopersView />
             </PublicRoute>
           </Switch>
-        )}
-      </Suspense>
+        </Suspense>
+      )}
     </>
   );
 }
