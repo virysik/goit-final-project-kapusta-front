@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 import { authSelectors, authOperations  } from 'redux/auth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import styles from '../UserMenuHeader.module.css';
-import { RiLogoutBoxRLine, RiUserLine } from 'react-icons/ri';
+import { RiLogoutBoxRLine } from 'react-icons/ri';
 import Avatar from 'react-avatar';
 
 const UserLogOut = () => {
