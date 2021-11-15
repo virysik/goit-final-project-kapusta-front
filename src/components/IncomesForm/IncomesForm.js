@@ -32,7 +32,6 @@ export default function IncomesForm({ onHandleClick, type }) {
   };
 
   const handleBtnClear = e => {
-    setCategory('');
     setAmount('');
     setDescription('');
   };
