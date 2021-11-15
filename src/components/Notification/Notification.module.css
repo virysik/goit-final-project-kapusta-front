@@ -1,5 +1,6 @@
 .commentIcon {
-  position: absolute;
+  position: relative;
+  margin-top: 20px;
   padding: 23px;
   width: 282px;
   height: auto;
@@ -9,10 +10,6 @@
   background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
 
   border-radius: 30px;
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-  top: 240px;
-  left: 20px;
   z-index: 99;
   cursor: pointer;
 }
@@ -28,16 +25,12 @@
 @media screen and (min-width: 768px) {
   .commentIcon {
     width: 292px;
-    top: 150%;
-    left: 18.5%;
     animation: 5s;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .commentIcon {
-    top: 150%;
-    left: 22.5%;
     animation: 5s;
   }
 }

@@ -10,6 +10,7 @@
 }
 
 .tabListMobile {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,10 +21,10 @@
 }
 
 .tabsMobileL {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-basis: 160px;
   height: 53px;
 
   font-weight: 700;
@@ -34,10 +35,10 @@
   border-right: 1px solid white;
 }
 .tabsMobileR {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-basis: 160px;
   height: 53px;
 
   font-weight: 700;
