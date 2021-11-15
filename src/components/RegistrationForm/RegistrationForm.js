@@ -1,8 +1,7 @@
-import { useState, useSelector } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { register } from '../../redux/auth/auth-operations'
 import s from './RegistrationForm.module.css';
-import { getUserName, getUserEmail } from 'redux/auth/auth-selectors';
 
 const RegisterForm = ({ onClickComeBack }) => {
   const dispatch = useDispatch()
@@ -17,7 +16,7 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
-
+  
   const onRegister = () => dispatch(register({ name, email, password }));
 
   const handleChange = ({ target: { name, value } }) => {

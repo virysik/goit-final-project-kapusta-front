@@ -4,7 +4,7 @@ import Modal from 'components/Modal';
 import { authSelectors, authOperations  } from 'redux/auth';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import styles from '../UserMenuHeader.module.css';
-import { RiLogoutBoxRLine } from 'react-icons/ri';
+import { RiLogoutBoxRLine, RiUserLine } from 'react-icons/ri';
 
 const UserLogOut = () => {
   const dispatch = useDispatch()
@@ -27,8 +27,8 @@ const UserLogOut = () => {
     <div className={styles.wrapper}>
       {viewPort.width > 768 && (
         <>
-          <p className={styles.firstLetterUser}>{name}</p>
-           <span className={styles.userName}>{name}</span>
+          <RiUserLine className={styles.userIcon} />
+          <span className={styles.userName}>{name}</span>
           <button type="button" onClick={toggleModal} className={styles.logOutBtn}>
             <p className={styles.logOutTextBtn}>Выйти</p>
           </button>
@@ -36,6 +36,7 @@ const UserLogOut = () => {
       )}
         {viewPort.width < 768 && (
         <>
+           <RiUserLine className={styles.userIcon} />
           <div className={styles.logOutIcon}>
             <RiLogoutBoxRLine  onClick={toggleModal} color={"#CBCCD0"} size={"16px"} />
           </div>
