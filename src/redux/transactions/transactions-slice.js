@@ -4,10 +4,13 @@ import {
   addOutgoingTransaction,
   addIncomingTransaction,
   deleteTransaction,
+  getOutTransDate,
+  getIncTransDate,
 } from './transactions-operations';
 
 const initialState = {
-  transactions: [],
+  transactionsOut: [],
+  transactionsInc: [],
   date: { day: null, month: null, year: null },
 };
 
@@ -21,12 +24,27 @@ const transactionSlice = createSlice({
   },
   extraReducers: {
     [getTransactionsByDay.fulfilled](state, action) {},
-    [addOutgoingTransaction.fulfilled](state, action) {
-      state.transactions = state.transactions.push(action.paylod);
-    },
+
+    [addOutgoingTransaction.fulfilled](state, action) {},
     [addOutgoingTransaction.pending](state, action) {},
     [addOutgoingTransaction.rejected](state, action) {},
+
     [addIncomingTransaction.fulfilled](state, action) {},
+    [addIncomingTransaction.pending](state, action) {},
+    [addIncomingTransaction.rejected](state, action) {},
+
+    [getIncTransDate.fulfilled](state, action) {
+      state.transactionsInc.push(action.payload);
+    },
+    [getIncTransDate.pending](state, action) {},
+    [getIncTransDate.rejected](state, action) {},
+
+    [getOutTransDate.fulfilled](state, action) {
+      state.transactionsOut.push(action.payload);
+    },
+    [getOutTransDate.pending](state, action) {},
+    [getOutTransDate.rejected](state, action) {},
+
     [deleteTransaction.fulfilled](state, action) {},
   },
 });

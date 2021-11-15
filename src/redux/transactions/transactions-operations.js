@@ -1,17 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
-
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
-
 export const getTransactionsByDay = createAsyncThunk(
   '/transactions',
   async (credentials, { rejectWithValue }) => {
@@ -30,11 +19,8 @@ export const addOutgoingTransaction = createAsyncThunk(
   '/transactions/addOutgoing',
   async (credentials, { rejectWithValue }) => {
     try {
-      const transactions = await axios.post(
-        '/transactions/outgoings',
-        credentials,
-      );
-      return transactions;
+      const { data } = await axios.post('/transactions/outgoings', credentials);
+      return data.data.result;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -42,14 +28,39 @@ export const addOutgoingTransaction = createAsyncThunk(
 );
 
 export const addIncomingTransaction = createAsyncThunk(
-  '/transactions/outgoings',
+  '/transactions/addIncoming',
   async (credentials, { rejectWithValue }) => {
     try {
-      const transactions = await axios.post(
-        '/transactions/outgoings',
-        credentials,
-      );
-      return transactions;
+      const { data } = await axios.post('/transactions/incomings', credentials);
+      return data.data.result;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const getIncTransDate = createAsyncThunk(
+  '/transactions/getIncTransDate',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/transactions/incomings/date', {
+        params: credentials,
+      });
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const getOutTransDate = createAsyncThunk(
+  '/transactions/getOutTransDate',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/transactions/outgoings/date', {
+        params: credentials,
+      });
+      return data.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

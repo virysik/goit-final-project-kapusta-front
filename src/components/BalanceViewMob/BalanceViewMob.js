@@ -15,6 +15,11 @@ export default function BalanceViewMob() {
     setShowTabs(false);
     setShowTabPanel(true);
   };
+
+  const handleFormClick = () => {
+    setShowTabs(true);
+    setShowTabPanel(false);
+  };
   return (
     <>
       {showTabs && (
@@ -42,7 +47,7 @@ export default function BalanceViewMob() {
           <div className={s.arrowWrapper}>
             <ArrowToGoBack />
           </div>
-          <IncomesForm type="expenses" />
+          <IncomesForm type="expenses" onHandleClick={handleFormClick} />
         </TabPanel>
 
         <TabPanel
