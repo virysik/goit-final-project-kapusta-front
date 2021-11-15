@@ -4,45 +4,36 @@ import {
   transactionsOperations,
 } from 'redux/transactions';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './IncomesForm.module.css';
 
 export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  const [year, setYear] = useState('');
-  const [month, setMonth] = useState('');
-  const [day, setDay] = useState('');
+  const day = useSelector(transactionsSelectors.getDay);
+  const month = useSelector(transactionsSelectors.getMonth);
+  const year = useSelector(transactionsSelectors.getYear);
 
   const dispatch = useDispatch();
 
   const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
+
   const onSelect = option => {
     setCategory(option);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(description, category, amount, type);
-    const newOperation = {
-      typeOfTransaction: type,
-      category,
-      description,
-      amount,
-      day,
-      month,
-      year,
-    };
+    const newOperation = { category, description, amount, day, month, year };
 
     dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
     onHandleClick();
-    setAmount('');
-    setDescription('');
   };
 
   const handleBtnClear = e => {
     setAmount('');
+    setDescription('');
   };
 
   const handleInputChange = e => {
@@ -53,7 +44,7 @@ export default function IncomesForm({ onHandleClick, type }) {
         return setDescription(value);
 
       case 'price':
-        return setAmount(value);
+        return setAmount(Number(value));
 
       default:
         throw new Error(`there is no such name as ${name}`);

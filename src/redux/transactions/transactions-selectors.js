@@ -11,7 +11,10 @@ const getMonth = state => state.transactions.date.month;
 const getYear = state => state.transactions.date.year;
 const getDay = state => state.transactions.date.day;
 
-///////////////////////////////
+///////////////получить тразакции расходов/доходов для таблици на 2ой странице////////////////
+
+const getOutTrans = state => state.transactions.transactionsOut;
+const getIncTrans = state => state.transactions.transactionsInc;
 
 export {
   getTotalBalance,
@@ -23,4 +26,6 @@ export {
   getMonth,
   getYear,
   getDay,
+  getIncTrans,
+  getOutTrans,
 };
