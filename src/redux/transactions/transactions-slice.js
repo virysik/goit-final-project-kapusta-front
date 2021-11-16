@@ -12,7 +12,11 @@ const initialState = {
   transactionsOut: [],
   transactionsInc: [],
   date: { day: null, month: null, year: null },
+  isDeleting: false,
+  error: null,
 };
+const error = 'Error'
+const loading = 'Loading'
 
 const transactionSlice = createSlice({
   name: 'transactions',
@@ -45,7 +49,21 @@ const transactionSlice = createSlice({
     [getOutTransDate.pending](state, action) {},
     [getOutTransDate.rejected](state, action) {},
 
-    [deleteTransaction.fulfilled](state, action) {},
+    [deleteTransaction.fulfilled]: (state, action) => {
+     state.transactionsOut = state.transactionsOut.filter((item) => item.id !== action.payload)
+     state.transactionsInc =state.transactionsInc.filter((item) => item.id !== action.payload)
+     state.isDeleting = false
+     state.error = null
+      
+    },
+     [deleteTransaction.pending]: (state) => {
+      state.error = null
+      state.isDeleting = true
+    },
+    [deleteTransaction.rejected]: (state) => {
+      state.error = error
+      state.isDeleting = false
+    },
   },
 });
 
