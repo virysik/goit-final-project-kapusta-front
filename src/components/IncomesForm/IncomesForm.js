@@ -75,7 +75,7 @@ export default function IncomesForm({ onHandleClick, type }) {
       />
 
       <div className={s.btnWrapper}>
-        <button type="submit" className={s.btn}>
+        <button type="submit" className={s.btn} to="/balance">
           Ввод
         </button>
         <button type="button" className={s.btn} onClick={handleBtnClear}>
