@@ -1,4 +1,27 @@
-.form {
+.inputWrapper {
+  position: relative;
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inputWrapper::after {
+  position: absolute;
+  content: '';
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../images/svg/calculator.svg');
+}
+
+.inputWrapper::before {
+  position: absolute;
+  content: '';
+  top: 0px;
+  right: 40px;
+  width: 2px;
+  height: 42px;
+  background-color: white;
 }
 
 .inputDescribe {
@@ -18,11 +41,12 @@
 }
 
 .priceInput {
+  position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 103px;
-  padding: 10px 40px;
+  padding: 10px 46px 10px 30px;
 
   width: 183px;
   height: 44px;

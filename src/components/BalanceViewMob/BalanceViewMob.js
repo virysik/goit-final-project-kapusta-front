@@ -2,7 +2,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useState } from 'react';
 import Balance from 'components/Balance';
 import IncomesForm from 'components/IncomesForm';
-import ArrowToGoBack from 'components/ArrowToGoBack';
 import 'react-tabs/style/react-tabs.css';
 import Calendar from 'components/Calendar';
 import MobileTable from 'components/IncomesTable/MobileTable';
@@ -20,6 +19,7 @@ export default function BalanceViewMob() {
     setShowTabs(true);
     setShowTabPanel(false);
   };
+
   return (
     <>
       {showTabs && (
@@ -36,7 +36,9 @@ export default function BalanceViewMob() {
           <Tab className={s.tabsMobileL} onClick={handleTabClick}>
             Расход
           </Tab>
-          <Tab className={s.tabsMobileR}>Доход</Tab>
+          <Tab className={s.tabsMobileR} onClick={handleTabClick}>
+            Доход
+          </Tab>
         </TabList>
 
         <TabPanel
@@ -44,9 +46,11 @@ export default function BalanceViewMob() {
             showTabPanel ? s.tabPanelMobBalance : s.tabPanelMobNoBalance
           }
         >
-          <div className={s.arrowWrapper}>
-            <ArrowToGoBack />
-          </div>
+          <button
+            type="button"
+            className={s.arrowWrapper}
+            onClick={handleFormClick}
+          ></button>
           <IncomesForm type="expenses" onHandleClick={handleFormClick} />
         </TabPanel>
 
@@ -55,10 +59,12 @@ export default function BalanceViewMob() {
             showTabPanel ? s.tabPanelMobBalance : s.tabPanelMobNoBalance
           }
         >
-          {/* <div className={s.arrowWrapper}>
-            <ArrowToGoBack />
-          </div>
-          <IncomesForm type="incomes" /> */}
+          <button
+            type="button"
+            className={s.arrowWrapper}
+            onClick={handleFormClick}
+          ></button>
+          <IncomesForm type="incomes" onHandleClick={handleFormClick} />
         </TabPanel>
       </Tabs>
     </>

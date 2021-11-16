@@ -18,13 +18,13 @@ const GoogleAuth = () => {
   };
   return (
     <>
-    <GoogleLogin
-      clientId="247340085219-f8vpeflsvkcin8lei0r36j2eu8gqj2uh.apps.googleusercontent.com"
-      render={({ onClick, disabled }) => (
-        <GoogleAuthButton onClick={onClick} disabled={disabled} />
-      )}
-      onSuccess={successLogin}
-      cookiePolicy={'single_host_origin'}
+      <GoogleLogin
+        clientId="247340085219-f8vpeflsvkcin8lei0r36j2eu8gqj2uh.apps.googleusercontent.com"
+        render={({ onClick, disabled }) => (
+          <GoogleAuthButton onClick={onClick} disabled={disabled} />
+        )}
+        onSuccess={successLogin}
+        cookiePolicy={'single_host_origin'}
       />
     </>
   );

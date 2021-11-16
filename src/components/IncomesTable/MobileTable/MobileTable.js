@@ -1,48 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {RiDeleteBin6Line} from 'react-icons/ri'
+import { RiDeleteBin6Line } from 'react-icons/ri';
 import {
   transactionsOperations,
   transactionsSelectors,
 } from 'redux/transactions';
-import items from '../Table/data.json';
 import s from './MobileTable.module.css';
 import cliTruncate from 'cli-truncate';
 import ReactTooltip from 'react-tooltip';
+import { authOperations } from 'redux/auth';
 
 const MobileTable = () => {
   const dispatch = useDispatch();
-  const day = useSelector(transactionsSelectors.getDay);
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
+  const date = useSelector(transactionsSelectors.getDate);
   const outData = useSelector(transactionsSelectors.getOutTrans);
   const incData = useSelector(transactionsSelectors.getIncTrans);
+  const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
+
   const allData = [...outData, ...incData];
-  const isDeleting = useSelector(transactionsSelectors.getIsDeleting)
-  const [isDel, setIsDel] = useState(isDeleting)
-  
+  console.log('allData', allData);
+
   useEffect(() => {
-    dispatch(
-      transactionsOperations.getOutTransDate({
-        day,
-        month,
-        year,
-      }),
-    );
-  }, [day, month, year]);
+    dispatch(transactionsOperations.getOutTransDate(date));
+  }, [date]);
 
-  let type = 'expenses';
+  useEffect(() => {
+    dispatch(transactionsOperations.getIncTransDate(date));
+  }, [date]);
 
-  const onDelete = (id) => {
-    dispatch(transactionsOperations.deleteTransaction(id));
-    setIsDel(true)
-} 
+  useEffect(() => {
+    dispatch(authOperations.getUserBalance());
+  }, [allData]);
+
   return (
     <>
       {allData && (
         <ul className={s.listTable}>
-          {items.map(item => (
-            <li key={item.id} className={s.tableItem}>
+          {allData.map(item => (
+            <li key={item._id} className={s.tableItem}>
               <div className={s.boxDescription}>
                 <p className={s.description} data-tip={item.description}>
                   {cliTruncate(item.description, 6)}
@@ -56,24 +51,31 @@ const MobileTable = () => {
                 <ReactTooltip />
                 <div className={s.boxCategoryAndDate}>
                   <span className={s.itemDate}>
-                    {new Date(item.date).toLocaleString().slice(0, 10)}
+                    {item.day + item.month + item.year}
                   </span>
                   <span className={s.category}>{item.category}</span>
                 </div>
               </div>
               <div
-                className={type === 'incomes' ? s.boxAmount : s.boxAmountGreen}
+                className={
+                  item.typeOftransactions ? s.boxAmountGreen : s.boxAmount
+                }
               >
                 <span>
-                  {type === 'expenses' && `-`}
+                  {!item.typeOftransactions && `-`}
                   {item.amount}
                 </span>
                 <button
                   className={s.delBtn}
                   type="button"
-                  onClick={() => onDelete(item.id)}
+                  onClick={() => {
+                    dispatch(
+                      transactionsOperations.deleteTransaction(item._id),
+                    );
+                  }}
                   disabled={isDeleting}
-                  aria-label="delete">
+                  aria-label="delete"
+                >
                   <RiDeleteBin6Line className={s.delIcon} />
                 </button>
               </div>
