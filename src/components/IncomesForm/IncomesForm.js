@@ -1,4 +1,8 @@
-// import BasicSelect from 'components/BasicSelect';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import {
   transactionsSelectors,
   transactionsOperations,
@@ -6,14 +10,6 @@ import {
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './IncomesForm.module.css';
-
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-// import s from './BasicSelect.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 
 export default function IncomesForm({ onHandleClick, type }) {
@@ -23,12 +19,15 @@ export default function IncomesForm({ onHandleClick, type }) {
   const day = useSelector(transactionsSelectors.getDay);
   const month = useSelector(transactionsSelectors.getMonth);
   const year = useSelector(transactionsSelectors.getYear);
-
-  const [categ, setCateg] = React.useState('');
+  const [showLabel, setShowlabel] = useState(false);
+  const [categ, setCateg] = useState('');
+  const dispatch = useDispatch();
 
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
     type === 'incomes' ? 'Категория дохода' : 'Категория товара';
+  const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
+  const emptyLabel = '';
 
   const handleChange = event => {
     setCateg(event.target.value);
@@ -36,15 +35,8 @@ export default function IncomesForm({ onHandleClick, type }) {
 
   const handleClick = e => {
     setCategory(e.target.dataset.value);
+    setShowlabel(true);
   };
-
-  const dispatch = useDispatch();
-
-  const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
-
-  // const onSelect = option => {
-  //   setCategory(option);
-  // };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -61,6 +53,7 @@ export default function IncomesForm({ onHandleClick, type }) {
     setAmount('');
     setDescription('');
     setCateg('');
+    setShowlabel(false);
   };
 
   const handleInputChange = e => {
@@ -93,7 +86,7 @@ export default function IncomesForm({ onHandleClick, type }) {
       <Box sx={{ minWidth: 120 }} className={s.box}>
         <FormControl fullWidth className={s.form}>
           <InputLabel className={s.dropdownInput} id="demo-simple-select-label">
-            {categoryLabel}
+            {showLabel ? emptyLabel : categoryLabel}
           </InputLabel>
 
           <Select
@@ -112,7 +105,6 @@ export default function IncomesForm({ onHandleClick, type }) {
         </FormControl>
       </Box>
 
-      {/* <BasicSelect onSelect={onSelect} type={type} /> */}
       <div className={s.inputWrapper}>
         <input
           type="number"
