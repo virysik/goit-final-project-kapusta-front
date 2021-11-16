@@ -27,7 +27,7 @@
 .inputDescribe {
   height: 44px;
   width: 100%;
-  padding: 13px 26px 10px 26px;
+  padding: 20px 26px;
   font-size: 16px;
   background-color: transparent;
   border: 2px solid #ffffff;
@@ -99,7 +99,6 @@
 
   background-color: transparent;
   border: 2px solid #ffffff;
-
   border-radius: 0px 0px 16px 0px;
 }
 
@@ -107,8 +106,14 @@
   border: white;
 }
 
+.form div div {
+  position: relative;
+}
+
 .form label {
-  padding: 0px 21px 0px 15px;
+  position: absolute;
+  top: -5px;
+  left: 15px;
 
   color: #c7ccdc;
 }
