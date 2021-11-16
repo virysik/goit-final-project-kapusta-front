@@ -90,3 +90,30 @@
   justify-content: space-around;
   margin-bottom: 170px;
 }
+
+/* стили Select */
+
+.dropdownInput ~ div {
+  height: 44px;
+  width: 100%;
+
+  background-color: transparent;
+  border: 2px solid #ffffff;
+
+  border-radius: 0px 0px 16px 0px;
+}
+
+.form fieldset {
+  border: white;
+}
+
+.form label {
+  padding: 0px 21px 0px 15px;
+
+  color: #c7ccdc;
+}
+
+.box {
+  margin-bottom: 45px;
+}
+/* ....... */
