@@ -18,8 +18,9 @@ const MobileTable = () => {
   const outData = useSelector(transactionsSelectors.getOutTrans);
   const incData = useSelector(transactionsSelectors.getIncTrans);
   const allData = [...outData, ...incData];
-  const [transaction, setTransaction] = useState('');
-
+  const isDeleting = useSelector(transactionsSelectors.getIsDeleting)
+  const [isDel, setIsDel] = useState(isDeleting)
+  
   useEffect(() => {
     dispatch(
       transactionsOperations.getOutTransDate({
@@ -32,10 +33,10 @@ const MobileTable = () => {
 
   let type = 'expenses';
 
-   const handleDeteteClick = transaction => {
-    setTransaction(transaction._id);
-  };
-
+  const onDelete = (id) => {
+    dispatch(transactionsOperations.deleteTransaction(id));
+    setIsDel(true)
+} 
   return (
     <>
       {allData && (
@@ -67,8 +68,13 @@ const MobileTable = () => {
                   {type === 'expenses' && `-`}
                   {item.amount}
                 </span>
-                <button className={s.delBtn}>
-                      <RiDeleteBin6Line className={s.delIcon}/>
+                <button
+                  className={s.delBtn}
+                  type="button"
+                  onClick={() => onDelete(item.id)}
+                  disabled={isDeleting}
+                  aria-label="delete">
+                  <RiDeleteBin6Line className={s.delIcon} />
                 </button>
               </div>
             </li>
