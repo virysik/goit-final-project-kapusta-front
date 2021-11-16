@@ -12,7 +12,6 @@ const initialState = {
   transactionsOut: [],
   transactionsInc: [],
   date: { day: null, month: null, year: null },
-  items:[],
   status: null,
   isLoading: false,
   error: null,
@@ -52,7 +51,7 @@ const transactionSlice = createSlice({
     [getOutTransDate.rejected](state, action) {},
 
     [deleteTransaction.fulfilled]: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload)
+      state.items = [...state.transactionsOut,...state.transactionsInc].filter((item) => item.id !== action.payload)
       state.status = null
       state.error = null
       state.isDeleting = false
