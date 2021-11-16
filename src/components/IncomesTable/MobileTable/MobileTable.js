@@ -5,57 +5,33 @@ import {
   transactionsOperations,
   transactionsSelectors,
 } from 'redux/transactions';
-import items from '../Table/data.json';
 import s from './MobileTable.module.css';
 import cliTruncate from 'cli-truncate';
 import ReactTooltip from 'react-tooltip';
+import { authOperations } from 'redux/auth';
 
 const MobileTable = () => {
   const dispatch = useDispatch();
-  const day = useSelector(transactionsSelectors.getDay);
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
+  const date = useSelector(transactionsSelectors.getDate);
   const outData = useSelector(transactionsSelectors.getOutTrans);
   const incData = useSelector(transactionsSelectors.getIncTrans);
-  // const allData = useSelector(transactionsSelectors.getAllTrans);
-  // console.log(all);
-  const allData = [...outData, ...incData];
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
-  const [isDel, setIsDel] = useState(isDeleting);
 
-  console.log('day', day);
-
-  console.log('month', month);
-
-  console.log('year', year);
-
+  const allData = [...outData, ...incData];
   console.log('allData', allData);
-  useEffect(() => {
-    dispatch(
-      transactionsOperations.getOutTransDate({
-        day,
-        month,
-        year,
-      }),
-    );
-  }, [day, month, year]);
 
   useEffect(() => {
-    dispatch(
-      transactionsOperations.getIncTransDate({
-        day,
-        month,
-        year,
-      }),
-    );
-  }, [day, month, year]);
+    dispatch(transactionsOperations.getOutTransDate(date));
+  }, [date]);
 
-  let type = 'expenses';
+  useEffect(() => {
+    dispatch(transactionsOperations.getIncTransDate(date));
+  }, [date]);
 
-  const onDelete = id => {
-    dispatch(transactionsOperations.deleteTransaction(id));
-    setIsDel(true);
-  };
+  useEffect(() => {
+    dispatch(authOperations.getUserBalance());
+  }, [allData]);
+
   return (
     <>
       {allData && (
@@ -76,7 +52,6 @@ const MobileTable = () => {
                 <div className={s.boxCategoryAndDate}>
                   <span className={s.itemDate}>
                     {item.day + item.month + item.year}
-                    {/* {new Date(item.date).toLocaleString().slice(0, 10)} */}
                   </span>
                   <span className={s.category}>{item.category}</span>
                 </div>
@@ -93,7 +68,11 @@ const MobileTable = () => {
                 <button
                   className={s.delBtn}
                   type="button"
-                  onClick={() => onDelete(item._id)}
+                  onClick={() => {
+                    dispatch(
+                      transactionsOperations.deleteTransaction(item._id),
+                    );
+                  }}
                   disabled={isDeleting}
                   aria-label="delete"
                 >

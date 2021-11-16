@@ -48,7 +48,19 @@ export const setUserBalance = createAsyncThunk(
   '/users/setUserBalance',
   async (newBalance, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users', newBalance);
+      const res = await axios.post('/users/', newBalance);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const getUserBalance = createAsyncThunk(
+  '/users/getUserBalance',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get('/users/');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -69,7 +81,7 @@ export const logOut = createAsyncThunk(
 );
 
 export const fetchCurrentUser = createAsyncThunk(
-  '/users/',
+  '/users/fetchCurrentUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;

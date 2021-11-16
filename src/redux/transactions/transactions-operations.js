@@ -5,7 +5,7 @@ export const getTransactionsByDay = createAsyncThunk(
   '/transactions/',
   async (credentials, { rejectWithValue }) => {
     try {
-      const transactions = await axios.get('/transactions', {
+      const transactions = await axios.get('/transactions/', {
         params: credentials,
       });
       return transactions;
@@ -71,10 +71,10 @@ export const deleteTransaction = createAsyncThunk(
   '/transactions/deleteTransaction',
   async (id, { rejectWithValue }) => {
     try {
-      const transaction = await axios.delete(`/transaction/${id}`);
-      return transaction;
+      await axios.delete(`/transactions/${id}`);
+      return id;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   },
 );

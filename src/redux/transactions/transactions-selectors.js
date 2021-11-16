@@ -8,6 +8,7 @@ const getIsDeleting = state => state.transactions.isDeleting;
 
 // получить день, месяц,год //
 
+const getDate = state => state.transactions.date;
 const getMonth = state => state.transactions.date.month;
 const getYear = state => state.transactions.date.year;
 const getDay = state => state.transactions.date.day;
@@ -24,6 +25,7 @@ export {
   //   getTransactionsPerMonth,
   //   getLoader,
   //   getTransactionError,
+  getDate,
   getMonth,
   getYear,
   getDay,

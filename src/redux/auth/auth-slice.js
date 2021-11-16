@@ -26,11 +26,9 @@ const authSlice = createSlice({
     [authOperations.register.rejected](state, action) {
       state.error = action.error.message;
     },
+
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload;
-      // state.user.name = action.payload.name;
-      // state.user.email = action.payload.email;
-      // state.user.balance = action.payload.balance;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
@@ -46,6 +44,7 @@ const authSlice = createSlice({
         state.error = action.error.message;
       }
     },
+
     [authOperations.logOut.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
@@ -58,6 +57,7 @@ const authSlice = createSlice({
     [authOperations.logOut.rejected](state, action) {
       state.error = action.error.message;
     },
+
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
@@ -80,6 +80,17 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.setUserBalance.rejected](state, action) {
+      state.error = action.error.message;
+    },
+
+    [authOperations.getUserBalance.fulfilled](state, action) {
+      state.user.balance = action.payload.payload.balance;
+      state.error = null;
+    },
+    [authOperations.getUserBalance.pending](state, action) {
+      state.error = null;
+    },
+    [authOperations.getUserBalance.rejected](state, action) {
       state.error = action.error.message;
     },
   },

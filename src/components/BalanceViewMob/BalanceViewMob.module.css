@@ -62,7 +62,16 @@
 }
 
 .arrowWrapper {
+  display: flex;
   margin-bottom: 15px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../../images/svg/Arrow2.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 
 /* @media screen and (max-width: 768px) {

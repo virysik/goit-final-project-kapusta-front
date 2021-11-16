@@ -66,20 +66,20 @@ export default function IncomesForm({ onHandleClick, type }) {
         autoFocus="off"
       />
       <BasicSelect onSelect={onSelect} type={type} />
-
-      <input
-        type="number"
-        className={s.priceInput}
-        name="price"
-        onWheelCapture={e => {
-          e.target.blur();
-        }}
-        onChange={handleInputChange}
-        value={amount}
-        placeholder="00.00 UAH"
-        autoFocus="off"
-      />
-
+      <div className={s.inputWrapper}>
+        <input
+          type="number"
+          className={s.priceInput}
+          name="price"
+          onWheelCapture={e => {
+            e.target.blur();
+          }}
+          onChange={handleInputChange}
+          value={amount}
+          placeholder="00.00 UAH"
+          autoFocus="off"
+        />
+      </div>
       <div className={s.btnWrapper}>
         <button type="submit" className={s.btn}>
           Ввод

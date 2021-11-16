@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,7 +9,6 @@ import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 
 export default function BasicSelect({ type, onSelect }) {
   const [categ, setCateg] = React.useState('');
-  const [opt, setOpt] = React.useState('');
 
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
@@ -21,7 +19,6 @@ export default function BasicSelect({ type, onSelect }) {
   };
 
   const handleClick = e => {
-    setOpt(e.target.dataset.value);
     onSelect(e.target.dataset.value);
   };
 

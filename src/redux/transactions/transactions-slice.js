@@ -8,11 +8,15 @@ import {
   getIncTransDate,
 } from './transactions-operations';
 
+const splittedDate = new Date().toLocaleDateString().split('.');
+const year = splittedDate[2];
+const month = splittedDate[1];
+const day = splittedDate[0];
+
 const initialState = {
   transactionsOut: [],
   transactionsInc: [],
-  // transactionsAll: [],
-  date: { day: null, month: null, year: null },
+  date: { day, month, year },
   isDeleting: false,
   error: null,
 };
@@ -31,37 +35,35 @@ const transactionSlice = createSlice({
     [getTransactionsByDay.fulfilled](state, action) {},
 
     [addOutgoingTransaction.fulfilled](state, action) {
-      state.transactionsOut = [...state.transactionsOut, ...action.payload];
+      state.transactionsOut = [...state.transactionsOut, action.payload];
     },
     [addOutgoingTransaction.pending](state, action) {},
     [addOutgoingTransaction.rejected](state, action) {},
 
     [addIncomingTransaction.fulfilled](state, action) {
-      state.transactionsInc = [...state.transactionsInc, ...action.payload];
+      state.transactionsInc = [...state.transactionsInc, action.payload];
     },
     [addIncomingTransaction.pending](state, action) {},
     [addIncomingTransaction.rejected](state, action) {},
 
     [getIncTransDate.fulfilled](state, action) {
-      // state.transactionsAll = [...state.transactionsOut, ...action.payload];
       state.transactionsInc = action.payload;
     },
     [getIncTransDate.pending](state, action) {},
     [getIncTransDate.rejected](state, action) {},
 
     [getOutTransDate.fulfilled](state, action) {
-      // state.transactionsAll = [...state.transactionsInc, ...action.payload];
       state.transactionsOut = action.payload;
     },
     [getOutTransDate.pending](state, action) {},
     [getOutTransDate.rejected](state, action) {},
 
     [deleteTransaction.fulfilled]: (state, action) => {
-      state.transactionsOut = state.transactionsOut.filter(
-        item => item.id !== action.payload,
+      state.transactionsOut = [...state.transactionsOut].filter(
+        item => item._id !== action.payload,
       );
-      state.transactionsInc = state.transactionsInc.filter(
-        item => item.id !== action.payload,
+      state.transactionsInc = [...state.transactionsInc].filter(
+        item => item._id !== action.payload,
       );
       state.isDeleting = false;
       state.error = null;
@@ -71,7 +73,7 @@ const transactionSlice = createSlice({
       state.isDeleting = true;
     },
     [deleteTransaction.rejected]: state => {
-      state.error = error;
+      state.error = 'error';
       state.isDeleting = false;
     },
   },
