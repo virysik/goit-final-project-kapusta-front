@@ -15,10 +15,14 @@ const token = {
 export const register = createAsyncThunk(
   '/users/signup',
   async (credentials, { rejectWithValue }) => {
+    const { email, password } = credentials;
+
     try {
-      const { data } = await axios.post('/users/signup', credentials);
-      token.set(data.token);
-      return data;
+      if (await axios.post('/users/signup', credentials)) {
+        const { data } = await axios.post('/users/login', { email, password });
+        token.set(data.token);
+        return data;
+      }
     } catch (error) {
       if (!error.response) {
         throw new Error('Register failed');
