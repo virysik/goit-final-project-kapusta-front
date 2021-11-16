@@ -36,7 +36,9 @@ export default function BalanceViewMob() {
           <Tab className={s.tabsMobileL} onClick={handleTabClick}>
             Расход
           </Tab>
-          <Tab className={s.tabsMobileR}>Доход</Tab>
+          <Tab className={s.tabsMobileR} onClick={handleTabClick}>
+            Доход
+          </Tab>
         </TabList>
 
         <TabPanel
@@ -55,10 +57,10 @@ export default function BalanceViewMob() {
             showTabPanel ? s.tabPanelMobBalance : s.tabPanelMobNoBalance
           }
         >
-          {/* <div className={s.arrowWrapper}>
+          <div className={s.arrowWrapper}>
             <ArrowToGoBack />
           </div>
-          <IncomesForm type="incomes" /> */}
+          <IncomesForm type="incomes" onHandleClick={handleFormClick} />
         </TabPanel>
       </Tabs>
     </>

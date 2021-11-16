@@ -27,7 +27,10 @@ export default function IncomesForm({ onHandleClick, type }) {
     e.preventDefault();
     const newOperation = { category, description, amount, day, month, year };
 
-    dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
+    type === 'incomes'
+      ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
+      : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
+
     onHandleClick();
   };
 
@@ -68,6 +71,9 @@ export default function IncomesForm({ onHandleClick, type }) {
         type="number"
         className={s.priceInput}
         name="price"
+        onWheelCapture={e => {
+          e.target.blur();
+        }}
         onChange={handleInputChange}
         value={amount}
         placeholder="00.00 UAH"
@@ -75,7 +81,7 @@ export default function IncomesForm({ onHandleClick, type }) {
       />
 
       <div className={s.btnWrapper}>
-        <button type="submit" className={s.btn} to="/balance">
+        <button type="submit" className={s.btn}>
           Ввод
         </button>
         <button type="button" className={s.btn} onClick={handleBtnClear}>

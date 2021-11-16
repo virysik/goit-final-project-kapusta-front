@@ -1,11 +1,10 @@
-
 // const getMonthlyBalances = state => {};
 // const getTransactionsPerDay = state => {};
 // const getTransactionsPerMonth = state => {};
 // const getLoader = state => {};
 // const getTransactionError = state => { };
 
-const getIsDeleting = (state) => state.transactions.isDeleting;
+const getIsDeleting = state => state.transactions.isDeleting;
 
 // получить день, месяц,год //
 
@@ -17,18 +16,19 @@ const getDay = state => state.transactions.date.day;
 
 const getOutTrans = state => state.transactions.transactionsOut;
 const getIncTrans = state => state.transactions.transactionsInc;
+const getAllTrans = state => state.transactions.transactionsAll;
 
 export {
-
-//   getMonthlyBalances,
-//   getTransactionsPerDay,
-//   getTransactionsPerMonth,
-//   getLoader,
-//   getTransactionError,
+  //   getMonthlyBalances,
+  //   getTransactionsPerDay,
+  //   getTransactionsPerMonth,
+  //   getLoader,
+  //   getTransactionError,
   getMonth,
   getYear,
   getDay,
   getIncTrans,
   getOutTrans,
   getIsDeleting,
+  getAllTrans,
 };
