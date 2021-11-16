@@ -27,9 +27,10 @@ const authSlice = createSlice({
       state.error = action.error.message;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.user.name = action.payload.name;
-      state.user.email = action.payload.email;
-      state.user.balance = action.payload.balance;
+      state.user = action.payload;
+      // state.user.name = action.payload.name;
+      // state.user.email = action.payload.email;
+      // state.user.balance = action.payload.balance;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
@@ -40,7 +41,7 @@ const authSlice = createSlice({
     },
     [authOperations.logIn.rejected](state, action) {
       if (action.payload) {
-        state.error = action.payload.errors.message;
+        state.error = action.payload.message;
       } else {
         state.error = action.error.message;
       }
