@@ -3,9 +3,10 @@ const getMonthlyBalances = state => {};
 const getTransactionsPerDay = state => {};
 const getTransactionsPerMonth = state => {};
 const getLoader = state => {};
-const getTransactionError = state => {};
+const getTransactionError = state => { };
+const getIsDeleting = (state) => state.transactions.isDeleting
 
-// получить день, месяц,год
+// получить день, месяц,год //
 
 const getMonth = state => state.transactions.date.month;
 const getYear = state => state.transactions.date.year;
@@ -28,4 +29,5 @@ export {
   getDay,
   getIncTrans,
   getOutTrans,
+  getIsDeleting,
 };
