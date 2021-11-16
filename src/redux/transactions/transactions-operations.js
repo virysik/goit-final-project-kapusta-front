@@ -68,7 +68,7 @@ export const getOutTransDate = createAsyncThunk(
 );
 
 export const deleteTransaction = createAsyncThunk(
-  '/transactions',
+  '/transactions/',
   async (id, { rejectWithValue }) => {
     try {
       const transaction = await axios.delete(
