@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getTransactionsByDay = createAsyncThunk(
-  '/transactions',
+  '/transactions/',
   async (credentials, { rejectWithValue }) => {
     try {
       const transactions = await axios.get('/transactions', {
