@@ -109,4 +109,5 @@ const operations = {
   fetchCurrentUser,
   setUserBalance,
 };
+
 export default operations;
