@@ -6,6 +6,7 @@
 .formBalance {
   text-align: center;
 }
+
 .balanceAndBtn {
   display: flex;
   margin-top: 6px;
@@ -20,38 +21,6 @@
   margin-bottom: 6px;
   color: var(--primary-text-color);
 }
-
-@media screen and (min-width: 768px) {
-  .containerBalance {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: baseline;
-    width: 668px;
-    height: 44px;
-  }
-  .balanceLabel {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0px;
-    padding-top: 0px;
-  }
-  .balanceAndBtn {
-    margin-top: 0px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .containerBalance {
-    width: 1060px;
-    height: 44px;
-    justify-content: end;
-  }
-}
-
-/* InputBalance Styles */
 
 @media screen and (min-width: 320px) {
   .balanceInput {
@@ -77,32 +46,7 @@
   ::placeholder {
     color: var(--black-text-color);
   }
-}
 
-@media screen and (min-width: 768px) {
-  .balanceInput {
-    display: flex;
-    margin-left: 21px;
-    margin-top: 0px;
-    border-radius: 16px;
-    text-align: center;
-    color: black;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .balanceInput {
-    margin-left: 40px;
-    margin-right: 15px;
-    color: black;
-    background-color: transparent;
-    border-radius: 16px;
-    text-align: center;
-  }
-}
-
-/* ConfirmButton Styles  */
-
-@media screen and (min-width: 320px) {
   .confirmButton {
     background-color: transparent;
     /* padding-right: 20px; */
@@ -118,20 +62,73 @@
     outline: none;
     color: var(--primary-text-color);
   }
+
   .confirmButton:hover,
   .confirmButton:focus {
     background-color: var(--accent-color);
     color: var(--white-color);
   }
 }
+
 @media screen and (min-width: 768px) {
+  .formBalance {
+    display: flex;
+    margin-left: 69px;
+  }
+
   .confirmButton {
     background-color: transparent;
     border-radius: 16px;
     margin-left: 15px;
   }
+
+  .containerBalance {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 668px;
+    height: 44px;
+  }
+  .balanceLabel {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    padding-top: 0px;
+  }
+  .balanceAndBtn {
+    margin-top: 0px;
+  }
+
+  .balanceInput {
+    display: flex;
+    margin-left: 21px;
+    margin-top: 0px;
+    border-radius: 16px;
+    text-align: center;
+    color: black;
+    border-right: 2px solid #ffffff;
+  }
 }
+
 @media screen and (min-width: 1280px) {
+  .containerBalance {
+    width: 1060px;
+    height: 44px;
+    justify-content: end;
+  }
+
+  .balanceInput {
+    margin-left: 40px;
+    margin-right: 15px;
+    color: black;
+    background-color: transparent;
+    border-radius: 16px;
+    text-align: center;
+  }
+
   .confirmButton,
   .ReportsConfirmButton {
     background-color: transparent;
