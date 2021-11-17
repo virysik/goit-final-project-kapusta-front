@@ -6,12 +6,15 @@ import {
   deleteTransaction,
   getOutTransDate,
   getIncTransDate,
+  getDetailInfo
 } from './transactions-operations';
 
 const initialState = {
   transactionsOut: [],
   transactionsInc: [],
   date: { day: null, month: null, year: null },
+  currentCategory: 'Продукты',
+  entities:[],
   isDeleting: false,
   error: null,
 };
@@ -25,6 +28,9 @@ const transactionSlice = createSlice({
     addDate: (state, action) => {
       state.date = action.payload;
     },
+    addCurrentCategory: (state, action) => {
+      state.currentCategory = action.payload;
+    }
   },
   extraReducers: {
     [getTransactionsByDay.fulfilled](state, action) {},
@@ -64,9 +70,15 @@ const transactionSlice = createSlice({
       state.error = error
       state.isDeleting = false
     },
+
+    [getDetailInfo.fulfilled](state, action) {
+      state.entities = action.payload.data.data;
+    },
+    [getDetailInfo.pending](state, action) {},
+    [getDetailInfo.rejected](state, action) {},
   },
 });
 
-export const { addDate } = transactionSlice.actions;
+export const { addDate, addCurrentCategory } = transactionSlice.actions;
 
 export default transactionSlice.reducer;
