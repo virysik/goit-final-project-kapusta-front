@@ -4,18 +4,10 @@ import GoToReports from 'components/GoToReports';
 import Notification from 'components/Notification';
 import { authSelectors, authOperations } from 'redux/auth';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { Redirect } from 'react-router';
 
-const Balance = () => {
+export default function Balance() {
   const getUserBalance = useSelector(authSelectors.getUserBalance);
   const dispatch = useDispatch();
-
-  const [balance, setBalance] = useState(getUserBalance);
-
-  // const handleInputChange = () => {
-
-  // }
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,9 +19,7 @@ const Balance = () => {
 
     const newBalance = Number(balance);
     dispatch(authOperations.setUserBalance({ balance: newBalance }));
-    setBalance(newBalance);
     e.target.elements.balance.value = '';
-    // Redirectto;
   };
 
   return (
@@ -42,7 +32,7 @@ const Balance = () => {
             type="text"
             name="balance"
             maxLength="10"
-            placeholder={balance ? `${balance} UAH` : `00.00 UAH`}
+            placeholder={getUserBalance ? `${getUserBalance} UAH` : `00.00 UAH`}
             className={s.balanceInput}
             autoComplete="off"
           />
@@ -51,8 +41,7 @@ const Balance = () => {
           </button>
         </div>
       </form>
-      {Number(balance) === 0 && <Notification />}
+      {Number(getUserBalance) === 0 && <Notification />}
     </div>
   );
-};
-export default Balance;
+}

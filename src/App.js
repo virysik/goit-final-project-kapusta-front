@@ -22,6 +22,11 @@ const DevelopersView = lazy(() =>
     'pages/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */
   ),
 );
+const GoogleRedirectView = lazy(() =>
+  import(
+    'pages/GoogleRedirectView' /*webpackChunkName: "google-redirect-view" */
+  ),
+);
 
 function App() {
   const isFetchingUser = useSelector(authSelectors.getIsFetchingCurrent);
@@ -39,6 +44,9 @@ function App() {
       ) : (
         <Suspense fallback={<OnLoader />}>
           <Switch>
+            <PublicRoute exact path="/google-redirect" redirectTo="/balance">
+              <GoogleRedirectView />
+            </PublicRoute>
             <PublicRoute exact path="/" redirectTo="/balance">
               <HomePageView />
             </PublicRoute>

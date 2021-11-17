@@ -15,10 +15,14 @@ const token = {
 export const register = createAsyncThunk(
   '/users/signup',
   async (credentials, { rejectWithValue }) => {
+    const { email, password } = credentials;
+
     try {
-      const { data } = await axios.post('/users/signup', credentials);
-      token.set(data.token);
-      return data;
+      if (await axios.post('/users/signup', credentials)) {
+        const { data } = await axios.post('/users/login', { email, password });
+        token.set(data.token);
+        return data;
+      }
     } catch (error) {
       if (!error.response) {
         throw new Error('Register failed');
@@ -48,7 +52,19 @@ export const setUserBalance = createAsyncThunk(
   '/users/setUserBalance',
   async (newBalance, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users', newBalance);
+      const res = await axios.post('/users/', newBalance);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const getUserBalance = createAsyncThunk(
+  '/users/getUserBalance',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get('/users/');
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -69,7 +85,7 @@ export const logOut = createAsyncThunk(
 );
 
 export const fetchCurrentUser = createAsyncThunk(
-  '/users/',
+  '/users/fetchCurrentUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -93,4 +109,5 @@ const operations = {
   fetchCurrentUser,
   setUserBalance,
 };
+
 export default operations;

@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Calendar from 'components/Calendar';
 import {
   transactionsSelectors,
   transactionsOperations,
@@ -45,6 +46,8 @@ export default function IncomesForm({ onHandleClick, type }) {
     type === 'incomes'
       ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
       : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
+    setAmount('');
+
     onHandleClick();
   };
 
@@ -72,6 +75,8 @@ export default function IncomesForm({ onHandleClick, type }) {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
+      <div className={s.dataInput}>
+      <Calendar />
       <input
         type="text"
         name="product"
@@ -114,9 +119,10 @@ export default function IncomesForm({ onHandleClick, type }) {
           }}
           onChange={handleInputChange}
           value={amount}
-          placeholder="00.00 UAH"
+          placeholder="0.00"
           autoFocus="off"
         />
+      </div>
       </div>
       <div className={s.btnWrapper}>
         <button type="submit" className={s.btn}>

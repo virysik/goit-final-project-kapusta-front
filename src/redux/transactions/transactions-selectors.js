@@ -5,10 +5,11 @@ import { createSelector } from 'reselect';
 // const getLoader = state => {};
 // const getTransactionError = state => { };
 
-const getIsDeleting = (state) => state.transactions.isDeleting;
+const getIsDeleting = state => state.transactions.isDeleting;
 
 // получить день, месяц,год //
 
+const getDate = state => state.transactions.date;
 const getMonth = state => state.transactions.date.month;
 const getYear = state => state.transactions.date.year;
 const getDay = state => state.transactions.date.day;
@@ -17,6 +18,7 @@ const getDay = state => state.transactions.date.day;
 
 const getOutTrans = state => state.transactions.transactionsOut;
 const getIncTrans = state => state.transactions.transactionsInc;
+const getAllTrans = state => state.transactions.transactionsAll;
 
 ///////////////получить тразакции расходов/доходов для графика на 3-ей странице//////////////// Влад
 const getCurrentCategory = state => state.transactions.currentCategory;
@@ -38,12 +40,12 @@ const getFilteredCategoIncomings = createSelector(
 );
 
 export {
-
-//   getMonthlyBalances,
-//   getTransactionsPerDay,
-//   getTransactionsPerMonth,
-//   getLoader,
-//   getTransactionError,
+  //   getMonthlyBalances,
+  //   getTransactionsPerDay,
+  //   getTransactionsPerMonth,
+  //   getLoader,
+  //   getTransactionError,
+  getDate,
   getMonth,
   getYear,
   getDay,
@@ -55,6 +57,6 @@ export {
   getFilteredCategoryExpenses,
   getFilteredCategoIncomings,
   getDetailsInfoByExpenses,
-  getCurrentType
-
+  getCurrentType,
+  getAllTrans,
 };
