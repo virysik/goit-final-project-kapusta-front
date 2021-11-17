@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { transactionsSelectors, transactionsOperations } from 'redux/transactions';
 import { authOperations } from 'redux/auth';
 import s from './Table.module.css';
-// import { RiDeleteBin6Line } from 'react-icons/ri';
-// import cliTruncate from 'cli-truncate';
-// import ReactTooltip from 'react-tooltip';
 import { useEffect } from 'react';
 import deleteIcon from '../../../images/svg/delete.svg';
 
