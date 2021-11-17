@@ -1,0 +1,87 @@
+.section {
+  margin-bottom: 40px;
+}
+
+.tabs {
+  margin-bottom: 40px;
+}
+
+.tabPanelContainer {
+  padding: 30px;
+  padding-bottom: 40px;
+}
+
+.tabPanel {
+  border-radius: 0 30px 30px 30px;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+
+  background-color: #fff;
+}
+
+.tabList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 138px;
+  height: 40px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  border-radius: 20px 20px 0 0;
+
+  color: #000;
+  background-color: #fafbfd;
+}
+
+.active {
+  color: #ff751d;
+  background-color: #fefefe;
+}
+
+.svodkaTab {
+  display: none;
+}
+
+.svodkaDesck {
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .svodkaDesck {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .svodkaTab {
+    display: block;
+    padding-bottom: 57px;
+    background-image: url('../../images/homepage/bg-desk-bot.svg');
+    background-repeat: no-repeat;
+    background-position: right bottom 57px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tabPanelContainer {
+    padding: 20px;
+    padding-bottom: 40px;
+  }
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: space-between;
+}
