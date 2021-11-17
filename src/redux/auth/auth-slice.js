@@ -14,7 +14,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     googleLogIn: (state, action) => {
-      // state.user.name = action.payload.name;
+      state.user.name = action.payload.name;
       state.user.email = action.payload.email;
       state.user.balance = action.payload.balance;
       state.token = action.payload.token;
