@@ -1,42 +1,46 @@
 .tableContainer {
   width: 605px;
-  height: 344px;
+  height: 399px;
   margin-top: 60px;
-  box-shadow: none;
   border-radius: 20px 20px 0 0;
   outline: 2px solid #f5f6fb;
 }
- @media screen and (min-width: 768px) {
-   .tableContainer {
-     margin: 0 auto;
-     width: 605px;
-   }
-  }
-  @media screen and (min-width: 1280px) {
-    .tableContainer {
-      width: 760px;
-      margin-left: 20px;
-      margin-right: 30px;
-      }
+@media screen and (min-width: 768px) {
+  .tableContainer {
+    margin: 0 auto;
+    width: 605px;
+    overflow: scroll;
   }
 
+  .table {
+    width: 605px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tableContainer {
+    margin: 0;
+    width: 760px;
+    overflow: visible;
+  }
+
+  .table {
+    width: 760px;
+  }
+}
+
 .table {
-   width: 605px;
   text-align: center;
- 
+
   border-radius: 20px 20px 0 0;
   overflow: hidden;
   border-collapse: collapse;
 }
- @media screen and (min-width: 1280px) {
-   .table{
-     width: 760px;
-   }
- }
+
 .headerTable {
   font-style: normal;
   font-weight: bold;
-   font-size: 12px;
+  font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -47,7 +51,6 @@
 .tableTh {
   height: 40px;
   padding: 5px;
-  
 }
 .tableTd {
   padding: 5px;
@@ -57,37 +60,57 @@
   line-height: 1.17;
   letter-spacing: 0.04em;
   color: #52555f;
-  border-top: solid 2px #F5F6FB;
+  border-top: solid 2px #f5f6fb;
   border-bottom: 2px solid #f5f6fb;
   justify-content: center;
 }
 
-.spanItemTable {
+.amountRed {
   color: #e7192e;
   font-weight: bold;
 }
-.icon {
+.amountGreen {
+  color: #407946;
+  font-weight: bold;
+}
+
+/* .icon {
   padding: 10px 5px 3px 5px;
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
 }
-.delIcon{
+.delIcon {
   width: 18px;
-  height: 18px;
-  /* border-radius: 50%; */
-}
-.icon:hover .delIcon {
-  background-color: #F5F6FB;
-  /* border-radius: 50%; */
-}
-.icon:hover {
-  background-color: #F5F6FB;
+  height: 18px; */
+/* border-radius: 50%; */
+/* } */
+/* .icon:hover .delIcon {
+  background-color: #f5f6fb;
   border-radius: 50%;
 }
+.icon:hover {
+  background-color: #f5f6fb;
+  border-radius: 50%;
+} */
 @media screen and (max-width: 767px) {
   .tableContainer {
     display: none;
   }
+}
+
+.deleteBtn {
+  background-color: transparent;
+}
+
+.tr {
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
 }

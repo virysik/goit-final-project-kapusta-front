@@ -9,13 +9,14 @@
 
 @media screen and (min-width: 768px) {
   .section {
+    height: 100vh;
     padding-top: 40px;
     padding-bottom: 64px;
 
     background-image: url('../../images/homepage/bg-main.svg'),
       url('../../images/homepage/bg-desk-bot.svg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: left top, right 88px bottom 64px;
+    background-repeat: no-repeat;
+    background-position: left top;
   }
 }
 
