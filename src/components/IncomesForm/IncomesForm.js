@@ -45,8 +45,6 @@ export default function IncomesForm({ onHandleClick, type }) {
     type === 'incomes'
       ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
       : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
-    setAmount('');
-
     onHandleClick();
   };
 
