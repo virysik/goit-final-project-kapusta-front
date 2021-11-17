@@ -7,6 +7,7 @@ transactionsReducer
 
 
 export default function CategoryInfo({ trans }) {
+  
   const dispatch = useDispatch()
   return (
     <ul className={s.list}>

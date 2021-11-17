@@ -14,6 +14,7 @@ const initialState = {
   transactionsInc: [],
   date: { day: null, month: null, year: null },
   currentCategory: 'Продукты',
+  currentType: 'expenses',
   entities:[],
   isDeleting: false,
   error: null,
@@ -30,7 +31,11 @@ const transactionSlice = createSlice({
     },
     addCurrentCategory: (state, action) => {
       state.currentCategory = action.payload;
+    },
+    addCurrentType: (state, action) => {
+      state.currentType = action.payload;
     }
+
   },
   extraReducers: {
     [getTransactionsByDay.fulfilled](state, action) {},
@@ -70,15 +75,16 @@ const transactionSlice = createSlice({
       state.error = error
       state.isDeleting = false
     },
-
+/// Vlad
     [getDetailInfo.fulfilled](state, action) {
       state.entities = action.payload.data.data;
     },
     [getDetailInfo.pending](state, action) {},
-    [getDetailInfo.rejected](state, action) {},
+    [getDetailInfo.rejected](state, action) { },
+    
   },
 });
 
-export const { addDate, addCurrentCategory } = transactionSlice.actions;
+export const { addDate, addCurrentCategory, addCurrentType } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

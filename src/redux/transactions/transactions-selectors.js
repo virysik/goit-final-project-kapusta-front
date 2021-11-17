@@ -23,6 +23,7 @@ const getCurrentCategory = state => state.transactions.currentCategory;
 const getDetailsInfo = state => state.transactions.entities;
 const getDetailsInfoByExpenses = state => state.transactions.entities.expenses;
 const getDetailsInfoByIncomings = state => state.transactions.entities.incomings;
+const getCurrentType = state => state.transactions.currentType;
 
 const getFilteredCategoryExpenses = createSelector(
   [getDetailsInfoByExpenses, getCurrentCategory],
@@ -53,6 +54,7 @@ export {
   getCurrentCategory,
   getFilteredCategoryExpenses,
   getFilteredCategoIncomings,
-  getDetailsInfoByExpenses
+  getDetailsInfoByExpenses,
+  getCurrentType
 
 };
