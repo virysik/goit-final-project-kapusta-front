@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import {
@@ -17,20 +17,22 @@ const MobileTable = () => {
   const incData = useSelector(transactionsSelectors.getIncTrans);
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
 
-  const allData = [...outData, ...incData];
-  console.log('allData', allData);
+  const allData = useMemo(() => {
+    return [...outData, ...incData];
+  }, [outData, incData]);
+  // let allData = [...outData, ...incData];
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
-  }, [date]);
+  }, [dispatch, date]);
 
   useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
-  }, [date]);
+  }, [dispatch, date]);
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
-  }, [allData]);
+  }, [dispatch, allData]);
 
   return (
     <>
@@ -51,7 +53,7 @@ const MobileTable = () => {
                 <ReactTooltip />
                 <div className={s.boxCategoryAndDate}>
                   <span className={s.itemDate}>
-                    {item.day + item.month + item.year}
+                    {item.day + '.' + item.month + '.' + item.year}
                   </span>
                   <span className={s.category}>{item.category}</span>
                 </div>

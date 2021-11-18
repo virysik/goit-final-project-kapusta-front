@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import s from './Report.module.css';
 
-import months from '../../data/month';
+// import months from '../../data/month';
 
 export const CurrentMonth = ({
   currentMonth,

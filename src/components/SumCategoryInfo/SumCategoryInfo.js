@@ -4,10 +4,7 @@ import CategoryInfo from 'components/CategoryInfo';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { transactionsReducer } from 'redux/transactions';
-import {
-  transactionsOperations,
-  transactionsSelectors,
-} from 'redux/transactions';
+import { transactionsSelectors } from 'redux/transactions';
 
 const incomes = [
   { _id: 12, category: 'ЗП', value: 0.0, isActive: false },

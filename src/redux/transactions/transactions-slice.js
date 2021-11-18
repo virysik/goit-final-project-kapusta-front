@@ -31,8 +31,6 @@ const initialState = {
   isDeleting: false,
   error: null,
 };
-const error = 'Error';
-const loading = 'Loading';
 
 const transactionSlice = createSlice({
   name: 'transactions',

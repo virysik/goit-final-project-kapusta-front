@@ -4,19 +4,16 @@ import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
 import { expensesOpt, incomesOpt } from '../../data/optionsChart';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  transactionsOperations,
-  transactionsSelectors,
-} from 'redux/transactions';
+import { useSelector } from 'react-redux';
+import { transactionsSelectors } from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
 function ChartReport({ type }) {
+  const currentCatDetails = useSelector(
+    transactionsSelectors.getFilteredCategoryExpenses,
+  );
 
-  const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
-  
-  
   console.log(currentCatDetails?.details); //
 
   const optArr = type === 'expenses' ? expensesOpt : incomesOpt;
