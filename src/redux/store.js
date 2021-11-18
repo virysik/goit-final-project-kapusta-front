@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import {
   persistStore,
   persistReducer,
@@ -24,15 +24,16 @@ const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      ignoredActionPaths: ['payload.config.adapter',
-      `payload.config.transformRequest.0`,
-      `payload.config.transformResponse.0`,
-      `payload.config.validateStatus`, `payload.request`
+      ignoredActionPaths: [
+        'payload.config.adapter',
+        `payload.config.transformRequest.0`,
+        `payload.config.transformResponse.0`,
+        `payload.config.validateStatus`,
+        `payload.request`,
       ],
- 
     },
   }),
-  logger,
+  // logger,
 ];
 
 export const store = configureStore({
