@@ -27,19 +27,21 @@ const Report = () => {
     <div className={s.navigationWrapper}>
       <div className={s.reportMonth}>
         <p className={s.title}>Текущий период:</p>
-        <button
-          type="button"
-          className={s.btnL}
-          onClick={onHandleClickLeft}
-        ></button>
-        <span className={s.reportMonthTitle}>
-          {correctMonth.name} {year}
-        </span>
-        <button
-          type="button"
-          className={s.btnR}
-          onClick={onHandleClickRight}
-        ></button>
+        <div className={s.btnWrapper}>
+          <button
+            type="button"
+            className={s.btnL}
+            onClick={onHandleClickLeft}
+          ></button>
+          <span className={s.reportMonthTitle}>
+            {correctMonth.name} {year}
+          </span>
+          <button
+            type="button"
+            className={s.btnR}
+            onClick={onHandleClickRight}
+          ></button>
+        </div>
       </div>
     </div>
   );
