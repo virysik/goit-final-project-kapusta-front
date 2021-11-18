@@ -1,15 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
 import { expensesOpt, incomesOpt } from '../../data/optionsChart';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 
 Chart.register(ChartDataLabels);
 
 function ChartReportMobile({ type }) {
-
   // const [state, setState] = useState(false);
 
   // // console.log(type === 'expenses');
@@ -19,9 +18,9 @@ function ChartReportMobile({ type }) {
   // } else {
   //   setState(true)
   // };
-//   if (type === 'incomings') {
-//   setState(incomesOpt)
-// }
+  //   if (type === 'incomings') {
+  //   setState(incomesOpt)
+  // }
 
   const optArr = true ? expensesOpt : incomesOpt;
   const aspect = type === 'expenses' ? 0.5 : 2;
@@ -108,7 +107,7 @@ function ChartReportMobile({ type }) {
       },
     },
   };
-console.log(data);
+  console.log(data);
   return (
     <div className={s.charterReport}>
       <Bar data={data} options={options} height={400} width={320} />

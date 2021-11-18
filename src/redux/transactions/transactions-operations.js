@@ -93,12 +93,10 @@ export const getDetailInfo = createAsyncThunk(
   },
 );
 
-
-
 const operations = {
   getTransactionsByDay,
   addOutgoingTransaction,
   deleteTransaction,
-  getDetailInfo
+  getDetailInfo,
 };
 export default operations;
