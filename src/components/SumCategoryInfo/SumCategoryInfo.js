@@ -18,81 +18,28 @@ export default function SumCategoryInfo() {
 
   const [state, setState] = useState([]);
 
-  const getUsers = async () => {
+  const getState = async () => {
+
     const result = await sumOfcategories;
 
     return setState(result);
   };
 
-  getUsers();
+  getState();
+  
   const expenses = [
-    {
-      _id: 1,
-      category: 'Продукты',
-      value: state && state[0] !== undefined ? state[0]?.sum : 1,
-      isActive: false,
-    },
-    {
-      _id: 2,
-      category: 'Алкоголь',
-      value: state && state[1] !== undefined ? state[1]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 3,
-      category: 'Развлечения',
-      value: state && state[2] !== undefined ? state[2]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 4,
-      category: 'Здоровье',
-      value: state && state[3] !== undefined ? state[3]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 5,
-      category: 'Транспорт',
-      value: state && state[4] !== undefined ? state[4]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 6,
-      category: 'Всё для дома',
-      value: state && state[5] !== undefined ? state[5]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 8,
-      category: 'Техника',
-      value: state && state[6] !== undefined ? state[6]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 7,
-      category: 'Коммуналка, связь',
-      value: state && state[7] !== undefined ? state[7]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 9,
-      category: 'Спорт, хобби',
-      value: state && state[8] !== undefined ? state[8]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 10,
-      category: 'Образование',
-      value: state && state[9] !== undefined ? state[9]?.sum : 0,
-      isActive: false,
-    },
-    {
-      _id: 11,
-      category: 'Прочее',
-      value: state && state[10] !== undefined ? state[10]?.sum : 0,
-      isActive: false,
-    },
-  ];
+  { _id: 1, category: 'Продукты', value: state && state[0] !== undefined ? state[0]?.sum : 0, isActive: false },
+  { _id: 2, category: 'Алкоголь', value:  state && state[1] !== undefined ? state[1]?.sum : 0, isActive: false },
+  { _id: 3, category: 'Развлечения', value: state && state[2] !== undefined ? state[2]?.sum : 0, isActive: false },
+  { _id: 4, category: 'Здоровье', value: state && state[3] !== undefined ? state[3]?.sum : 0, isActive: false },
+  { _id: 5, category: 'Транспорт', value: state && state[4] !== undefined ? state[4]?.sum : 0, isActive: false },
+  { _id: 6, category: 'Всё для дома', value: state && state[5] !== undefined ? state[5]?.sum : 0, isActive: false },
+  { _id: 8, category: 'Техника', value: state && state[6] !== undefined ? state[6]?.sum : 0, isActive: false },
+  { _id: 7, category: 'Коммуналка, связь', value: state && state[7] !== undefined ? state[7]?.sum : 0, isActive: false },
+  { _id: 9, category: 'Спорт, хобби', value: state && state[8] !== undefined ? state[8]?.sum : 0, isActive: false },
+  { _id: 10, category: 'Образование', value: state && state[9] !== undefined ? state[9]?.sum : 0, isActive: false },
+  { _id: 11, category: 'Прочее', value: state && state[10] !== undefined ? state[10]?.sum : 0, isActive: false },
+];
 
   const dispatch = useDispatch();
   const [typeTrans, setTypeTrans] = useState('expenses');

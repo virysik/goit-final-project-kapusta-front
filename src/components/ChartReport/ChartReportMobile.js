@@ -4,31 +4,21 @@ import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
 import { expensesOpt, incomesOpt } from '../../data/optionsChart';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  transactionsOperations,
+  transactionsSelectors,
+} from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
-function ChartReportMobile({ type }) {
-  // const [state, setState] = useState(false);
+function ChartReportMobile() {
 
-  // // console.log(type === 'expenses');
-
-  // if (type === 'expenses') {
-  //   setState(false)
-  // } else {
-  //   setState(true)
-  // };
-  //   if (type === 'incomings') {
-  //   setState(incomesOpt)
-  // }
-
-  const optArr = true ? expensesOpt : incomesOpt;
-  const aspect = type === 'expenses' ? 0.5 : 2;
-
-  const data = {
+const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+  const dataIncomings = {
     datasets: [
       {
-        data: optArr.sort((a, b) => {
+        data: incomesOpt.sort((a, b) => {
           return b.nested.value - a.nested.value;
         }),
 
@@ -54,6 +44,36 @@ function ChartReportMobile({ type }) {
     ],
   };
 
+  const dataExpenses = {
+    datasets: [
+      {
+        data: expensesOpt.sort((a, b) => {
+          return b.nested.value - a.nested.value;
+        }),
+
+        maxBarThickness: 15,
+        borderRadius: 20,
+        minBarLength: 100,
+        backgroundColor: ['#FF751D', '#FFDAC0', '#FFDAC0'],
+        borderColor: ['rgba(0, 0, 0, 0)'],
+        borderWidth: 1,
+        datalabels: {
+          formatter: function (value, context) {
+            return (
+              context.chart.data.datasets[0].data[context.dataIndex].nested
+                .value + 'грн'
+            );
+          },
+          color: '#52555F',
+          anchor: 'end',
+          align: 'top',
+        },
+        plugins: [ChartDataLabels],
+      },
+    ],
+  };
+  
+
   const options = {
     indexAxis: 'y',
 
@@ -77,7 +97,7 @@ function ChartReportMobile({ type }) {
     },
     maintainAspectRatio: true,
     responsive: true,
-    aspectRatio: aspect,
+    aspectRatio: 3,
     scales: {
       x: {
         grid: {
@@ -107,10 +127,10 @@ function ChartReportMobile({ type }) {
       },
     },
   };
-  console.log(data);
   return (
     <div className={s.charterReport}>
-      <Bar data={data} options={options} height={400} width={320} />
+      {currentCategory === 'incomings' && <Bar data={dataIncomings} options={options} height={400} width={320} />}
+      {currentCategory === 'expenses' && <Bar data={dataExpenses} options={options} height={300} width={320} />}
     </div>
   );
 }

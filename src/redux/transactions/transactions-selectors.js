@@ -18,9 +18,8 @@ const getAllTrans = state => state.transactions.transactionsAll;
 ///////////////получить тразакции расходов/доходов для графика на 3-ей странице//////////////// Влад
 const getCurrentCategory = state => state.transactions.currentCategory;
 const getDetailsInfo = state => state.transactions.entities;
-const getDetailsInfoByExpenses = state => state.transactions.entities.expenses;
-const getDetailsInfoByIncomings = state =>
-  state.transactions.entities.incomings;
+const getDetailsInfoByExpenses = state => state.transactions.raport.data?.expenses;
+const getDetailsInfoByIncomings = state => state.transactions.raport.data?.incomings;
 const getCurrentType = state => state.transactions.currentType;
 
 const getFilteredCategoryExpenses = createSelector(
