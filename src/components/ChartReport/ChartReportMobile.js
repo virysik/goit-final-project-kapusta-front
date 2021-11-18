@@ -15,7 +15,7 @@ Chart.register(ChartDataLabels);
 function ChartReportMobile() {
 
 const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-const aspect = currentCategory === 'expenses' ? 3 : 3;
+const aspect = currentCategory === 'expenses' ? 4 : 4;
 
   const dataIncomings = {
     datasets: [
