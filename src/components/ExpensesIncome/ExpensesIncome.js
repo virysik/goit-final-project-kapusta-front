@@ -13,12 +13,16 @@ export default function ExpensesIncome() {
       <section className={s.section}>
         <div className={s.divExp}>
           <p className={s.desc}> Расходы:</p>
-          <span className={s.expenses}>{`-${expenses} грн`}</span>
+          <span className={s.expenses}>
+            {expenses === 0 ? `${expenses} грн` : `-${expenses} грн`}
+          </span>
         </div>
 
         <div className={s.divInc}>
           <p className={s.desc}>Доходы:</p>
-          <span className={s.incomes}>{`+${incomes} грн`}</span>
+          <span className={s.incomes}>
+            {incomes === 0 ? `${incomes} грн` : `+${incomes} грн`}
+          </span>
         </div>
       </section>
 

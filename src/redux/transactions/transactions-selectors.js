@@ -35,7 +35,6 @@ const getFilteredCategoIncomings = createSelector(
 
 // получить расход/доход за месяц на 3ей странице//Вера
 
-// const getReportMonthly = state => state.transactions.entities.total;
 const getIncReportMonthly = state => state.transactions.entities.total[0].sum;
 const getExpReportMonthly = state => state.transactions.entities.total[1].sum;
 const getReportMonthly = createSelector(

@@ -14,7 +14,7 @@ function ChartReport({ type }) {
     transactionsSelectors.getFilteredCategoryExpenses,
   );
 
-  console.log(currentCatDetails?.details); //
+  console.log(currentCatDetails?.details);
 
   const optArr = type === 'expenses' ? expensesOpt : incomesOpt;
   const aspect = type === 'expenses' ? 3 : 3;
