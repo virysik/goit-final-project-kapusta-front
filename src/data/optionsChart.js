@@ -1,5 +1,5 @@
 export const expensesOpt = [
-  { id: 'Свинина', nested: { value: 5000 } },
+  { id: '55', nested: { value: 5000 } },
   { id: 'Говядина', nested: { value: 4500 } },
   { id: 'Курица', nested: { value: 3200 } },
   { id: 'Рыба', nested: { value: 2100 } },

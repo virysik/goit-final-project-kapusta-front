@@ -79,9 +79,26 @@ export const deleteTransaction = createAsyncThunk(
   },
 );
 
+export const getDetailInfo = createAsyncThunk(
+  '/transactions/detailInfo',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const transactions = await axios.get('/transactions', {
+        params: credentials,
+      });
+      return transactions;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+
+
 const operations = {
   getTransactionsByDay,
   addOutgoingTransaction,
   deleteTransaction,
+  getDetailInfo
 };
 export default operations;

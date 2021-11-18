@@ -24,6 +24,12 @@ const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      ignoredActionPaths: ['payload.config.adapter',
+      `payload.config.transformRequest.0`,
+      `payload.config.transformResponse.0`,
+      `payload.config.validateStatus`, `payload.request`
+      ],
+ 
     },
   }),
   logger,
