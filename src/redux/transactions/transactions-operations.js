@@ -93,12 +93,28 @@ export const getDetailInfo = createAsyncThunk(
   },
 );
 
+export const getDetailInfoForReport = createAsyncThunk(
+  '/transactions/getDetailInfoForReport',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const transactions = await axios.get('/transactions/forReports', {
+        params: credentials,
+      });
+      return transactions;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+
 
 
 const operations = {
   getTransactionsByDay,
   addOutgoingTransaction,
   deleteTransaction,
-  getDetailInfo
+  getDetailInfo,
+  getDetailInfoForReport
 };
 export default operations;

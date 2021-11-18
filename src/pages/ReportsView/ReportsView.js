@@ -20,9 +20,30 @@ const ReportsView = () => {
   const year = useSelector(transactionsSelectors.getYear);
 
 
+  const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+
+  const data = currentCatDetails?.details;
+  
+  // const [expensesOpt, setExpensesOpt] = useState([]);
+
+  // const getState = async () => {
+
+  //   const result = await currentCatDetails?.details;
+  
+  //   return setExpensesOpt(result)
+  // };
+
+  // getState();
+
+
+  // console.log(expensesOpt);
+
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(transactionsOperations.getDetailInfo({year, month}))
+    dispatch(transactionsOperations.getDetailInfo({ year, month }))
+    dispatch(transactionsOperations.getDetailInfoForReport({ year:2021, month:11 }))
+    
   }, [dispatch, month, year ])
 
   return (
@@ -36,7 +57,7 @@ const ReportsView = () => {
           </div>
         </div>
         <ExpensesIncome />
-        <ChartView type={currentType} />
+        <ChartView type={currentType} data={data} />
       </Container>
     </section>
   );

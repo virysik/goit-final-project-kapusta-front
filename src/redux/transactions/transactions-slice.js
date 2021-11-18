@@ -6,7 +6,8 @@ import {
   deleteTransaction,
   getOutTransDate,
   getIncTransDate,
-  getDetailInfo
+  getDetailInfo,
+  getDetailInfoForReport
 } from './transactions-operations';
 
 const splittedDate = new Date().toLocaleDateString().split('.');
@@ -21,6 +22,7 @@ const initialState = {
   currentType: 'expenses',
   entities:[],
   date: { day, month, year },
+  raport:[],
   isDeleting: false,
   error: null,
 };
@@ -93,6 +95,12 @@ const transactionSlice = createSlice({
     },
     [getDetailInfo.pending](state, action) {},
     [getDetailInfo.rejected](state, action) { },
+
+    [getDetailInfoForReport.fulfilled](state, action) {
+      state.raport = action.payload.data;
+    },
+    [getDetailInfoForReport.pending](state, action) {},
+    [getDetailInfoForReport.rejected](state, action) { },
     
   },
 });

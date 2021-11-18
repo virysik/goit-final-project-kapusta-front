@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
-import { expensesOpt, incomesOpt } from '../../data/optionsChart';
+// import { expensesOpt, incomesOpt } from '../../data/optionsChart';
+// import { expensesOpt } from '../../pages/ReportsView/index';
 import {  useSelector } from 'react-redux';
 import { transactionsSelectors,} from 'redux/transactions';
 
@@ -11,18 +12,19 @@ Chart.register(ChartDataLabels);
 
 function ChartReport() {
 
-  const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+    const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+
+  const data = currentCatDetails?.details;
 
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
     const dataIncomings = {
     datasets: [
       {
-        data: incomesOpt.sort((a, b) => {
-          return b.nested.value - a.nested.value;
-        })
-        ,
+        data: data,
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,
@@ -51,10 +53,7 @@ function ChartReport() {
   const dataExpenses = {
     datasets: [
       {
-        data: expensesOpt.sort((a, b) => {
-          return b.nested.value - a.nested.value;
-        })
-        ,
+        data: data,
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,

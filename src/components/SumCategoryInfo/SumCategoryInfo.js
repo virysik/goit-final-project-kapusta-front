@@ -22,14 +22,15 @@ export default function SumCategoryInfo() {
 
   const [state, setState] = useState([]);
 
-  const getUsers = async () => {
+  const getState = async () => {
 
     const result = await sumOfcategories;
   
     return setState(result)
   };
 
-  getUsers();
+  getState();
+  
   const expenses = [
   { _id: 1, category: 'Продукты', value: state && state[0] !== undefined ? state[0]?.sum : 0, isActive: false },
   { _id: 2, category: 'Алкоголь', value:  state && state[1] !== undefined ? state[1]?.sum : 0, isActive: false },
