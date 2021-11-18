@@ -31,7 +31,7 @@ export default function SumCategoryInfo() {
 
   getUsers();
   const expenses = [
-  { _id: 1, category: 'Продукты', value: state && state[0] !== undefined ? state[0]?.sum : 1, isActive: false },
+  { _id: 1, category: 'Продукты', value: state && state[0] !== undefined ? state[0]?.sum : 0, isActive: false },
   { _id: 2, category: 'Алкоголь', value:  state && state[1] !== undefined ? state[1]?.sum : 0, isActive: false },
   { _id: 3, category: 'Развлечения', value: state && state[2] !== undefined ? state[2]?.sum : 0, isActive: false },
   { _id: 4, category: 'Здоровье', value: state && state[3] !== undefined ? state[3]?.sum : 0, isActive: false },
