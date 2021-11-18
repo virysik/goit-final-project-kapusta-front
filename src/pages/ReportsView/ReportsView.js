@@ -13,31 +13,17 @@ import {
   transactionsSelectors,
 } from 'redux/transactions';
 
-
-//   const [state, setState] = useState();
-
-//   const sumOfcategories = useSelector(transactionsSelectors.getDetailsInfoByExpenses);
-
-// const getUsers = async () => {
-
-//   const result = await sumOfcategories;
-  
-//   return setState(result)
-//   }
-
-
 const ReportsView = () => {
 
   const currentType = useSelector(transactionsSelectors.getCurrentType);
+  const month = useSelector(transactionsSelectors.getMonth);
+  const year = useSelector(transactionsSelectors.getYear);
 
-  // dispatch(transactionsReducer.addCurrentCategory(item.category))
-
-  // const [type, setType] = useState();
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(transactionsOperations.getDetailInfo({year: 2021, month: 11}))
-  }, [dispatch])
+    dispatch(transactionsOperations.getDetailInfo({year, month}))
+  }, [dispatch, month, year ])
 
   return (
     <section className={s.section}>

@@ -1,9 +1,4 @@
 import { createSelector } from 'reselect';
-// const getMonthlyBalances = state => {};
-// const getTransactionsPerDay = state => {};
-// const getTransactionsPerMonth = state => {};
-// const getLoader = state => {};
-// const getTransactionError = state => { };
 
 const getIsDeleting = state => state.transactions.isDeleting;
 
@@ -40,11 +35,6 @@ const getFilteredCategoIncomings = createSelector(
 );
 
 export {
-  //   getMonthlyBalances,
-  //   getTransactionsPerDay,
-  //   getTransactionsPerMonth,
-  //   getLoader,
-  //   getTransactionError,
   getDate,
   getMonth,
   getYear,
