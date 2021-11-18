@@ -1,28 +1,28 @@
 import s from './ExpensesIncome.module.css';
 import SumCategoryInfo from 'components/SumCategoryInfo';
 
-export default function ExpensesIncome() {
-  const totalExpences = 0;
-  const totalIncomes = 0;
+import { useSelector } from 'react-redux';
+import { transactionsSelectors } from 'redux/transactions';
 
-  let type = 'expenses';
+export default function ExpensesIncome() {
+  const expenses = useSelector(transactionsSelectors.getExpReportMonthly);
+  const incomes = useSelector(transactionsSelectors.getIncReportMonthly);
 
   return (
     <div className={s.wrapper}>
       <section className={s.section}>
         <div className={s.divExp}>
           <p className={s.desc}> Расходы:</p>
-          <span className={s.expenses}>-18 000. 00 грн</span>
+          <span className={s.expenses}>{`-${expenses} грн`}</span>
         </div>
 
         <div className={s.divInc}>
           <p className={s.desc}>Доходы:</p>
-          <span className={s.incomes}>+25 000. 00 грн</span>
+          <span className={s.incomes}>{`+${incomes} грн`}</span>
         </div>
       </section>
 
       <SumCategoryInfo />
     </div>
-    //       >{`+ ${totalIncomes}.00 грн.`}</span>
   );
 }

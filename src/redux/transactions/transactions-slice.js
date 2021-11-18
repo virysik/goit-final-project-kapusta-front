@@ -6,7 +6,7 @@ import {
   deleteTransaction,
   getOutTransDate,
   getIncTransDate,
-  getDetailInfo
+  getDetailInfo,
 } from './transactions-operations';
 
 const splittedDate = new Date().toLocaleDateString().split('.');
@@ -19,7 +19,14 @@ const initialState = {
   transactionsInc: [],
   currentCategory: 'Продукты',
   currentType: 'expenses',
-  entities:[],
+  entities: {
+    expenses: [],
+    incomings: [],
+    total: [
+      { type: 'incomings', sum: 0 },
+      { type: 'expenses', sum: 0 },
+    ],
+  },
   date: { day, month, year },
   isDeleting: false,
   error: null,
@@ -39,8 +46,7 @@ const transactionSlice = createSlice({
     },
     addCurrentType: (state, action) => {
       state.currentType = action.payload;
-    }
-
+    },
   },
   extraReducers: {
     [getTransactionsByDay.fulfilled](state, action) {},
@@ -87,16 +93,20 @@ const transactionSlice = createSlice({
       state.error = 'error';
       state.isDeleting = false;
     },
-/// Vlad
+    /// Vlad
     [getDetailInfo.fulfilled](state, action) {
       state.entities = action.payload.data.data;
+      console.log('state.entities: ', state.entities);
     },
     [getDetailInfo.pending](state, action) {},
-    [getDetailInfo.rejected](state, action) { },
-    
+    [getDetailInfo.rejected](state, action) {},
   },
 });
 
-export const { addDate, addCurrentCategory, addCurrentType } = transactionSlice.actions;
+export const {
+  addDate,
+  addCurrentCategory,
+  addCurrentType,
+} = transactionSlice.actions;
 
 export default transactionSlice.reducer;

@@ -19,19 +19,28 @@ const getAllTrans = state => state.transactions.transactionsAll;
 const getCurrentCategory = state => state.transactions.currentCategory;
 const getDetailsInfo = state => state.transactions.entities;
 const getDetailsInfoByExpenses = state => state.transactions.entities.expenses;
-const getDetailsInfoByIncomings = state => state.transactions.entities.incomings;
+const getDetailsInfoByIncomings = state =>
+  state.transactions.entities.incomings;
 const getCurrentType = state => state.transactions.currentType;
 
 const getFilteredCategoryExpenses = createSelector(
   [getDetailsInfoByExpenses, getCurrentCategory],
-  (arr, category) =>
-    arr?.filter(ar => ar.category === category )[0],
+  (arr, category) => arr?.filter(ar => ar.category === category)[0],
 );
 
 const getFilteredCategoIncomings = createSelector(
   [getDetailsInfoByIncomings, getCurrentCategory],
-  (arr, category) =>
-    arr?.filter(ar => ar.category === category )[0],
+  (arr, category) => arr?.filter(ar => ar.category === category)[0],
+);
+
+// получить расход/доход за месяц на 3ей странице//Вера
+
+// const getReportMonthly = state => state.transactions.entities.total;
+const getIncReportMonthly = state => state.transactions.entities.total[0].sum;
+const getExpReportMonthly = state => state.transactions.entities.total[1].sum;
+const getReportMonthly = createSelector(
+  [getIncReportMonthly, getExpReportMonthly],
+  (inc, exp) => inc - exp,
 );
 
 export {
@@ -49,4 +58,7 @@ export {
   getDetailsInfoByExpenses,
   getCurrentType,
   getAllTrans,
+  getReportMonthly,
+  getIncReportMonthly,
+  getExpReportMonthly,
 };
