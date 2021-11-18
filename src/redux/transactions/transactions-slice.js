@@ -20,14 +20,19 @@ const initialState = {
   transactionsInc: [],
   currentCategory: 'Продукты',
   currentType: 'expenses',
-  entities:[],
+  entities: {
+    expenses: [],
+    incomings: [],
+    total: [
+      { type: 'incomings', sum: 0 },
+      { type: 'expenses', sum: 0 },
+    ],
+  },
   date: { day, month, year },
   raport:[],
   isDeleting: false,
   error: null,
 };
-const error = 'Error';
-const loading = 'Loading';
 
 const transactionSlice = createSlice({
   name: 'transactions',
@@ -41,8 +46,25 @@ const transactionSlice = createSlice({
     },
     addCurrentType: (state, action) => {
       state.currentType = action.payload;
-    }
+    },
+    goBackOneMonth: (state, action) => {
+      if (Number(state.date.month) === 1) {
+        state.date.year = Number(state.date.year) - 1;
+        state.date.month = 12;
+        return;
+      }
 
+      state.date.month = Number(state.date.month) - 1;
+    },
+    goForwardOneMonth: (state, action) => {
+      if (Number(state.date.month) === 12) {
+        state.date.year = Number(state.date.year) + 1;
+        state.date.month = 1;
+        return;
+      }
+
+      state.date.month = Number(state.date.month) + 1;
+    },
   },
   extraReducers: {
     [getTransactionsByDay.fulfilled](state, action) {},
@@ -89,9 +111,10 @@ const transactionSlice = createSlice({
       state.error = 'error';
       state.isDeleting = false;
     },
-/// Vlad
+    /// Vlad
     [getDetailInfo.fulfilled](state, action) {
       state.entities = action.payload.data.data;
+      console.log('state.entities: ', state.entities);
     },
     [getDetailInfo.pending](state, action) {},
     [getDetailInfo.rejected](state, action) { },
@@ -105,6 +128,12 @@ const transactionSlice = createSlice({
   },
 });
 
-export const { addDate, addCurrentCategory, addCurrentType } = transactionSlice.actions;
+export const {
+  addDate,
+  addCurrentCategory,
+  addCurrentType,
+  goBackOneMonth,
+  goForwardOneMonth,
+} = transactionSlice.actions;
 
 export default transactionSlice.reducer;

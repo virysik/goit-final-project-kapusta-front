@@ -5,20 +5,24 @@ export default function Svodka({ items }) {
   return (
     <div className={s.wrap}>
       <table className={s.reportHistory}>
-        <tr className={s.tr}>
-          <th className={s.reportHeader} colspan="3">
-            Сводка
-          </th>
-        </tr>
-        {items.map(x => (
-          <tr className={s.tr} key={x.id}>
-            <td className={s.month}>{x.month}</td>
-            <td className={s.sum}>{x.sum}</td>
+        <thead>
+          <tr className={s.tr}>
+            <th className={s.reportHeader} colSpan="3">
+              Сводка
+            </th>
           </tr>
-        ))}
-        <tr className={s.empty}>
-          <td></td>
-        </tr>
+        </thead>
+        <tbody>
+          {items.map(x => (
+            <tr className={s.tr} key={x.month}>
+              <td className={s.month}>{x.month}</td>
+              <td className={s.sum}>{x.sum}</td>
+            </tr>
+          ))}
+          <tr className={s.empty}>
+            <td></td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

@@ -29,12 +29,16 @@ const GoogleRedirectView = lazy(() =>
 );
 
 function App() {
+  const token = useSelector(authSelectors.getToken);
   const isFetchingUser = useSelector(authSelectors.getIsFetchingCurrent);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!token) {
+      return;
+    }
     dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
     <>

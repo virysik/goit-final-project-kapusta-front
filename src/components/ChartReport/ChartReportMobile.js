@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -15,8 +15,6 @@ Chart.register(ChartDataLabels);
 function ChartReportMobile() {
 
 const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-const aspect = currentCategory === 'expenses' ? 4 : 4;
-
   const dataIncomings = {
     datasets: [
       {
@@ -99,7 +97,7 @@ const aspect = currentCategory === 'expenses' ? 4 : 4;
     },
     maintainAspectRatio: true,
     responsive: true,
-    aspectRatio: aspect,
+    aspectRatio: 3,
     scales: {
       x: {
         grid: {

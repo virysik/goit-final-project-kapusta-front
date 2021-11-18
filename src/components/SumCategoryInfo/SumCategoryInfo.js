@@ -3,13 +3,8 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import CategoryInfo from 'components/CategoryInfo';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-transactionsReducer
-} from 'redux/transactions';
-import {
-  transactionsOperations,
-  transactionsSelectors,
-} from 'redux/transactions';
+import { transactionsReducer } from 'redux/transactions';
+import { transactionsSelectors } from 'redux/transactions';
 
 const incomes = [
   { _id: 12, category: 'ЗП', value: 0.0, isActive: false },
@@ -17,16 +12,17 @@ const incomes = [
 ];
 
 export default function SumCategoryInfo() {
-
-  const sumOfcategories = useSelector(transactionsSelectors.getDetailsInfoByExpenses);
+  const sumOfcategories = useSelector(
+    transactionsSelectors.getDetailsInfoByExpenses,
+  );
 
   const [state, setState] = useState([]);
 
   const getState = async () => {
 
     const result = await sumOfcategories;
-  
-    return setState(result)
+
+    return setState(result);
   };
 
   getState();
@@ -45,23 +41,27 @@ export default function SumCategoryInfo() {
   { _id: 11, category: 'Прочее', value: state && state[10] !== undefined ? state[10]?.sum : 0, isActive: false },
 ];
 
-const dispatch = useDispatch();
-const [ typeTrans, setTypeTrans] = useState('expenses')
+  const dispatch = useDispatch();
+  const [typeTrans, setTypeTrans] = useState('expenses');
 
-  function handleClickExpenses () {
-    setTypeTrans('expenses')
+  function handleClickExpenses() {
+    setTypeTrans('expenses');
     dispatch(transactionsReducer.addCurrentType('expenses'));
-  };
+  }
 
-   function handleClickIncomes () {
-     setTypeTrans('incomings');
-     dispatch(transactionsReducer.addCurrentType('incomings'));
-  };
+  function handleClickIncomes() {
+    setTypeTrans('incomings');
+    dispatch(transactionsReducer.addCurrentType('incomings'));
+  }
 
   return (
     <div className={s.sectionWrapper}>
       <div className={s.wrapper}>
-        <button className={s.leftBtn} type="button" onClick={()=> handleClickExpenses()}>
+        <button
+          className={s.leftBtn}
+          type="button"
+          onClick={() => handleClickExpenses()}
+        >
           <MdKeyboardArrowLeft size={20} style={{ color: '#FF751D' }} />
         </button>
         {typeTrans === 'expenses' ? (
@@ -69,22 +69,27 @@ const [ typeTrans, setTypeTrans] = useState('expenses')
         ) : (
           <p className={s.title}> Доходы </p>
         )}
-        <button className={s.rightBtn} type="button" onClick={()=> handleClickIncomes()}>
+        <button
+          className={s.rightBtn}
+          type="button"
+          onClick={() => handleClickIncomes()}
+        >
           <MdKeyboardArrowRight size={20} style={{ color: '#FF751D' }} />
         </button>
       </div>
-
-        { typeTrans === 'expenses' ? (
-        <CategoryInfo
-          trans={expenses}
-          //   onClick={handleClickExpenses}
-        />
-      ) : (
-        <CategoryInfo
-          trans={incomes}
-          //   onClick={handleClickIncomes}
-        />
-      )}
+      <>
+        {typeTrans === 'expenses' ? (
+          <CategoryInfo
+            trans={expenses}
+            //   onClick={handleClickExpenses}
+          />
+        ) : (
+          <CategoryInfo
+            trans={incomes}
+            //   onClick={handleClickIncomes}
+          />
+        )}
+      </>
     </div>
   );
 }

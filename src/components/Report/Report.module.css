@@ -8,11 +8,8 @@
 }
 
 .reportMonth {
-  font-size: 12px;
-  line-height: 1.17;
-  display: table-header-group;
-  height: 39px;
-  align-items: center;
+  font-size: 11px;
+  line-height: 1.16;
 }
 
 .title {
@@ -31,34 +28,51 @@
   color: var(--black-text-color);
 }
 
+.btnL {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url('../../images/svg/arr-left.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom 1px;
+}
+
+.btnR {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url('../../images/svg/arr-right.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom 1px;
+}
+
+.btnWrapper {
+  width: 155px;
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 768px) {
   .navigationWrapper {
     display: flex;
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 59px;
-    width: 65%;
-  }
-
-  .reportMonth {
-    margin-left: auto;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .navigationWrapper {
-    width: 69%;
-    margin-left: 295px;
+    margin-left: 245px;
   }
-
-  .reportMonth {
-    margin-left: auto;
-  }
-}
-
-.btn {
-  border: none;
-  color: transparent;
-  background-color: transparent;
-  cursor: pointer;
 }

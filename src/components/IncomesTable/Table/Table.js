@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { transactionsSelectors, transactionsOperations } from 'redux/transactions';
+import {
+  transactionsSelectors,
+  transactionsOperations,
+} from 'redux/transactions';
 import { authOperations } from 'redux/auth';
 import s from './Table.module.css';
 import { useEffect } from 'react';
@@ -15,7 +18,7 @@ const TableDesktop = ({ type }) => {
   useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
     dispatch(transactionsOperations.getOutTransDate(date));
-  }, [date, dispatch ]);
+  }, [date, dispatch]);
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
@@ -45,11 +48,15 @@ const TableDesktop = ({ type }) => {
         </thead>
         <tbody>
           {transactions.map(item => (
-            <tr className={s.tr} key={item.id}>
-              <td>{`${item.day}:${item.month}:${item.year}`}</td>
+            <tr className={s.tr} key={item._id}>
+              <td>{`${item.day}.${item.month}.${item.year}`}</td>
               <td>{item.description}</td>
               <td>{item.category}</td>
-              <td className={item.typeOftransactions ? s.amountGreen : s.amountRed}>
+              <td
+                className={
+                  item.typeOftransactions ? s.amountGreen : s.amountRed
+                }
+              >
                 {!item.typeOftransactions && `- `}
                 {item.amount}
               </td>
@@ -58,7 +65,9 @@ const TableDesktop = ({ type }) => {
                   type="button"
                   className={s.deleteBtn}
                   onClick={() => {
-                    dispatch(transactionsOperations.deleteTransaction(item._id))
+                    dispatch(
+                      transactionsOperations.deleteTransaction(item._id),
+                    );
                   }}
                 >
                   <img className={s.icon} src={deleteIcon} alt="Delete icon" />
@@ -73,4 +82,3 @@ const TableDesktop = ({ type }) => {
 };
 
 export default TableDesktop;
-

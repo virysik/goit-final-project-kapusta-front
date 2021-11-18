@@ -4,7 +4,7 @@
 
 .price {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.167;
   letter-spacing: 0.02em;
   text-align: center;
@@ -58,7 +58,7 @@
   width: 304px;
   height: 1px;
   bottom: 20px;
-  left: 0px;
+  left: -2px;
   background-color: #e0e5eb;
 }
 
@@ -76,7 +76,7 @@
   width: 107px;
   height: 1px;
   bottom: -20px;
-  left: -8px;
+  left: -10px;
   background-color: #e0e5eb;
 }
 
@@ -98,7 +98,7 @@
 
     margin-left: 10px;
     margin-bottom: 40px;
-    flex-basis: 90px;
+    flex-basis: 92px;
   }
 
   .item::after {
