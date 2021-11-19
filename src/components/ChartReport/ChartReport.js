@@ -11,22 +11,15 @@ import { transactionsSelectors } from 'redux/transactions';
 Chart.register(ChartDataLabels);
 
 function ChartReport() {
-  const state = useSelector(transactionsSelectors.getInfoExpenses); 
-
   const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
+  const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-    // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
-  // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-
-  // const data = currentCatDetails?.details;
-
-  console.log(state);
-
+  
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
     const dataIncomings = {
       datasets: [
-        {data: sumExp,
+        {data: sumInc,
         // optArr.sort((a, b) => {
         //   return b.nested.value - a.nested.value;
         // }),
