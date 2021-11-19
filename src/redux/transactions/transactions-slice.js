@@ -18,7 +18,8 @@ const day = splittedDate[0];
 const initialState = {
   transactionsOut: [],
   transactionsInc: [],
-  currentCategory: '',
+  transactionsAll: [],
+  currentCategory: 'Продукты',
   currentType: 'expenses',
   entities: {
     expenses: [],
@@ -83,12 +84,14 @@ const transactionSlice = createSlice({
 
     [getIncTransDate.fulfilled](state, action) {
       state.transactionsInc = action.payload;
+      state.transactionsAll = [...state.transactionsAll, ...action.payload];
     },
     [getIncTransDate.pending](state, action) {},
     [getIncTransDate.rejected](state, action) {},
 
     [getOutTransDate.fulfilled](state, action) {
       state.transactionsOut = action.payload;
+      state.transactionsAll = [...state.transactionsAll, ...action.payload];
     },
     [getOutTransDate.pending](state, action) {},
     [getOutTransDate.rejected](state, action) {},
