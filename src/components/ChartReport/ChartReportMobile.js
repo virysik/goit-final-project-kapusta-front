@@ -6,7 +6,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
 // import { expensesOpt, incomesOpt } from '../../data/optionsChart';
 import { useSelector } from 'react-redux';
-import { transactionsSelectors,} from 'redux/transactions';
+import { transactionsSelectors } from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
@@ -106,7 +106,7 @@ function ChartReportMobile() {
     },
     maintainAspectRatio: true,
     responsive: true,
-    aspectRatio: 3,
+    aspectRatio: 1,
     scales: {
       x: {
         grid: {
@@ -132,7 +132,7 @@ function ChartReportMobile() {
     plugins: {
       legend: {
         display: false,
-        position: 'top',
+        // position: 'top',
       },
     },
   };
