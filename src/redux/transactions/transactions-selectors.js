@@ -17,22 +17,30 @@ const getAllTrans = state => state.transactions.transactionsAll;
 
 ///////////////получить тразакции расходов/доходов для графика на 3-ей странице//////////////// Влад
 const getCurrentCategory = state => state.transactions.currentCategory;
-const getDetailsInfo = state => state.transactions.entities;
-const getDetailsInfoByExpenses = state => state.transactions.raport.data?.expenses;
-const getDetailsInfoByIncomings = state => state.transactions.raport.data?.incomings;
+
+const getInfoExpenses = state => state.transactions.raport.expenses;
+
+const getInfoIncomings = state => state.transactions.raport.incomings;
+
 const getCurrentType = state => state.transactions.currentType;
 
-const getFilteredCategoryExpenses = createSelector(
-  [getDetailsInfoByExpenses, getCurrentCategory],
-  (arr, category) => arr?.filter(ar => ar.category === category)[0],
+const getRaport = state => state.transactions.raport;
+
+const getFilteredCategExp = createSelector(
+  [getInfoExpenses, getCurrentCategory],
+  (arr, category) => arr?.find(ar => ar.category === category)?.details,
 );
 
-const getFilteredCategoIncomings = createSelector(
-  [getDetailsInfoByIncomings, getCurrentCategory],
-  (arr, category) => arr?.filter(ar => console.log(ar.category) === category)[0],
-  // (arr, category) => arr.filter(ar => ar.category === category)[0]
+const getFilteredCategInc = createSelector(
+  [getInfoIncomings, getCurrentCategory],
+  (arr, category) => arr?.find(ar => ar.category === category)?.details,
 );
 
+///////////////////////////////////////
+
+// const getCurrCatExpDet = createSelector([getFilteredCategExp], arr =>
+//   arr?.map(el => el.details),
+// );
 // получить расход/доход за месяц на 3ей странице//Вера
 
 const getIncReportMonthly = state => state.transactions.entities.total[0].sum;
@@ -50,16 +58,16 @@ export {
   getIncTrans,
   getOutTrans,
   getIsDeleting,
-  getDetailsInfo,
   getCurrentCategory,
-  getFilteredCategoryExpenses,
-  getFilteredCategoIncomings,
-  getDetailsInfoByExpenses,
+  getFilteredCategExp,
+  getFilteredCategInc,
+  // getCurrCatExpDet,
+  getInfoExpenses,
+  getInfoIncomings,
   getCurrentType,
   getAllTrans,
   getReportMonthly,
   getIncReportMonthly,
   getExpReportMonthly,
-  getDetailsInfoByIncomings
-  
+  getRaport,
 };

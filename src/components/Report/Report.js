@@ -19,7 +19,6 @@ const Report = () => {
   };
 
   const onHandleClickRight = () => {
-    console.log('onHandleClickRight', correctMonth);
     dispatch(goForwardOneMonth());
   };
 

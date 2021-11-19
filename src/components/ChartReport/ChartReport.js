@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
 // import { expensesOpt, incomesOpt } from '../../data/optionsChart';
 // import { expensesOpt } from '../../pages/ReportsView/index';
-import {  useSelector } from 'react-redux';
-import { transactionsSelectors,} from 'redux/transactions';
+import { useSelector } from 'react-redux';
+import { transactionsSelectors } from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
-function ChartReport({data}) {
+function ChartReport() {
+  const state = useSelector(transactionsSelectors.getInfoExpenses); 
 
-  // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
     // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
   // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
 
   // const data = currentCatDetails?.details;
 
+  console.log(state);
+
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
     const dataIncomings = {
       datasets: [
-        {data: data,
+        {data: sumExp,
         // optArr.sort((a, b) => {
         //   return b.nested.value - a.nested.value;
         // }),
@@ -55,7 +58,7 @@ function ChartReport({data}) {
   const dataExpenses = {
     datasets: [
       {
-        data: data,
+        data: sumExp,
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,
@@ -118,8 +121,8 @@ function ChartReport({data}) {
 
   return (
     <div className={s.charterReport}>
-      { currentCategory === 'expenses'&& <Bar data={dataExpenses} options={options} />}
-      { currentCategory === 'incomings'&& <Bar data={dataIncomings} options={options}/>}
+      {currentCategory === 'expenses' && ( <Bar data={dataExpenses} options={options} /> )}
+      {currentCategory === 'incomings' && ( <Bar data={dataIncomings} options={options} /> )}
     </div>
   );
 }

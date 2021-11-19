@@ -14,23 +14,16 @@ import {
 } from 'redux/transactions';
 
 const ReportsView = () => {
-  const currentType = useSelector(transactionsSelectors.getCurrentType);
   const month = useSelector(transactionsSelectors.getMonth);
   const year = useSelector(transactionsSelectors.getYear);
- console.log(currentType);
-  const currentCatDetailsExpenses = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
-  const dataExpenses = currentCatDetailsExpenses?.details;
+//  console.log(currentType);
+  // const currentCatDetailsExpenses = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  // const dataExpenses = useselector(transactionsSelectors.currentCatDetailsExpenses);
 
-  const currentCatDetailsIncomings = useSelector(transactionsSelectors.getFilteredCategoIncomings);
-  const dataIncomings = currentCatDetailsIncomings?.details;
-  console.log(currentCatDetailsIncomings);
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(transactionsOperations.getDetailInfo({ year, month }))
-    dispatch(transactionsOperations.getDetailInfoForReport({ year, month }))
-    
-  }, [dispatch, month, year ])
+    dispatch(transactionsOperations.getDetailInfo({ year, month }));
+  }, [dispatch, month, year]);
 
   return (
     <section className={s.section}>
@@ -43,8 +36,7 @@ const ReportsView = () => {
           </div>
         </div>
         <ExpensesIncome />
-        {currentType === 'incomings' && <ChartView type={currentType} data={dataIncomings} />}
-        {currentType === 'expenses' && <ChartView type={currentType} data={dataExpenses} />}
+        <ChartView />
       </Container>
     </section>
   );

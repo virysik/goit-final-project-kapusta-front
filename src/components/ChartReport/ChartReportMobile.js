@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -11,12 +12,12 @@ import {
 
 Chart.register(ChartDataLabels);
 
-function ChartReportMobile({ data }) {
-  console.log(incomesOpt);
-  console.log(data?.details);
+function ChartReportMobile() {
+  const currentCategory = useSelector(transactionsSelectors.getCurrentCategory);
 
-  const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-  
+  const filteredExp = useSelector(transactionsSelectors.getFilteredCategExp);
+  console.log('filteredExp', filteredExp);
+
   const dataIncomings = {
     datasets: [
       {
@@ -46,11 +47,25 @@ function ChartReportMobile({ data }) {
     ],
   };
 
+  // async function getArr() {
+  //   const res = await filteredExp;
+  // await res?.sort((a, b) => {
+  //   console.log('AAAAA', a);
+  //   console.log('BBBBB', b);
+  //   return b.nested.value - a.nested.value;
+  // });
+  // console.log('resss', res);
+  // res.then(ar => setExpArr(ar));
+
+  // getArr();
+  // .then(res => res.sort((a, b) => b.nested.value - a.nested.value))
+  // .then(ar => setExpArr(ar.sort((a, b) => b.nested.value - a.nested.value)));
+
   const dataExpenses = {
     datasets: [
       {
-        data: data?.details,
-
+        // data: expArr.sort((a, b) => b.nested.value - a.nested.value),
+        data: expensesOpt.sort((a, b) => b.nested.value - a.nested.value),
         maxBarThickness: 15,
         borderRadius: 20,
         minBarLength: 100,
@@ -72,7 +87,6 @@ function ChartReportMobile({ data }) {
       },
     ],
   };
-  
 
   const options = {
     indexAxis: 'y',
@@ -127,10 +141,15 @@ function ChartReportMobile({ data }) {
       },
     },
   };
+
   return (
     <div className={s.charterReport}>
-      {currentCategory === 'incomings' && <Bar data={dataIncomings} options={options} height={400} width={320} />}
-      {currentCategory === 'expenses' && <Bar data={dataExpenses} options={options} height={300} width={320} />}
+      {currentCategory === 'incomings' && (
+        <Bar data={dataIncomings} options={options} height={400} width={320} />
+      )}
+      {currentCategory === 'expenses' && (
+        <Bar data={dataExpenses} options={options} height={300} width={320} />
+      )}
     </div>
   );
 }
