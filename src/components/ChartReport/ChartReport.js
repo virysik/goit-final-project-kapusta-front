@@ -15,11 +15,31 @@ function ChartReport() {
   const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
   
+function ExpSort() {
+     if (sumExp) {
+    return  getExp();
+  };
+}
+  function getExp() {
+       const res = [...sumExp];
+       return res.sort((a, b) => b.nested.value - a.nested.value);
+  };
+
+    function IncSort() {
+     if (sumInc) {
+    return  getInc();
+  };
+}
+  function getInc() {
+       const res = [...sumInc];
+       return res.sort((a, b) => b.nested.value - a.nested.value);
+  };
+
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
     const dataIncomings = {
       datasets: [
-        {data: sumInc,
+        {data: IncSort(),
         // optArr.sort((a, b) => {
         //   return b.nested.value - a.nested.value;
         // }),
@@ -51,7 +71,7 @@ function ChartReport() {
   const dataExpenses = {
     datasets: [
       {
-        data: sumExp,
+        data: ExpSort(),
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,

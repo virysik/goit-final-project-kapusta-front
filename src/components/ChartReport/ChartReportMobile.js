@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useState } from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
@@ -11,15 +11,37 @@ import { transactionsSelectors } from 'redux/transactions';
 Chart.register(ChartDataLabels);
 
 function ChartReportMobile() {
+
   const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
   const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
 
+  function ExpSort() {
+     if (sumExp) {
+    return  getExp();
+  };
+}
+  function getExp() {
+       const res = [...sumExp];
+       return res.sort((a, b) => b.nested.value - a.nested.value);
+  };
+
+    function IncSort() {
+     if (sumInc) {
+    return  getInc();
+  };
+}
+  function getInc() {
+       const res = [...sumInc];
+       return res.sort((a, b) => b.nested.value - a.nested.value);
+  };
+
+  
+
   const dataIncomings = {
     datasets: [
       {
-        data: sumInc,
-
+        data: IncSort(),
         maxBarThickness: 15,
         borderRadius: 20,
         minBarLength: 100,
@@ -42,25 +64,10 @@ function ChartReportMobile() {
     ],
   };
 
-  // async function getArr() {
-  //   const res = await filteredExp;
-  // await res?.sort((a, b) => {
-  //   console.log('AAAAA', a);
-  //   console.log('BBBBB', b);
-  //   return b.nested.value - a.nested.value;
-  // });
-  // console.log('resss', res);
-  // res.then(ar => setExpArr(ar));
-
-  // getArr();
-  // .then(res => res.sort((a, b) => b.nested.value - a.nested.value))
-  // .then(ar => setExpArr(ar.sort((a, b) => b.nested.value - a.nested.value)));
-
   const dataExpenses = {
     datasets: [
       {
-        // data: expArr.sort((a, b) => b.nested.value - a.nested.value),
-        data: sumExp,
+        data: ExpSort(),
         maxBarThickness: 15,
         borderRadius: 20,
         minBarLength: 100,
