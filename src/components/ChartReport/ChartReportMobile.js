@@ -11,32 +11,29 @@ import { transactionsSelectors } from 'redux/transactions';
 Chart.register(ChartDataLabels);
 
 function ChartReportMobile() {
-
   const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
   const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
-  const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+  const currentType = useSelector(transactionsSelectors.getCurrentType);
 
   function ExpSort() {
-     if (sumExp) {
-    return  getExp();
-  };
-}
+    if (sumExp) {
+      return getExp();
+    }
+  }
   function getExp() {
-       const res = [...sumExp];
-       return res.sort((a, b) => b.nested.value - a.nested.value);
-  };
+    const res = [...sumExp];
+    return res.sort((a, b) => b.nested.value - a.nested.value);
+  }
 
-    function IncSort() {
-     if (sumInc) {
-    return  getInc();
-  };
-}
+  function IncSort() {
+    if (sumInc) {
+      return getInc();
+    }
+  }
   function getInc() {
-       const res = [...sumInc];
-       return res.sort((a, b) => b.nested.value - a.nested.value);
-  };
-
-  
+    const res = [...sumInc];
+    return res.sort((a, b) => b.nested.value - a.nested.value);
+  }
 
   const dataIncomings = {
     datasets: [
@@ -146,10 +143,10 @@ function ChartReportMobile() {
 
   return (
     <div className={s.charterReport}>
-      {currentCategory === 'incomings' && (
+      {currentType === 'incomings' && (
         <Bar data={dataIncomings} options={options} height={400} width={320} />
       )}
-      {currentCategory === 'expenses' && (
+      {currentType === 'expenses' && (
         <Bar data={dataExpenses} options={options} height={300} width={320} />
       )}
     </div>

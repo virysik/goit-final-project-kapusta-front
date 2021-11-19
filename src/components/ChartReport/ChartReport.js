@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -14,32 +14,33 @@ function ChartReport() {
   const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
   const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-  
-function ExpSort() {
-     if (sumExp) {
-    return  getExp();
-  };
-}
-  function getExp() {
-       const res = [...sumExp];
-       return res.sort((a, b) => b.nested.value - a.nested.value);
-  };
 
-    function IncSort() {
-     if (sumInc) {
-    return  getInc();
-  };
-}
+  function ExpSort() {
+    if (sumExp) {
+      return getExp();
+    }
+  }
+  function getExp() {
+    const res = [...sumExp];
+    return res.sort((a, b) => b.nested.value - a.nested.value);
+  }
+
+  function IncSort() {
+    if (sumInc) {
+      return getInc();
+    }
+  }
   function getInc() {
-       const res = [...sumInc];
-       return res.sort((a, b) => b.nested.value - a.nested.value);
-  };
+    const res = [...sumInc];
+    return res.sort((a, b) => b.nested.value - a.nested.value);
+  }
 
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
-    const dataIncomings = {
-      datasets: [
-        {data: IncSort(),
+  const dataIncomings = {
+    datasets: [
+      {
+        data: IncSort(),
         // optArr.sort((a, b) => {
         //   return b.nested.value - a.nested.value;
         // }),
@@ -134,8 +135,12 @@ function ExpSort() {
 
   return (
     <div className={s.charterReport}>
-      {currentCategory === 'expenses' && ( <Bar data={dataExpenses} options={options} /> )}
-      {currentCategory === 'incomings' && ( <Bar data={dataIncomings} options={options} /> )}
+      {currentCategory === 'expenses' && (
+        <Bar data={dataExpenses} options={options} />
+      )}
+      {currentCategory === 'incomings' && (
+        <Bar data={dataIncomings} options={options} />
+      )}
     </div>
   );
 }

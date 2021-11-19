@@ -13,26 +13,35 @@ import { authOperations } from 'redux/auth';
 const MobileTable = () => {
   const dispatch = useDispatch();
   const date = useSelector(transactionsSelectors.getDate);
-  const outData = useSelector(transactionsSelectors.getOutTrans);
-  const incData = useSelector(transactionsSelectors.getIncTrans);
+  const allData = useSelector(transactionsSelectors.getAllTrans);
+  // const outData = useSelector(transactionsSelectors.getOutTrans);
+  // const incData = useSelector(transactionsSelectors.getIncTrans);
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
 
+  // console.log('outDATA', outData);
+  // console.log('incData', incData);
+  console.log('ALLdata', allData);
+
+  // const arr = useMemo(() => {
+  //   return [...allData];
+  // }, [allData]);
   // const allData = useMemo(() => {
   //   return [outData.concat(incData)];
   // }, [outData, incData]);
-  let allData = [...outData, ...incData];
+  //let allData = [...outData, ...incData];
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
-  }, [dispatch, outData]);
-
-  useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
-  }, [dispatch, incData]);
+  }, [dispatch, date]);
+
+  // useEffect(() => {
+  //   dispatch(transactionsOperations.getIncTransDate(date));
+  // }, [dispatch, date]);
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
-  }, [dispatch, date, outData, incData]);
+  }, [dispatch, allData]);
 
   return (
     <>

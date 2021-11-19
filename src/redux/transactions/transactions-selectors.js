@@ -13,6 +13,7 @@ const getDay = state => state.transactions.date.day;
 
 const getOutTrans = state => state.transactions.transactionsOut;
 const getIncTrans = state => state.transactions.transactionsInc;
+
 const getAllTrans = state => state.transactions.transactionsAll;
 
 ///////////////получить тразакции расходов/доходов для графика на 3-ей странице//////////////// Влад

@@ -7,7 +7,6 @@ import { Toaster } from 'react-hot-toast';
 
 const BalanceView = () => {
   const viewPort = useWindowDimensions();
-  let type = 'expenses';
 
   return (
     <section className={s.section}>
