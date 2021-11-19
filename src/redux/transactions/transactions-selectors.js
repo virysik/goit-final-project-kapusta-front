@@ -29,7 +29,8 @@ const getFilteredCategoryExpenses = createSelector(
 
 const getFilteredCategoIncomings = createSelector(
   [getDetailsInfoByIncomings, getCurrentCategory],
-  (arr, category) => arr?.filter(ar => ar.category === category)[0],
+  (arr, category) => arr?.filter(ar => console.log(ar.category) === category)[0],
+  // (arr, category) => arr.filter(ar => ar.category === category)[0]
 );
 
 // получить расход/доход за месяц на 3ей странице//Вера
@@ -59,4 +60,6 @@ export {
   getReportMonthly,
   getIncReportMonthly,
   getExpReportMonthly,
+  getDetailsInfoByIncomings
+  
 };

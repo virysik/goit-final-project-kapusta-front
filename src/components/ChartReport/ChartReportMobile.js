@@ -4,17 +4,19 @@ import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
 import { expensesOpt, incomesOpt } from '../../data/optionsChart';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
-  transactionsOperations,
   transactionsSelectors,
 } from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
-function ChartReportMobile() {
+function ChartReportMobile({ data }) {
+  console.log(incomesOpt);
+  console.log(data?.details);
 
-const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+  const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+  
   const dataIncomings = {
     datasets: [
       {
@@ -47,9 +49,7 @@ const currentCategory = useSelector(transactionsSelectors.getCurrentType);
   const dataExpenses = {
     datasets: [
       {
-        data: expensesOpt.sort((a, b) => {
-          return b.nested.value - a.nested.value;
-        }),
+        data: data?.details,
 
         maxBarThickness: 15,
         borderRadius: 20,

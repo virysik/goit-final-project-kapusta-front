@@ -17,30 +17,18 @@ const ReportsView = () => {
   const currentType = useSelector(transactionsSelectors.getCurrentType);
   const month = useSelector(transactionsSelectors.getMonth);
   const year = useSelector(transactionsSelectors.getYear);
+ console.log(currentType);
+  const currentCatDetailsExpenses = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  const dataExpenses = currentCatDetailsExpenses?.details;
 
-  const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
-  // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-
-  const data = currentCatDetails?.details;
-  
-  // const [expensesOpt, setExpensesOpt] = useState([]);
-
-  // const getState = async () => {
-
-  //   const result = await currentCatDetails?.details;
-  
-  //   return setExpensesOpt(result)
-  // };
-
-  // getState();
-
-
-  // console.log(expensesOpt);
+  const currentCatDetailsIncomings = useSelector(transactionsSelectors.getFilteredCategoIncomings);
+  const dataIncomings = currentCatDetailsIncomings?.details;
+  console.log(currentCatDetailsIncomings);
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(transactionsOperations.getDetailInfo({ year, month }))
-    dispatch(transactionsOperations.getDetailInfoForReport({ year:2021, month:11 }))
+    dispatch(transactionsOperations.getDetailInfoForReport({ year, month }))
     
   }, [dispatch, month, year ])
 
@@ -55,7 +43,8 @@ const ReportsView = () => {
           </div>
         </div>
         <ExpensesIncome />
-        <ChartView type={currentType} data={data} />
+        {currentType === 'incomings' && <ChartView type={currentType} data={dataIncomings} />}
+        {currentType === 'expenses' && <ChartView type={currentType} data={dataExpenses} />}
       </Container>
     </section>
   );

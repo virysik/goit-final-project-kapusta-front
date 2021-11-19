@@ -1,4 +1,4 @@
-import React,{ useState} from 'react';
+import React from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -10,31 +10,23 @@ import { transactionsSelectors,} from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
-function ChartReport() {
+function ChartReport({data}) {
 
   // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-    const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+    // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
   // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
 
-  const data = currentCatDetails?.details;
+  // const data = currentCatDetails?.details;
 
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
     const dataIncomings = {
-    datasets: [
-      {
-        data: async function () {
-          await data.sort((a, b) => {
-            return b.nested.value - a.nested.value;
-          })
-          return data
-        },
-
+      datasets: [
+        {data: data,
         // optArr.sort((a, b) => {
         //   return b.nested.value - a.nested.value;
         // }),
-
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,
@@ -72,9 +64,6 @@ function ChartReport() {
         borderWidth: 1,
         datalabels: {
           formatter: function (value, context) {
-            // console.log(
-            //   context.chart.data.datasets[0].data[context.dataIndex].nested.value
-            // );
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
                 .value + 'грн'

@@ -18,7 +18,7 @@ const day = splittedDate[0];
 const initialState = {
   transactionsOut: [],
   transactionsInc: [],
-  currentCategory: 'Продукты',
+  currentCategory: '',
   currentType: 'expenses',
   entities: {
     expenses: [],
@@ -114,7 +114,7 @@ const transactionSlice = createSlice({
     /// Vlad
     [getDetailInfo.fulfilled](state, action) {
       state.entities = action.payload.data.data;
-      console.log('state.entities: ', state.entities);
+
     },
     [getDetailInfo.pending](state, action) {},
     [getDetailInfo.rejected](state, action) { },

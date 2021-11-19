@@ -6,39 +6,48 @@ import { useDispatch, useSelector } from 'react-redux';
 import { transactionsReducer } from 'redux/transactions';
 import { transactionsSelectors } from 'redux/transactions';
 
-const incomes = [
-  { _id: 12, category: 'ЗП', value: 0.0, isActive: false },
-  { _id: 14, category: 'Доп. доход', value: 0.0, isActive: false },
-];
+
 
 export default function SumCategoryInfo() {
-  const sumOfcategories = useSelector(
+
+  const sumOfExpenses = useSelector(
     transactionsSelectors.getDetailsInfoByExpenses,
   );
+console.log(sumOfExpenses);
+  const sumOfIncomings = useSelector(
+    transactionsSelectors.getDetailsInfoByIncomings,
+  );
 
-  const [state, setState] = useState([]);
+  const [expensesSum, setExpensesSum] = useState([]);
+  const [incomingsSum, setIncomingsSum] = useState([]);
 
   const getState = async () => {
 
-    const result = await sumOfcategories;
+    const result1 = await sumOfExpenses;
+    const result2 = await sumOfIncomings;
 
-    return setState(result);
+    return setExpensesSum(result1), setIncomingsSum(result2);
   };
 
   getState();
   
   const expenses = [
-  { _id: 1, category: 'Продукты', value: state && state[0] !== undefined ? state[0]?.sum : 0, isActive: false },
-  { _id: 2, category: 'Алкоголь', value:  state && state[1] !== undefined ? state[1]?.sum : 0, isActive: false },
-  { _id: 3, category: 'Развлечения', value: state && state[2] !== undefined ? state[2]?.sum : 0, isActive: false },
-  { _id: 4, category: 'Здоровье', value: state && state[3] !== undefined ? state[3]?.sum : 0, isActive: false },
-  { _id: 5, category: 'Транспорт', value: state && state[4] !== undefined ? state[4]?.sum : 0, isActive: false },
-  { _id: 6, category: 'Всё для дома', value: state && state[5] !== undefined ? state[5]?.sum : 0, isActive: false },
-  { _id: 8, category: 'Техника', value: state && state[6] !== undefined ? state[6]?.sum : 0, isActive: false },
-  { _id: 7, category: 'Коммуналка, связь', value: state && state[7] !== undefined ? state[7]?.sum : 0, isActive: false },
-  { _id: 9, category: 'Спорт, хобби', value: state && state[8] !== undefined ? state[8]?.sum : 0, isActive: false },
-  { _id: 10, category: 'Образование', value: state && state[9] !== undefined ? state[9]?.sum : 0, isActive: false },
-  { _id: 11, category: 'Прочее', value: state && state[10] !== undefined ? state[10]?.sum : 0, isActive: false },
+  { _id: 1, category: 'Продукты', value: expensesSum && expensesSum[0] !== undefined ? expensesSum[0]?.sum : 0, isActive: false },
+  { _id: 2, category: 'Алкоголь', value:  expensesSum && expensesSum[1] !== undefined ? expensesSum[1]?.sum : 0, isActive: false },
+  { _id: 3, category: 'Развлечения', value: expensesSum && expensesSum[2] !== undefined ? expensesSum[2]?.sum : 0, isActive: false },
+  { _id: 4, category: 'Здоровье', value: expensesSum && expensesSum[3] !== undefined ? expensesSum[3]?.sum : 0, isActive: false },
+  { _id: 5, category: 'Транспорт', value: expensesSum && expensesSum[4] !== undefined ? expensesSum[4]?.sum : 0, isActive: false },
+  { _id: 6, category: 'Всё для дома', value: expensesSum && expensesSum[5] !== undefined ? expensesSum[5]?.sum : 0, isActive: false },
+  { _id: 8, category: 'Техника', value: expensesSum && expensesSum[6] !== undefined ? expensesSum[6]?.sum : 0, isActive: false },
+  { _id: 7, category: 'Коммуналка, связь', value: expensesSum && expensesSum[7] !== undefined ? expensesSum[7]?.sum : 0, isActive: false },
+  { _id: 9, category: 'Спорт, хобби', value: expensesSum && expensesSum[8] !== undefined ? expensesSum[8]?.sum : 0, isActive: false },
+  { _id: 10, category: 'Образование', value: expensesSum && expensesSum[9] !== undefined ? expensesSum[9]?.sum : 0, isActive: false },
+  { _id: 11, category: 'Прочее', value: expensesSum && expensesSum[10] !== undefined ? expensesSum[10]?.sum : 0, isActive: false },
+  ];
+  
+  const incomes = [
+  { _id: 12, category: 'ЗП', value: incomingsSum && incomingsSum[0] !== undefined ? incomingsSum[0]?.sum : 0, isActive: false },
+  { _id: 14, category: 'Доп. доход', value:  incomingsSum && incomingsSum[1] !== undefined ? incomingsSum[1]?.sum : 0, isActive: false },
 ];
 
   const dispatch = useDispatch();
