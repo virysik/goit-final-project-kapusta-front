@@ -1,24 +1,29 @@
-import s from './CategoryInfo.module.css';
 import sprite from '../../images/svg/icon.svg';
 import { useDispatch } from 'react-redux';
-import {
-transactionsReducer
-} from 'redux/transactions';
-
+import { transactionsReducer } from 'redux/transactions';
+import s from './CategoryInfo.module.css';
 
 export default function CategoryInfo({ trans }) {
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const handleClick = category => {
+    dispatch(transactionsReducer.addCurrentCategory(category));
+  };
+
   return (
     <ul className={s.list}>
       {trans.length === 0 ? (
         <li className={s.transEmpty}>За данный период транзакций нет</li>
       ) : (
         trans.map(item => (
-          <li key={item.category} className={s.item} onClick={()=>{dispatch(transactionsReducer.addCurrentCategory(item.category))}}>
-            <p className={s.price}>{item.value}</p>
+          <li
+            key={item.category}
+            className={s.item}
+            onClick={() => handleClick(item.category)}
+          >
+            <p className={s.price}>{item.sum}</p>
 
-            <svg className={item.isActive ? s.iconActive : s.icon}>
+            <svg className={s.icon}>
               <use
                 className={s.useSvg}
                 xlinkHref={`${sprite}#${item.category}`}

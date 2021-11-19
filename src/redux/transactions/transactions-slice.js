@@ -7,7 +7,7 @@ import {
   getOutTransDate,
   getIncTransDate,
   getDetailInfo,
-  getDetailInfoForReport
+  getDetailInfoForReport,
 } from './transactions-operations';
 
 const splittedDate = new Date().toLocaleDateString().split('.');
@@ -29,7 +29,7 @@ const initialState = {
     ],
   },
   date: { day, month, year },
-  raport:[],
+  raport: { total: [], expenses: [], incomings: [] },
   isDeleting: false,
   error: null,
 };
@@ -114,17 +114,15 @@ const transactionSlice = createSlice({
     /// Vlad
     [getDetailInfo.fulfilled](state, action) {
       state.entities = action.payload.data.data;
-      console.log('state.entities: ', state.entities);
     },
     [getDetailInfo.pending](state, action) {},
-    [getDetailInfo.rejected](state, action) { },
+    [getDetailInfo.rejected](state, action) {},
 
     [getDetailInfoForReport.fulfilled](state, action) {
-      state.raport = action.payload.data;
+      state.raport = action.payload;
     },
     [getDetailInfoForReport.pending](state, action) {},
-    [getDetailInfoForReport.rejected](state, action) { },
-    
+    [getDetailInfoForReport.rejected](state, action) {},
   },
 });
 
