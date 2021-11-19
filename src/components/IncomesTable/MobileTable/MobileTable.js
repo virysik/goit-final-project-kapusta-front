@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import {
@@ -17,22 +17,22 @@ const MobileTable = () => {
   const incData = useSelector(transactionsSelectors.getIncTrans);
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
 
-  const allData = useMemo(() => {
-    return [...outData, ...incData];
-  }, [outData, incData]);
-  // let allData = [...outData, ...incData];
+  // const allData = useMemo(() => {
+  //   return [outData.concat(incData)];
+  // }, [outData, incData]);
+  let allData = [...outData, ...incData];
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
-  }, [dispatch, date]);
+  }, [dispatch, outData]);
 
   useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
-  }, [dispatch, date]);
+  }, [dispatch, incData]);
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
-  }, [dispatch, allData]);
+  }, [dispatch, date, outData, incData]);
 
   return (
     <>

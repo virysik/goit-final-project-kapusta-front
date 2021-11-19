@@ -11,8 +11,8 @@ const BalanceView = () => {
 
   return (
     <section className={s.section}>
-      {viewPort.width < 768 && <BalanceViewMob type={type} />}
-      {viewPort.width >= 768 && <BalanceViewTab type={type} />}
+      {viewPort.width < 768 && <BalanceViewMob />}
+      {viewPort.width >= 768 && <BalanceViewTab />}
 
       <Toaster />
     </section>

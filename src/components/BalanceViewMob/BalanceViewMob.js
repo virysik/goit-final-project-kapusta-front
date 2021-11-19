@@ -10,7 +10,8 @@ import s from './BalanceViewMob.module.css';
 export default function BalanceViewMob() {
   const [showTabs, setShowTabs] = useState(true);
   const [showTabPanel, setShowTabPanel] = useState(false);
-  const handleTabClick = e => {
+
+  const handleTabClick = () => {
     setShowTabs(false);
     setShowTabPanel(true);
   };
