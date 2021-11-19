@@ -1,30 +1,24 @@
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
-import { expensesOpt, incomesOpt } from '../../data/optionsChart';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  transactionsOperations,
-  transactionsSelectors,
-} from 'redux/transactions';
+// import { expensesOpt, incomesOpt } from '../../data/optionsChart';
+import { useSelector } from 'react-redux';
+import { transactionsSelectors,} from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
 
 function ChartReportMobile() {
-  const currentCategory = useSelector(transactionsSelectors.getCurrentCategory);
-
-  const filteredExp = useSelector(transactionsSelectors.getFilteredCategExp);
-  console.log('filteredExp', filteredExp);
+  const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
+  const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
+  const currentCategory = useSelector(transactionsSelectors.getCurrentType);
 
   const dataIncomings = {
     datasets: [
       {
-        data: incomesOpt.sort((a, b) => {
-          return b.nested.value - a.nested.value;
-        }),
+        data: sumInc,
 
         maxBarThickness: 15,
         borderRadius: 20,
@@ -66,7 +60,7 @@ function ChartReportMobile() {
     datasets: [
       {
         // data: expArr.sort((a, b) => b.nested.value - a.nested.value),
-        data: expensesOpt.sort((a, b) => b.nested.value - a.nested.value),
+        data: sumExp,
         maxBarThickness: 15,
         borderRadius: 20,
         minBarLength: 100,

@@ -18,7 +18,7 @@ const day = splittedDate[0];
 const initialState = {
   transactionsOut: [],
   transactionsInc: [],
-  currentCategory: 'Продукты',
+  currentCategory: '',
   currentType: 'expenses',
   entities: {
     expenses: [],

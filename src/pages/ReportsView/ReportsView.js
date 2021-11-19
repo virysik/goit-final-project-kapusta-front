@@ -16,6 +16,9 @@ import {
 const ReportsView = () => {
   const month = useSelector(transactionsSelectors.getMonth);
   const year = useSelector(transactionsSelectors.getYear);
+//  console.log(currentType);
+  // const currentCatDetailsExpenses = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  // const dataExpenses = useselector(transactionsSelectors.currentCatDetailsExpenses);
 
   const dispatch = useDispatch();
   useEffect(() => {

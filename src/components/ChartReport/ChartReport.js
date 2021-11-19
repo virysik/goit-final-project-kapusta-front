@@ -11,29 +11,18 @@ import { transactionsSelectors } from 'redux/transactions';
 Chart.register(ChartDataLabels);
 
 function ChartReport() {
-  // const currentCatDetails = useSelector(transactionsSelectors.getFilteredCategoryExpenses);
+  const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
+  const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
   const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-  const currentCatDetails = useSelector(transactionsSelectors.getInfoExpenses);
-  // const currentCategory = useSelector(transactionsSelectors.getCurrentType);
-
-  const data = currentCatDetails?.details;
-
+  
   const aspect = currentCategory === 'expenses' ? 3 : 3;
 
-  const dataIncomings = {
-    datasets: [
-      {
-        data: async function () {
-          await data.sort((a, b) => {
-            return b.nested.value - a.nested.value;
-          });
-          return data;
-        },
-
+    const dataIncomings = {
+      datasets: [
+        {data: sumInc,
         // optArr.sort((a, b) => {
         //   return b.nested.value - a.nested.value;
         // }),
-
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,
@@ -62,7 +51,7 @@ function ChartReport() {
   const dataExpenses = {
     datasets: [
       {
-        data: data,
+        data: sumExp,
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,
@@ -71,9 +60,6 @@ function ChartReport() {
         borderWidth: 1,
         datalabels: {
           formatter: function (value, context) {
-            // console.log(
-            //   context.chart.data.datasets[0].data[context.dataIndex].nested.value
-            // );
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
                 .value + 'грн'
@@ -128,12 +114,8 @@ function ChartReport() {
 
   return (
     <div className={s.charterReport}>
-      {currentCategory === 'expenses' && (
-        <Bar data={dataExpenses} options={options} />
-      )}
-      {currentCategory === 'incomings' && (
-        <Bar data={dataIncomings} options={options} />
-      )}
+      {currentCategory === 'expenses' && ( <Bar data={dataExpenses} options={options} /> )}
+      {currentCategory === 'incomings' && ( <Bar data={dataIncomings} options={options} /> )}
     </div>
   );
 }
