@@ -35,7 +35,6 @@ const getFilteredCategInc = createSelector(
   [getInfoIncomings, getCurrentCategory],
   (arr, category) => arr?.find(ar => ar.category === category)?.details,
 );
-
 ///////////////////////////////////////
 
 // const getCurrCatExpDet = createSelector([getFilteredCategExp], arr =>
