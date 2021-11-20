@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import { transactionsSelectors } from 'redux/transactions';
 
 Chart.register(ChartDataLabels);
-
 function ChartReportMobile() {
   const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
   const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
