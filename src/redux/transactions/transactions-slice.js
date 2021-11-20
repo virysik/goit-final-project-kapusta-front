@@ -10,10 +10,9 @@ import {
   getDetailInfoForReport,
 } from './transactions-operations';
 
-const splittedDate = new Date().toLocaleDateString().split('.');
-const year = splittedDate[2];
-const month = splittedDate[1];
-const day = splittedDate[0];
+const year = new Date().getFullYear();
+const month = new Date().getMonth() + 1;
+const day = new Date().getDate();
 
 const initialState = {
   transactionsOut: [],

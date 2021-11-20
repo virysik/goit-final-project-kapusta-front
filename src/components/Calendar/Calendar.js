@@ -10,10 +10,9 @@ export default function Calendar() {
   const dispatch = useDispatch();
 
   const updateDate = date => {
-    const splittedDate = date.toLocaleDateString().split('.');
-    const year = splittedDate[2];
-    const month = splittedDate[1];
-    const day = splittedDate[0];
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
     dispatch(addDate({ month, day, year }));
   };
 
