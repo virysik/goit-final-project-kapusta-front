@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-// import { useState } from 'react';
+import React from 'react';
+
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
-// import { expensesOpt, incomesOpt } from '../../data/optionsChart';
 import { useSelector } from 'react-redux';
 import { transactionsSelectors } from 'redux/transactions';
 

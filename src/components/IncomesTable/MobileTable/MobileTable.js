@@ -17,16 +17,27 @@ const MobileTable = () => {
   const outTrans = useSelector(transactionsSelectors.getOutTrans);
   const incTrans = useSelector(transactionsSelectors.getIncTrans);
 
-  const arrOut = useMemo(() => {
-    return [...outTrans];
-  }, [outTrans]);
-  const arrInc = useMemo(() => {
-    return [...incTrans];
-  }, [incTrans]);
-
   const arr = useMemo(() => {
-    return [...arrInc,...arrOut];
-  }, [arrInc, arrOut]);
+    return [...outTrans, ...incTrans];
+  }, [outTrans, incTrans]);
+
+  // const arrOut = useMemo(() => {
+  //   if (outTrans) {
+  //     return [...outTrans];
+  //   }
+  // }, [outTrans]);
+
+  // const arrInc = useMemo(() => {
+  //   if (incTrans) {
+  //     return [...incTrans];
+  //   }
+  // }, [incTrans]);
+
+  // const arr = useMemo(() => {
+  //   if (arrOut && arrInc) {
+  //     return [...arrInc, ...arrOut];
+  //   }
+  // }, [arrInc, arrOut]);
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
