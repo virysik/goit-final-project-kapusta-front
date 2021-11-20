@@ -10,9 +10,9 @@ import {
   getDetailInfoForReport,
 } from './transactions-operations';
 
-const year = new Date().getFullYear();
-const month = new Date().getMonth() + 1;
-const day = new Date().getDate();
+const year = String(new Date().getFullYear());
+const month = String(new Date().getMonth() + 1);
+const day = String(new Date().getDate());
 
 const initialState = {
   transactionsOut: [],
