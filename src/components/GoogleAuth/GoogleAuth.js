@@ -24,11 +24,9 @@ const GoogleAuth = () => {
   // };
   return (
     <>
-      <a href={`${BASE_URL}/users/google`}>
-        <button type="button" className={s.buttonGoogle}>
-          <GoogleIcon className={s.googleSvg} />
-          Google
-        </button>
+      <a href={`${BASE_URL}/users/google`} className={s.buttonGoogle}>
+        <GoogleIcon className={s.googleSvg} />
+        Google
       </a>
       {/* <GoogleLogin
         // clientId="247340085219-f8vpeflsvkcin8lei0r36j2eu8gqj2uh.apps.googleusercontent.com"
