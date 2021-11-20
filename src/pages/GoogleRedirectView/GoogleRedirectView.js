@@ -4,7 +4,6 @@ import imgText from '../../images/svg/Kapusta.svg';
 import { useDispatch } from 'react-redux';
 import { googleLogIn } from '../../redux/auth/auth-slice';
 import { authOperations } from 'redux/auth';
-import axios from 'axios';
 import s from './GoogleRedirectView.module.css';
 
 const GoogleRedirectView = () => {
