@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
 
-const token = {
+export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -108,6 +108,7 @@ const operations = {
   logIn,
   fetchCurrentUser,
   setUserBalance,
+  token,
 };
 
 export default operations;
