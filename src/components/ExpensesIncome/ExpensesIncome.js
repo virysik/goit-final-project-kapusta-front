@@ -1,6 +1,5 @@
 import s from './ExpensesIncome.module.css';
 import SumCategoryInfo from 'components/SumCategoryInfo';
-
 import { useSelector } from 'react-redux';
 import { transactionsSelectors } from 'redux/transactions';
 

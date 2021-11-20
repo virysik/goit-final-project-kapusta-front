@@ -21,24 +21,6 @@ const MobileTable = () => {
     return [...outTrans, ...incTrans];
   }, [outTrans, incTrans]);
 
-  // const arrOut = useMemo(() => {
-  //   if (outTrans) {
-  //     return [...outTrans];
-  //   }
-  // }, [outTrans]);
-
-  // const arrInc = useMemo(() => {
-  //   if (incTrans) {
-  //     return [...incTrans];
-  //   }
-  // }, [incTrans]);
-
-  // const arr = useMemo(() => {
-  //   if (arrOut && arrInc) {
-  //     return [...arrInc, ...arrOut];
-  //   }
-  // }, [arrInc, arrOut]);
-
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
     dispatch(transactionsOperations.getIncTransDate(date));
