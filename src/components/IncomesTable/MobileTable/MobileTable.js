@@ -13,9 +13,6 @@ import { authOperations } from 'redux/auth';
 const MobileTable = () => {
   const dispatch = useDispatch();
   const date = useSelector(transactionsSelectors.getDate);
-  const allData = useSelector(transactionsSelectors.getAllTrans);
-  // const outData = useSelector(transactionsSelectors.getOutTrans);
-  // const incData = useSelector(transactionsSelectors.getIncTrans);
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
   const outTrans = useSelector(transactionsSelectors.getOutTrans);
   const incTrans = useSelector(transactionsSelectors.getIncTrans);
