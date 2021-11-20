@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import {
@@ -17,37 +17,34 @@ const MobileTable = () => {
   // const outData = useSelector(transactionsSelectors.getOutTrans);
   // const incData = useSelector(transactionsSelectors.getIncTrans);
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
+  const outTrans = useSelector(transactionsSelectors.getOutTrans);
+  const incTrans = useSelector(transactionsSelectors.getIncTrans);
 
-  // console.log('outDATA', outData);
-  // console.log('incData', incData);
-  console.log('ALLdata', allData);
+  const arrOut = useMemo(() => {
+    return [...outTrans];
+  }, [outTrans]);
+  const arrInc = useMemo(() => {
+    return [...incTrans];
+  }, [incTrans]);
 
-  // const arr = useMemo(() => {
-  //   return [...allData];
-  // }, [allData]);
-  // const allData = useMemo(() => {
-  //   return [outData.concat(incData)];
-  // }, [outData, incData]);
-  //let allData = [...outData, ...incData];
+  const arr = useMemo(() => {
+    return [...arrInc,...arrOut];
+  }, [arrInc, arrOut]);
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
     dispatch(transactionsOperations.getIncTransDate(date));
   }, [dispatch, date]);
 
-  // useEffect(() => {
-  //   dispatch(transactionsOperations.getIncTransDate(date));
-  // }, [dispatch, date]);
-
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
-  }, [dispatch, allData]);
+  }, [dispatch, outTrans, incTrans]);
 
   return (
     <>
-      {allData && (
+      {arr && (
         <ul className={s.listTable}>
-          {allData.map(item => (
+          {arr.map(item => (
             <li key={item._id} className={s.tableItem}>
               <div className={s.boxDescription}>
                 <p className={s.description} data-tip={item.description}>
