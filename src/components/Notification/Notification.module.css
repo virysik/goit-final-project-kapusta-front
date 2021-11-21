@@ -21,13 +21,13 @@
   font-style: normal;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
   .commentIcon {
     width: 292px;
     animation: 5s;
     left: 30%;
     top: 145px;    
-    position: fixed;
+    position: absolute;
   }
   
 }
@@ -37,6 +37,7 @@
     animation: 5s;
     left: 420px;
     top: 70px;
+    position: relative;
   }
 }
 
