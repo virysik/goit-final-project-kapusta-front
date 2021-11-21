@@ -4,7 +4,6 @@ import imgText from '../../images/svg/Kapusta.svg';
 import { useDispatch } from 'react-redux';
 import { googleLogIn } from '../../redux/auth/auth-slice';
 import { authOperations } from 'redux/auth';
-import axios from 'axios';
 import s from './GoogleRedirectView.module.css';
 
 const GoogleRedirectView = () => {
@@ -14,10 +13,6 @@ const GoogleRedirectView = () => {
   const token = new URLSearchParams(location.search).get('token');
   const email = new URLSearchParams(location.search).get('email');
   const name = new URLSearchParams(location.search).get('name');
-  console.log(token);
-  console.log(balance);
-  console.log(email);
-  console.log(name);
   const newUser = {
     email,
     balance,
@@ -25,7 +20,6 @@ const GoogleRedirectView = () => {
     name,
   };
   authOperations.token.set(token);
-  console.log(axios.defaults.headers.common.Authorization);
   dispatch(googleLogIn(newUser));
   return (
     <section className={s.section}>
