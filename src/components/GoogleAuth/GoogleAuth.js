@@ -5,8 +5,8 @@ import s from './GoogleAuth.module.css';
 // import { useDispatch } from 'react-redux';
 // import { googleLogIn } from '../../redux/auth/auth-slice';
 
-// const BASE_URL = 'https://kapusta-team-project.herokuapp.com/api';
-const BASE_URL = 'http://localhost:3030/api';
+const BASE_URL = 'https://kapusta-team-project.herokuapp.com/api';
+// const BASE_URL = 'http://localhost:3030/api';
 
 const GoogleAuth = () => {
   // const dispatch = useDispatch();
