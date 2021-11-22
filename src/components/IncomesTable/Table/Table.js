@@ -55,7 +55,6 @@ const TableDesktop = ({ type }) => {
               <td data-tip={item.description}>{cliTruncate(item.description, 15)}
                 <button onClick={() => { ReactTooltip.show(this.fooRef) }}></button>
                 <ReactTooltip />
-                {/* {item.description} */}
               </td>
              
              
