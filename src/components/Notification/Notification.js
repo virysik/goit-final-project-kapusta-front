@@ -8,8 +8,10 @@ const Notification = ({ onClose }) => {
   };
 
   return (
-    <div className={s.commentIcon} onClick={handleClickWindow}>
-      Привет! Для начала работы внеси текущий баланс своего счета!
+    <div className={s.commentWrapper} onClick={handleClickWindow}>
+      <p className={s.comment}>
+        Привет! Для начала работы внеси текущий баланс своего счета!
+      </p>
       <p className={s.commentText}>
         Ты не можешь тратить деньги пока их у тебя нет :)
       </p>

@@ -1,47 +1,22 @@
-.commentIcon {
+.commentWrapper {
   position: relative;
-  margin-top: 20px;
-  padding: 23px;
-  width: 282px;
-  height: auto;
-  font-size: 14px;
-  line-height: 20px;
-  color: #ffffff;
+  top: 18px;
+
+  max-width: 282px;
+  padding-top: 31px;
+  padding-right: 25px;
+  padding-bottom: 41px;
+  padding-left: 25px;
+  color: var(--white-color);
+
   background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
   border-radius: 30px;
   z-index: 99;
   cursor: pointer;
+  outline: 1px solid green;
 }
 
-.clickClose {
-  font-family: Roboto;
-  margin-top: 15px;
-  line-height: 10px;
-  color: #ffffff;
-  font-style: normal;
-}
-
-@media screen and (min-width: 768px) {
-  .commentIcon {
-    width: 292px;
-    animation: 5s;
-    left: 30%;
-    top: 145px;    
-    position: absolute;
-  }
-  
-}
-
-@media screen and (min-width: 1280px) {
-  .commentIcon {
-    animation: 5s;
-    left: 420px;
-    top: 70px;
-    position: relative;
-  }
-}
-
-.commentIcon::after {
+.commentWrapper::after {
   content: '';
   position: absolute;
   top: 0;
@@ -55,8 +30,28 @@
   margin-top: -17px;
 }
 
+.comment {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.43;
+}
 .commentText {
-  margin-top: 20px;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.143;
+}
+
+@media screen and (min-width: 768px) {
+  .commentWrapper {
+    max-width: 292px;
+    right: 250px;
+  }
+  .commentText {
+    line-height: 1.33;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .commentWrapper {
+    right: 350px;
+  }
 }
