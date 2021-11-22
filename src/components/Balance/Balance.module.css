@@ -1,5 +1,8 @@
 .containerBalance {
-  width: 248px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   margin-bottom: 40px;
 }
@@ -22,52 +25,50 @@
   color: var(--primary-text-color);
 }
 
-@media screen and (min-width: 320px) {
-  .balanceInput {
-    position: relative;
-    display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
-    align-items: center;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.17;
-    letter-spacing: 0.02em;
-    color: var(--black-text-color);
-    width: 125px;
-    height: 44px;
-    border: 2px solid #ffffff;
-    border-right: none;
-    border-radius: 22px 0 0 22px;
-    outline: none;
-    background-color: transparent;
-  }
-  ::placeholder {
-    color: var(--black-text-color);
-  }
+.balanceInput {
+  position: relative;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  color: var(--black-text-color);
+  width: 125px;
+  height: 44px;
+  border: 2px solid #ffffff;
+  border-right: none;
+  border-radius: 22px 0 0 22px;
+  outline: none;
+  background-color: transparent;
+}
+::placeholder {
+  color: var(--black-text-color);
+}
 
-  .confirmButton {
-    background-color: transparent;
-    /* padding-right: 20px; */
-    text-align: center;
-    width: 125px;
-    height: 44px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-    text-transform: uppercase;
-    border: 2px solid #ffffff;
-    border-radius: 0 22px 22px 0;
-    outline: none;
-    color: var(--primary-text-color);
-  }
+.confirmButton {
+  background-color: transparent;
+  /* padding-right: 20px; */
+  text-align: center;
+  width: 125px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  border: 2px solid #ffffff;
+  border-radius: 0 22px 22px 0;
+  outline: none;
+  color: var(--primary-text-color);
+}
 
-  .confirmButton:hover,
-  .confirmButton:focus {
-    background-color: var(--accent-color);
-    color: var(--white-color);
-  }
+.confirmButton:hover,
+.confirmButton:focus {
+  background-color: var(--accent-color);
+  color: var(--white-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -83,7 +84,6 @@
   }
 
   .containerBalance {
-    display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: baseline;
