@@ -34,7 +34,7 @@ export default function BalanceViewTab() {
       const { data } = await axios.get(`/transactions/outgoings?year=${year}`);
       const result = data.data.result;
 
-      result.sort((a, b) => sortMonth(a, b));
+      result.sort((a, b) => a.month - b.month);
 
       getMonth(result);
       setSummary(result);
@@ -44,79 +44,69 @@ export default function BalanceViewTab() {
       const { data } = await axios.get(`/transactions/incomings?year=${year}`);
       const result = data.data.result;
 
-      result.sort((a, b) => sortMonth(a, b));
+      result.sort((a, b) => a.month - b.month);
 
       getMonth(result);
       setSummary(result);
     }
-
-    function sortMonth(a, b) {
-      if (a.month < b.month) {
-        return 1;
-      }
-      if (a.month > b.month) {
-        return -1;
-      }
-      return 0;
-    }
-
-    function getMonth(summary) {
-      summary.forEach(item => {
-        switch (item.month) {
-          case '01':
-            item.month = 'Январь';
-            break;
-
-          case '02':
-            item.month = 'Февраль';
-            break;
-
-          case '03':
-            item.month = 'Март';
-            break;
-
-          case '04':
-            item.month = 'Апрель';
-            break;
-
-          case '05':
-            item.month = 'Май';
-            break;
-
-          case '06':
-            item.month = 'Июнь';
-            break;
-
-          case '07':
-            item.month = 'Июль';
-            break;
-
-          case '08':
-            item.month = 'Август';
-            break;
-
-          case '09':
-            item.month = 'Сентябрь';
-            break;
-
-          case '10':
-            item.month = 'Октябрь';
-            break;
-
-          case '11':
-            item.month = 'Ноябрь';
-            break;
-
-          case '12':
-            item.month = 'Декабрь';
-            break;
-
-          default:
-            break;
-        }
-      });
-    }
   };
+
+  function getMonth(summary) {
+    return summary.forEach(item => {
+      switch (item.month) {
+        case '1':
+          item.month = 'Январь';
+          break;
+
+        case '2':
+          item.month = 'Февраль';
+          break;
+
+        case '3':
+          item.month = 'Март';
+          break;
+
+        case '4':
+          item.month = 'Апрель';
+          break;
+
+        case '5':
+          item.month = 'Май';
+          break;
+
+        case '6':
+          item.month = 'Июнь';
+          break;
+
+        case '7':
+          item.month = 'Июль';
+          break;
+
+        case '8':
+          item.month = 'Август';
+          break;
+
+        case '9':
+          item.month = 'Сентябрь';
+          break;
+
+        case '10':
+          item.month = 'Октябрь';
+          break;
+
+        case '11':
+          item.month = 'Ноябрь';
+          break;
+
+        case '12':
+          item.month = 'Декабрь';
+          break;
+
+        default:
+          break;
+      }
+    });
+  }
 
   return (
     <Container>

@@ -4,16 +4,16 @@ import { getIsLoggedIn } from '../redux/auth/auth-selectors';
 
 export default function PublicRoute({
   children,
-  // restricted = false,
+  restricted = false,
   redirectTo = '/balance',
   ...routeProps
 }) {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
-  const showRedirect = isLoggedIn;
+  const shouldRedirect = isLoggedIn && !restricted;
   return (
     <Route {...routeProps}>
-      {showRedirect ? <Redirect to={redirectTo} /> : children}
+      {shouldRedirect ? <Redirect to={redirectTo} /> : children}
     </Route>
   );
 }
