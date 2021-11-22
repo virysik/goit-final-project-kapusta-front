@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import cliTruncate from 'cli-truncate';
+import ReactTooltip from 'react-tooltip';
 import {
   transactionsSelectors,
   transactionsOperations,
@@ -50,7 +52,12 @@ const TableDesktop = ({ type }) => {
           {transactions.map(item => (
             <tr className={s.tr} key={item._id}>
               <td>{`${item.day}.${item.month}.${item.year}`}</td>
-              <td>{item.description}</td>
+              <td data-tip={item.description}>{cliTruncate(item.description, 15)}
+                <button onClick={() => { ReactTooltip.show(this.fooRef) }}></button>
+                <ReactTooltip />
+              </td>
+             
+             
               <td>{item.category}</td>
               <td
                 className={
