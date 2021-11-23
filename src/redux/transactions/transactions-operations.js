@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import * as api from '../../services/fetchApi';
 
 export const getTransactionsByDay = createAsyncThunk(
   '/transactions/',
