@@ -1,7 +1,7 @@
 import { ReactComponent as GoogleIcon } from '../../images/svg/google.svg';
 import s from './GoogleAuth.module.css';
 
-const BASE_URL = 'https://kapusta-group-8.herokuapp.com/api';
+const BASE_URL = 'https://kapusta-group-8.herokuapp.com';
 // const BASE_URL = 'http://localhost:3030/api';
 
 const GoogleAuth = () => {
