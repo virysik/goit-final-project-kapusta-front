@@ -4,6 +4,8 @@ import { transactionsReducer } from 'redux/transactions';
 import s from './CategoryInfo.module.css';
 
 export default function CategoryInfo({ trans }) {
+
+  console.log(trans);
   const dispatch = useDispatch();
 
   const handleClick = category => {
@@ -12,10 +14,10 @@ export default function CategoryInfo({ trans }) {
 
   return (
     <ul className={s.list}>
-      {trans.length === 0 ? (
+      {trans?.length === 0 ? (
         <li className={s.transEmpty}>За данный период транзакций нет</li>
       ) : (
-        trans.map(item => (
+        trans?.map(item => (
           <li
             key={item.category}
             className={s.item}

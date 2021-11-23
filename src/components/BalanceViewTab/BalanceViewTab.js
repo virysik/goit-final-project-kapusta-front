@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useSelector } from 'react-redux';
@@ -9,6 +8,7 @@ import Container from 'components/Container';
 import Form from 'components/IncomesForm/Form';
 import Table from 'components/IncomesTable/Table';
 import s from './BalanceViewTab.module.css';
+import * as api from '../../services/fetchApi';
 
 export default function BalanceViewTab() {
   const [summary, setSummary] = useState([]);
@@ -31,7 +31,7 @@ export default function BalanceViewTab() {
 
   const getSummary = async ({ year, type }) => {
     if (!type) {
-      const { data } = await axios.get(`/transactions/outgoings?year=${year}`);
+      const { data } = await api.getSummaryOut(year);
       const result = data.data.result;
 
       result.sort((a, b) => a.month - b.month);
@@ -41,7 +41,7 @@ export default function BalanceViewTab() {
     }
 
     if (type) {
-      const { data } = await axios.get(`/transactions/incomings?year=${year}`);
+      const { data } = await api.getSummaryInc(year);
       const result = data.data.result;
 
       result.sort((a, b) => a.month - b.month);
