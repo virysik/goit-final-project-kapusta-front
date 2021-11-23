@@ -8,7 +8,7 @@ import {
   transactionsSelectors,
   transactionsOperations,
 } from 'redux/transactions';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './IncomesForm.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
@@ -30,6 +30,8 @@ export default function IncomesForm({ onHandleClick, type }) {
   const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
   const emptyLabel = '';
 
+  const date = useSelector(transactionsSelectors.getDate);
+
   const handleChange = event => {
     setCateg(event.target.value);
   };
@@ -46,6 +48,11 @@ export default function IncomesForm({ onHandleClick, type }) {
     type === 'incomes'
       ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
       : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
+    
+    type === 'incomes'
+      ? dispatch(transactionsOperations.getIncTransDate(date))
+      : dispatch(transactionsOperations.getOutTransDate(date));
+        
     setAmount('');
 
     onHandleClick();

@@ -20,7 +20,15 @@ const TableDesktop = ({ type }) => {
   useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
     dispatch(transactionsOperations.getOutTransDate(date));
-  }, [date, dispatch]);
+  }, [date]);
+
+  //   useEffect(() => {
+  //   dispatch(transactionsOperations.getIncTransDate(date));
+  //   }, [incomeTrans.length]);
+  
+  //   useEffect(() => {
+  //   dispatch(transactionsOperations.getOutTransDate(date));
+  // }, [expenseTrans.length]);
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
@@ -30,6 +38,7 @@ const TableDesktop = ({ type }) => {
 
   if (!type) {
     transactions = expenseTrans;
+    
   }
 
   if (type) {

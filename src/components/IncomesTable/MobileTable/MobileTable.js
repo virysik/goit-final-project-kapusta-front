@@ -24,7 +24,7 @@ const MobileTable = () => {
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
     dispatch(transactionsOperations.getIncTransDate(date));
-  }, [dispatch, date]);
+  }, [date]);
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
