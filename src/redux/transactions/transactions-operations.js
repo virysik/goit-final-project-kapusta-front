@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../services/fetchApi';
+import * as api from '../../services/transactionsApi';
 
 export const getTransactionsByDay = createAsyncThunk(
   '/transactions/',
   async (credentials, { rejectWithValue }) => {
     try {
-      const transactions = await api.transactionsByDay(credentials)
+      const transactions = await api.transactionsByDay(credentials);
       return transactions;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -42,7 +42,7 @@ export const getIncTransDate = createAsyncThunk(
   '/transactions/getIncTransDate',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await api.incTransDate(credentials)
+      const { data } = await api.incTransDate(credentials);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -54,7 +54,7 @@ export const getOutTransDate = createAsyncThunk(
   '/transactions/getOutTransDate',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await api.outTransDate(credentials)
+      const { data } = await api.outTransDate(credentials);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
