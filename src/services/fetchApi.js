@@ -12,6 +12,7 @@ const { data } = await axios.post('/transactions/outgoings', credentials);
     return data;
 };
 
+
 export async function incomingTransaction (credentials) {
 const { data } = await axios.post('/transactions/incomings', credentials);
     return data;
