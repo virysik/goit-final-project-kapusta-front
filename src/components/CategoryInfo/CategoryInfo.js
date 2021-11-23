@@ -5,7 +5,7 @@ import s from './CategoryInfo.module.css';
 
 export default function CategoryInfo({ trans }) {
 
-  console.log(trans);
+
   const dispatch = useDispatch();
 
   const handleClick = category => {
