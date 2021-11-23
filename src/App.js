@@ -48,9 +48,9 @@ function App() {
       ) : (
         <Suspense fallback={<OnLoader />}>
           <Switch>
-            {/* <PublicRoute exact path="/google-redirect" redirectTo="/balance">
+            <PublicRoute exact path="/google-redirect" redirectTo="/balance">
               <GoogleRedirectView />
-            </PublicRoute> */}
+            </PublicRoute>
             <PublicRoute exact path="/" redirectTo="/balance">
               <HomePageView />
             </PublicRoute>
