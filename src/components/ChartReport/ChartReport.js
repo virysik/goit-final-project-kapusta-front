@@ -7,6 +7,7 @@ import s from './ChartReport.module.css';
 // import { expensesOpt } from '../../pages/ReportsView/index';
 import { useSelector } from 'react-redux';
 import { transactionsSelectors } from 'redux/transactions';
+import cliTruncate from 'cli-truncate';
 
 Chart.register(ChartDataLabels);
 
@@ -57,7 +58,7 @@ function ChartReport() {
             // );
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
-                .value + 'грн'
+                .value + ' грн'
             );
           },
           color: '#52555F',
@@ -83,7 +84,7 @@ function ChartReport() {
           formatter: function (value, context) {
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
-                .value + 'грн'
+                .value + ' грн'
             );
           },
           color: '#52555F',
@@ -98,7 +99,7 @@ function ChartReport() {
     parsing: {
       xAxisKey: 'id',
       yAxisKey: 'nested.value',
-      key: 'data.nested.value',
+      // key: 'data.nested.value',
     },
     responsive: true,
     layout: {
@@ -136,10 +137,10 @@ function ChartReport() {
   return (
     <div className={s.charterReport}>
       {currentCategory === 'expenses' && (
-        <Bar data={dataExpenses} options={options} />
+        <Bar data={dataExpenses} options={options} redraw />
       )}
       {currentCategory === 'incomings' && (
-        <Bar data={dataIncomings} options={options} />
+        <Bar data={dataIncomings} options={options} redraw />
       )}
     </div>
   );
