@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -47,7 +46,7 @@ function ChartReportMobile() {
           formatter: function (value, context) {
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
-                .value + 'грн'
+                .value + ' грн'
             );
           },
           color: '#52555F',
@@ -73,7 +72,7 @@ function ChartReportMobile() {
           formatter: function (value, context) {
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
-                .value + 'грн'
+                .value + ' грн'
             );
           },
           color: '#52555F',
@@ -142,10 +141,10 @@ function ChartReportMobile() {
   return (
     <div className={s.charterReport}>
       {currentType === 'incomings' && (
-        <Bar data={dataIncomings} options={options} height={400} width={320} />
+        <Bar data={dataIncomings} options={options} height={400} width={320} redraw />
       )}
       {currentType === 'expenses' && (
-        <Bar data={dataExpenses} options={options} height={300} width={320} />
+        <Bar data={dataExpenses} options={options} height={300} width={320} redraw />
       )}
     </div>
   );
