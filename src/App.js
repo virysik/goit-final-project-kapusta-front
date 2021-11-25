@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/auth';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivatRoute';
@@ -48,21 +48,26 @@ function App() {
       ) : (
         <Suspense fallback={<OnLoader />}>
           <Switch>
-            <PublicRoute exact path="/google-redirect" redirectTo="/balance">
+            <PublicRoute
+              exact
+              path="/google-redirect"
+              restricted
+              redirectTo="/balance"
+            >
               <GoogleRedirectView />
             </PublicRoute>
-            <PublicRoute exact path="/" redirectTo="/balance">
+            <PublicRoute exact path="/" restricted redirectTo="/balance">
               <HomePageView />
             </PublicRoute>
-            <PrivateRoute path="/balance" restricted redirectTo="/">
+            <PrivateRoute path="/balance" redirectTo="/">
               <BalanceView />
             </PrivateRoute>
-            <PrivateRoute path="/reports" restricted redirectTo="/">
+            <PrivateRoute path="/reports" redirectTo="/">
               <ReportsView />
             </PrivateRoute>
-            <Route path="/developers">
+            <PublicRoute path="/developers">
               <DevelopersView />
-            </Route>
+            </PublicRoute>
           </Switch>
         </Suspense>
       )}
