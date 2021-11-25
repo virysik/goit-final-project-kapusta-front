@@ -141,10 +141,10 @@ function ChartReportMobile() {
   return (
     <div className={s.charterReport}>
       {currentType === 'incomings' && (
-        <Bar data={dataIncomings} options={options} height={400} width={320} />
+        <Bar data={dataIncomings} options={options} height={400} width={320} redraw />
       )}
       {currentType === 'expenses' && (
-        <Bar data={dataExpenses} options={options} height={300} width={320} />
+        <Bar data={dataExpenses} options={options} height={300} width={320} redraw />
       )}
     </div>
   );
