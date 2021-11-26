@@ -1,0 +1,44 @@
+.header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    padding-left: 19px;
+    padding-right: 19px;
+}
+
+.headerContaiener {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+}
+
+.team {
+    font-size: 11px;
+    color: var(--primary-text-color);
+}
+
+.team:hover,
+.team:focus {
+    animation-name: team;
+    animation-duration: 2s;
+}
+
+@keyframes team {
+    from {
+        color: #FB7C2F;
+    }
+
+    to {
+        color: yellow;
+    }
+}
