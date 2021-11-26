@@ -19,21 +19,9 @@ const TableDesktop = ({ type }) => {
   const date = useSelector(transactionsSelectors.getDate);
   const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
   const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
-  // const [modalDeleteShow, setModalDeleteShow] = useState(false);
   const { showDelModal, toggle } = DelModal();
 
-  // const toggleModal = () => {
-  //   setShowModal(prevShowModal => !prevShowModal);
-  // };
-
-  // const delModal = () => {
-  //   dispatch(transactionsOperations.deleteTransaction());
-  //   toggleModal();
-  // };
-
-  // const [setModalOpen, setShowModal] = useState(false);
-
-  useEffect(() => {
+   useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
     dispatch(transactionsOperations.getOutTransDate(date));
   }, [date, dispatch]);
@@ -101,16 +89,9 @@ const TableDesktop = ({ type }) => {
                 handleClickLeft={() => { dispatch(
                       transactionsOperations.deleteTransaction(item._id)
                      );}}
-                     modalTitle={"Вы уверены?"}
+                     modalTitle={"Удалить транзакцию?"}
                     onClose={toggle} />}
-                {/* {setModalOpen&& (
-                  <ModalDelete
-                  text={'Вы действительно хотите удалить?'}
-                  handleClickLeft={delModal}
-                  handleClickRight={toggleModal}
-                  onClose={toggleModal}/>
-                )} */}
-              </td>
+                           </td>
             </tr>
           ))}
         </tbody>
