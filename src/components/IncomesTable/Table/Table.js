@@ -21,6 +21,8 @@ const TableDesktop = ({ type }) => {
   const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
   const { showDelModal, toggle } = DelModal();
 
+  // const [ showDelModal, setShowModal] = useState(false);
+
    useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
     dispatch(transactionsOperations.getOutTransDate(date));
@@ -29,6 +31,7 @@ const TableDesktop = ({ type }) => {
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
   }, [dispatch, expenseTrans, incomeTrans]);
+
 
   let transactions = [];
 
@@ -39,6 +42,12 @@ const TableDesktop = ({ type }) => {
   if (type) {
     transactions = incomeTrans;
   }
+
+  const toggleModal = () => {
+    // setShowModal(prevShowModal => !prevShowModal);
+  };
+
+  // const [showDelModal, setShowModal] = useState(false);
 
   return (
     <div className={s.tableContainer}>
@@ -76,6 +85,7 @@ const TableDesktop = ({ type }) => {
                   type="button"
                   className={s.deleteBtn}
                   onClick={()=>toggle()}
+                  onClose={()=>toggle()}
 
                   // onClick={() => { 
                   //    dispatch(
@@ -86,11 +96,12 @@ const TableDesktop = ({ type }) => {
                   <img className={s.icon} src={deleteIcon} alt="Delete icon" />
                 </button>
                {showDelModal && <Modal
-                handleClickLeft={() => { dispatch(
+                handleClickLeft={(_id) => { dispatch(
                       transactionsOperations.deleteTransaction(item._id)
                      );}}
                      modalTitle={"Удалить транзакцию?"}
-                    onClose={toggle} />}
+                     handleClickRight={toggleModal}
+                     onClose={()=>toggle()} />}
                            </td>
             </tr>
           ))}

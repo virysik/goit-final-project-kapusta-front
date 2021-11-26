@@ -5,7 +5,8 @@ const DelModal = () => {
     
   function toggle() {
     setShowDelModal(!showDelModal);
-  }
+}
+
 
   return {
     showDelModal,
