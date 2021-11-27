@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux'
-import { register } from '../../redux/auth/auth-operations'
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/auth-operations';
+import { ImWarning } from 'react-icons/im';
 import s from './RegistrationForm.module.css';
 
 const RegisterForm = ({ onClickComeBack }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,21 +18,21 @@ const RegisterForm = ({ onClickComeBack }) => {
   const [emailError, setEmaiError] = useState('это обязательное поле');
   const [passwordError, setPasswordError] = useState('это обязательное поле');
   const [errorSymbol, setErrorSymbol] = useState('*');
-  
+
   const onRegister = () => dispatch(register({ name, email, password }));
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
-        return setNameDirty(value)
+        return setNameDirty(value);
       case 'email':
-        return setEmailDirty(value)
+        return setEmailDirty(value);
       case 'password':
-        return setPasswordDirty(value)
+        return setPasswordDirty(value);
       default:
-        return
+        return;
     }
-  }
+  };
 
   const nameHandler = e => {
     setName(e.target.value);
@@ -49,8 +51,7 @@ const RegisterForm = ({ onClickComeBack }) => {
 
   const emailHandler = e => {
     setEmail(e.target.value);
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(e.target.value).toLowerCase())) {
       setEmaiError('Некорректный email');
       setErrorSymbol('*');
@@ -81,11 +82,17 @@ const RegisterForm = ({ onClickComeBack }) => {
     setPassword('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     onRegister();
     clearInput();
-  }
+    toast.custom(
+      <div className={s.toastDiv}>
+        <ImWarning className={s.toastIcon} /> There was sent an email
+        confirmation to your email adress: {email}. Please confirm it.
+      </div>,
+    );
+  };
 
   return (
     <div className={s.formRegistr}>
@@ -143,7 +150,7 @@ const RegisterForm = ({ onClickComeBack }) => {
               type="text"
               name="email"
               value={email}
-              placeholder="Your@email.com"         
+              placeholder="Your@email.com"
               className={s.formInput}
               pattern="[A-Za-zА-Яа-яЁёЄєЇї0-9._%+-]+@[A-Za-zА-Яа-яЁёЄєЇї0-9.-]+\.[A-Za-zА-Яа-яЁёЄєЇї]{2,4}$"
               title="Email может, сoстоять из букв цифр и обязательного символа '@'"

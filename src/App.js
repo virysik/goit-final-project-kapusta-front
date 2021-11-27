@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { authOperations, authSelectors } from 'redux/auth';
+import { Toaster } from 'react-hot-toast';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivatRoute';
 import OnLoader from 'components/OnLoader';
@@ -43,6 +44,7 @@ function App() {
   return (
     <>
       <AppBar />
+      <Toaster />
       {isFetchingUser ? (
         <OnLoader />
       ) : (
