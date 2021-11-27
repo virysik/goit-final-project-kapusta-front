@@ -16,9 +16,12 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  const day = useSelector(transactionsSelectors.getDay);
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
+  // const day = useSelector(transactionsSelectors.getDay);
+  const day = '66';
+  // const month = useSelector(transactionsSelectors.getMonth);
+  const month = '22';
+  const year = '1111';
+  // const year = useSelector(transactionsSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
   const dispatch = useDispatch();

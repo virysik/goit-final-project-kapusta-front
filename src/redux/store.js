@@ -1,18 +1,12 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import logger from 'redux-logger';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
+
+import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-slice';
-import transReducer from './transactions/transactions-slice';
+// import transReducer from './transactions/transactions-slice';
+
+import { transactionApi } from '../services/rtk-transactions';
 
 const authPersistConfig = {
   key: 'auth',
@@ -20,26 +14,13 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      ignoredActionPaths: [
-        'payload.config.adapter',
-        `payload.config.transformRequest.0`,
-        `payload.config.transformResponse.0`,
-        `payload.config.validateStatus`,
-        `payload.request`,
-      ],
-    },
-  }),
-  // logger,
-];
+const middleware = [thunk, transactionApi.middleware];
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    transactions: transReducer,
+    // transactions: transReducer,
+    [transactionApi.reducerPath]: transactionApi.reducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
