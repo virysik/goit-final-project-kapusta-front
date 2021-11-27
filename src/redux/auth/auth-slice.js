@@ -25,10 +25,10 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
-      state.user.name = action.payload.name;
-      state.user.email = action.payload.email;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
+      // state.user.name = action.payload.name;
+      // state.user.email = action.payload.email;
+      // state.token = action.payload.token;
+      state.isLoggedIn = false;
       state.error = null;
     },
     [authOperations.register.pending](state) {
