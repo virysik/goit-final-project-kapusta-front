@@ -9,6 +9,8 @@ import s from './MobileTable.module.css';
 import cliTruncate from 'cli-truncate';
 import ReactTooltip from 'react-tooltip';
 import { authOperations } from 'redux/auth';
+import DelModal from 'components/ModalDelete/ModalDelete';
+import Modal from 'components/Modal';
 
 const MobileTable = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ const MobileTable = () => {
   const arr = useMemo(() => {
     return [...outTrans, ...incTrans];
   }, [outTrans, incTrans]);
+  const { showDelModal, toggle } = DelModal();
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
@@ -29,6 +32,10 @@ const MobileTable = () => {
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
   }, [dispatch, outTrans, incTrans]);
+
+  const toggleModal = () => {
+    // setShowModal(prevShowModal => !prevShowModal);
+  };
 
   return (
     <>
@@ -66,16 +73,27 @@ const MobileTable = () => {
                 <button
                   className={s.delBtn}
                   type="button"
-                  onClick={() => {
-                    dispatch(
-                      transactionsOperations.deleteTransaction(item._id),
-                    );
-                  }}
+                  onClick={() => toggle()}
+                  onClose={() => toggle()}
+                  // onClick={() => {
+                    // dispatch(
+                      // transactionsOperations.deleteTransaction(item._id),
+                    // );
+                  // }}
                   disabled={isDeleting}
                   aria-label="delete"
                 >
                   <RiDeleteBin6Line className={s.delIcon} />
                 </button>
+                {showDelModal && <Modal
+                  handleClickLeft={(_id) => {
+                    dispatch(
+                      transactionsOperations.deleteTransaction(item._id)
+                    );
+                  }}
+                  modalTitle={"Удалить транзакцию?"}
+                  handleClickRight={toggleModal}
+                  onClose={() => toggle()} />}
               </div>
             </li>
           ))}
