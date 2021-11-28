@@ -19,7 +19,7 @@ const TableDesktop = ({ type }) => {
   const date = useSelector(transactionsSelectors.getDate);
   const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
   const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
-  const { showDelModal, toggle } = DelModal();
+  const { showDelModal, toggle, deleteItem} = DelModal();
 
    useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
@@ -40,12 +40,6 @@ const TableDesktop = ({ type }) => {
   if (type) {
     transactions = incomeTrans;
   }
-
-  const toggleModal = () => {
-    // setShowModal(prevShowModal => !prevShowModal);
-  };
-
-  // const [showDelModal, setShowModal] = useState(false);
 
   return (
     <div className={s.tableContainer}>
@@ -80,9 +74,8 @@ const TableDesktop = ({ type }) => {
                 <button
                   type="button"
                   className={s.deleteBtn}
-                  onClick={()=>toggle()}
-                  onClose={()=>toggle()}
-
+                  onClick={toggle}
+                  onClose={toggle}                   
                   // onClick={() => { 
                   //    dispatch(
                   //     transactionsOperations.deleteTransaction(item._id),
@@ -92,14 +85,17 @@ const TableDesktop = ({ type }) => {
                   <img className={s.icon} src={deleteIcon} alt="Delete icon" />
                 </button>
                 {showDelModal && <Modal
-                  handleClickLeft={(_id) => {
+                  handleClickLeft={() => {
                     dispatch(
-                      transactionsOperations.deleteTransaction(item._id)
-                    );
-                  }}
+                      transactionsOperations.deleteTransaction(item._id));
+                    toggle();
+                    }
+                  }
                   modalTitle={"Удалить транзакцию?"}
-                  handleClickRight={toggleModal}
-                  onClose={() => toggle()} />}
+                  handleClickRight={toggle}
+                  onClose={toggle}
+                />
+                  }
               </td>
             </tr>
           ))}

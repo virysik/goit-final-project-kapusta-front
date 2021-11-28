@@ -22,7 +22,7 @@ const MobileTable = () => {
   const arr = useMemo(() => {
     return [...outTrans, ...incTrans];
   }, [outTrans, incTrans]);
-  const { showDelModal, toggle } = DelModal();
+  const { showDelModal, toggle, deleteItem } = DelModal();
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
@@ -74,7 +74,7 @@ const MobileTable = () => {
                   className={s.delBtn}
                   type="button"
                   onClick={() => toggle()}
-                  onClose={() => toggle()}
+                  // onClose={() => toggle()}
                   // onClick={() => {
                     // dispatch(
                       // transactionsOperations.deleteTransaction(item._id),
@@ -86,14 +86,11 @@ const MobileTable = () => {
                   <RiDeleteBin6Line className={s.delIcon} />
                 </button>
                 {showDelModal && <Modal
-                  handleClickLeft={(_id) => {
-                    dispatch(
-                      transactionsOperations.deleteTransaction(item._id)
-                    );
-                  }}
+                  handleClickLeft={deleteItem}
                   modalTitle={"Удалить транзакцию?"}
-                  handleClickRight={toggleModal}
-                  onClose={() => toggle()} />}
+                  handleClickRight={toggle}
+                  onClose={toggle}
+                />}
               </div>
             </li>
           ))}
