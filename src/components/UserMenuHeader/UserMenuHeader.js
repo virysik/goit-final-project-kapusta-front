@@ -14,7 +14,7 @@ export default function UserMenuHeader() {
           <NavLink to="/developers" className={styles.team}>
             <h1>𝕋𝕖𝕒𝕞</h1>
           </NavLink>
-          <UserLogOut/>
+          <UserLogOut />
         </div>
       </header>
     </>

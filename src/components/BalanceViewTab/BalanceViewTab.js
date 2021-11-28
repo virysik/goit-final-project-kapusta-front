@@ -8,7 +8,8 @@ import Container from 'components/Container';
 import Form from 'components/IncomesForm/Form';
 import Table from 'components/IncomesTable/Table';
 import s from './BalanceViewTab.module.css';
-import * as api from '../../services/transactionsApi';
+import { getSummary } from 'helpers';
+
 
 export default function BalanceViewTab() {
   const [summary, setSummary] = useState([]);
@@ -18,95 +19,8 @@ export default function BalanceViewTab() {
   const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
 
   useEffect(() => {
-    getSummary({ year, type });
+    getSummary(year, type, setSummary);
   }, [type, year, incomeTrans, expenseTrans]);
-
-  const onIncomeClick = () => {
-    setType(true);
-  };
-
-  const onExpenceClick = () => {
-    setType(false);
-  };
-
-  const getSummary = async ({ year, type }) => {
-    if (!type) {
-      const { data } = await api.getSummaryOut(year);
-      const result = data.result;
-
-      result.sort((a, b) => a.month - b.month);
-
-      getMonth(result);
-      setSummary(result);
-    }
-
-    if (type) {
-      const { data } = await api.getSummaryInc(year);
-      const result = data.result;
-
-      result.sort((a, b) => a.month - b.month);
-
-      getMonth(result);
-      setSummary(result);
-    }
-  };
-
-  function getMonth(summary) {
-    return summary.forEach(item => {
-      switch (item.month) {
-        case '1':
-          item.month = 'Январь';
-          break;
-
-        case '2':
-          item.month = 'Февраль';
-          break;
-
-        case '3':
-          item.month = 'Март';
-          break;
-
-        case '4':
-          item.month = 'Апрель';
-          break;
-
-        case '5':
-          item.month = 'Май';
-          break;
-
-        case '6':
-          item.month = 'Июнь';
-          break;
-
-        case '7':
-          item.month = 'Июль';
-          break;
-
-        case '8':
-          item.month = 'Август';
-          break;
-
-        case '9':
-          item.month = 'Сентябрь';
-          break;
-
-        case '10':
-          item.month = 'Октябрь';
-          break;
-
-        case '11':
-          item.month = 'Ноябрь';
-          break;
-
-        case '12':
-          item.month = 'Декабрь';
-          break;
-
-        default:
-          break;
-      }
-    });
-  }
 
   return (
     <Container>
@@ -118,14 +32,14 @@ export default function BalanceViewTab() {
           <Tab
             selectedClassName={s.active}
             className={s.tab}
-            onClick={onExpenceClick}
+            onClick={() => setType(false)}
           >
             Расход
           </Tab>
           <Tab
             selectedClassName={s.active}
             className={s.tab}
-            onClick={onIncomeClick}
+            onClick={() => setType(true)}
           >
             Доход
           </Tab>

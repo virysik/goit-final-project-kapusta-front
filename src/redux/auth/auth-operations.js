@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
-axios.defaults.baseURL = 'https://kapusta-group-8.herokuapp.com/api';
+axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
+// axios.defaults.baseURL = 'https://kapusta-group-8.herokuapp.com/api';
 // axios.defaults.baseURL = 'http://localhost:3030/api';
 
 export const token = {
@@ -17,14 +17,8 @@ export const token = {
 export const register = createAsyncThunk(
   '/users/signup',
   async (credentials, { rejectWithValue }) => {
-    const { email, password } = credentials;
-
     try {
-      if (await axios.post('/users/signup', credentials)) {
-        const { data } = await axios.post('/users/login', { email, password });
-        token.set(data.token);
-        return data;
-      }
+      await axios.post('/users/signup', credentials)
     } catch (error) {
       if (!error.response) {
         throw new Error('Register failed');

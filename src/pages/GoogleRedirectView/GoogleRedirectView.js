@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
 import imgText from '../../images/svg/Kapusta.svg';
@@ -20,7 +21,11 @@ const GoogleRedirectView = () => {
     name,
   };
   authOperations.token.set(token);
-  dispatch(googleLogIn(newUser));
+
+  useEffect(() => {
+    dispatch(googleLogIn(newUser));
+  }, []);
+
   return (
     <section className={s.section}>
       <Container>

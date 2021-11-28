@@ -159,3 +159,21 @@
     left: 75%;
   }
 }
+
+.toastDiv {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 300px;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 20px 15px;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.toastIcon {
+  width: 40px;
+  font-weight: 700;
+  margin-right: 10px;
+}
