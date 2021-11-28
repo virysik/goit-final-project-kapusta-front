@@ -70,13 +70,13 @@ const transactionSlice = createSlice({
     [getTransactionsByDay.fulfilled](state, action) {},
 
     [addOutgoingTransaction.fulfilled](state, action) {
-      // state.transactionsOut = [...state.transactionsOut, action.payload];
+      state.transactionsOut.push(action.payload);
     },
     [addOutgoingTransaction.pending](state, action) {},
     [addOutgoingTransaction.rejected](state, action) {},
 
     [addIncomingTransaction.fulfilled](state, action) {
-      // state.transactionsInc = [...state.transactionsInc, action.payload];
+      state.transactionsInc.push(action.payload);
     },
     [addIncomingTransaction.pending](state, action) {},
     [addIncomingTransaction.rejected](state, action) {},
@@ -96,10 +96,10 @@ const transactionSlice = createSlice({
     [getOutTransDate.rejected](state, action) {},
 
     [deleteTransaction.fulfilled]: (state, action) => {
-      state.transactionsOut = [...state.transactionsOut].filter(
+      state.transactionsOut = state.transactionsOut.filter(
         item => item._id !== action.payload,
       );
-      state.transactionsInc = [...state.transactionsInc].filter(
+      state.transactionsInc = state.transactionsInc.filter(
         item => item._id !== action.payload,
       );
       state.isDeleting = false;
