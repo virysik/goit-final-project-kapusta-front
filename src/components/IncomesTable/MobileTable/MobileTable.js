@@ -22,7 +22,7 @@ const MobileTable = () => {
   const arr = useMemo(() => {
     return [...outTrans, ...incTrans];
   }, [outTrans, incTrans]);
-  const { showDelModal, toggle, deleteItem } = DelModal();
+  const { showDelModal, toggle } = DelModal();
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
@@ -33,19 +33,20 @@ const MobileTable = () => {
     dispatch(authOperations.getUserBalance());
   }, [dispatch, outTrans, incTrans]);
 
-  const toggleModal = () => {
-    // setShowModal(prevShowModal => !prevShowModal);
-  };
+  const deleteItem = (_id) => {
+    dispatch(transactionsOperations.deleteTransaction(_id));
+    toggle();
+ }
 
   return (
     <>
       {arr && (
         <ul className={s.listTable}>
-          {arr.map(item => (
-            <li key={item._id} className={s.tableItem}>
+          {arr.map(({_id, day, month, year, description,category,typeOftransactions,amount}) => (
+            <li key={_id} className={s.tableItem}>
               <div className={s.boxDescription}>
-                <p className={s.description} data-tip={item.description}>
-                  {cliTruncate(item.description, 6)}
+                <p className={s.description} data-tip={description}>
+                  {cliTruncate(description, 6)}
                 </p>
                 <button
                   className={s.btn}
@@ -56,41 +57,38 @@ const MobileTable = () => {
                 <ReactTooltip />
                 <div className={s.boxCategoryAndDate}>
                   <span className={s.itemDate}>
-                    {item.day + '.' + item.month + '.' + item.year}
+                    {day + '.' + month + '.' + year}
                   </span>
-                  <span className={s.category}>{item.category}</span>
+                  <span className={s.category}>{category}</span>
                 </div>
               </div>
               <div
                 className={
-                  item.typeOftransactions ? s.boxAmountGreen : s.boxAmount
+                  typeOftransactions ? s.boxAmountGreen : s.boxAmount
                 }
               >
                 <span>
-                  {!item.typeOftransactions && `-`}
-                  {item.amount}
+                  {!typeOftransactions && `-`}
+                  {amount}
                 </span>
                 <button
                   className={s.delBtn}
                   type="button"
-                  onClick={() => toggle()}
-                  // onClose={() => toggle()}
-                  // onClick={() => {
-                    // dispatch(
-                      // transactionsOperations.deleteTransaction(item._id),
-                    // );
-                  // }}
+                  onClick={toggle}
+                  onClose={toggle}
                   disabled={isDeleting}
                   aria-label="delete"
                 >
                   <RiDeleteBin6Line className={s.delIcon} />
                 </button>
                 {showDelModal && <Modal
-                  handleClickLeft={deleteItem}
+                  handleClickLeft={() => deleteItem(_id)}
                   modalTitle={"Удалить транзакцию?"}
                   handleClickRight={toggle}
                   onClose={toggle}
-                />}
+                  
+                />
+                }
               </div>
             </li>
           ))}
