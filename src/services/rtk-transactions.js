@@ -24,14 +24,26 @@ export const transactionApi = createApi({
       query: credentials => ({
         url: `/transactions/incomings/date`,
         params: credentials,
-        providesTags: ['incTransactions'],
       }),
+      providesTags: ['incTransactions'],
     }),
     outTransDate: builder.query({
       query: credentials => ({
         url: `/transactions/outgoings/date`,
         params: credentials,
-        providesTags: ['outTransactions'],
+      }),
+      providesTags: ['outTransactions'],
+    }),
+    detailInfo: builder.query({
+      query: credentials => ({
+        url: `/transactions`,
+        params: credentials,
+      }),
+    }),
+    detailInfoForReport: builder.query({
+      query: credentials => ({
+        url: `/transactions/forReports`,
+        params: credentials,
       }),
     }),
     deleteTransaction: builder.mutation({
@@ -40,6 +52,22 @@ export const transactionApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags: ['incTransactions', 'outTransactions'],
+    }),
+    outgoingTransaction: builder.mutation({
+      query: credentials => ({
+        url: `/transactions/outgoings`,
+        body: credentials,
+        method: 'POST',
+      }),
+      invalidatesTags: ['outTransactions'],
+    }),
+    incomingTransaction: builder.mutation({
+      query: credentials => ({
+        url: `/transactions/incomings`,
+        method: 'POST',
+        body: credentials,
+      }),
+      invalidatesTags: ['incTransactions'],
     }),
   }),
 });
@@ -50,6 +78,8 @@ export const {
   useIncTransDateQuery,
   useOutTransDateQuery,
   useDeleteTransactionMutation,
+  useOutgoingTransactionMutation,
+  useIncomingTransactionMutation,
 } = transactionApi;
 
 // axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';

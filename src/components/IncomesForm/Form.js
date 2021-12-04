@@ -17,9 +17,12 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  const day = useSelector(transactionsSelectors.getDay);
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
+  // const day = useSelector(transactionsSelectors.getDay);
+  // const month = useSelector(transactionsSelectors.getMonth);
+  // const year = useSelector(transactionsSelectors.getYear);
+  const day = '26';
+  const month = '12';
+  const year = '2021';
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
   const dispatch = useDispatch();
@@ -30,7 +33,8 @@ export default function IncomesForm({ onHandleClick, type }) {
   const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
   const emptyLabel = '';
 
-  const date = useSelector(transactionsSelectors.getDate);
+  // const date = useSelector(transactionsSelectors.getDate);
+  const date = { year: '2021', month: '12', day: '26' };
 
   const handleChange = event => {
     setCateg(event.target.value);

@@ -4,10 +4,10 @@ const getIsDeleting = state => state.transactions.isDeleting;
 
 // получить день, месяц,год //
 
-const getDate = state => state.transactions.date;
-const getMonth = state => state.transactions.date.month;
-const getYear = state => state.transactions.date.year;
-const getDay = state => state.transactions.date.day;
+// const getDate = state => state.transactions.date;
+// const getMonth = state => state.transactions.date.month;
+// const getYear = state => state.transactions.date.year;
+// const getDay = state => state.transactions.date.day;
 
 ///////////////получить тразакции расходов/доходов для таблици на 2ой странице////////////////
 
@@ -51,10 +51,10 @@ const getReportMonthly = createSelector(
 );
 
 export {
-  getDate,
-  getMonth,
-  getYear,
-  getDay,
+  // getDate,
+  // getMonth,
+  // getYear,
+  // getDay,
   getIncTrans,
   getOutTrans,
   getIsDeleting,

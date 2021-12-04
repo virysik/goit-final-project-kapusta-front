@@ -3,12 +3,16 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+// import {
+//   transactionsSelectors,
+//   transactionsOperations,
+// } from 'redux/transactions';
 import {
-  transactionsSelectors,
-  transactionsOperations,
-} from 'redux/transactions';
+  useIncomingTransactionMutation,
+  useOutgoingTransactionMutation,
+} from '../../services/rtk-transactions';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import s from './IncomesForm.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 
@@ -17,14 +21,20 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
   // const day = useSelector(transactionsSelectors.getDay);
-  const day = '66';
+  const day = '26';
   // const month = useSelector(transactionsSelectors.getMonth);
-  const month = '22';
-  const year = '1111';
+  const month = '12';
+  const year = '2021';
   // const year = useSelector(transactionsSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  const [incomingTransaction] = useIncomingTransactionMutation();
+  const [outgoingTransaction] = useOutgoingTransactionMutation();
+
+  console.log(incomingTransaction);
+  console.log(outgoingTransaction);
 
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
@@ -46,8 +56,8 @@ export default function IncomesForm({ onHandleClick, type }) {
     const newOperation = { category, description, amount, day, month, year };
 
     type === 'incomes'
-      ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
-      : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
+      ? incomingTransaction(newOperation)
+      : outgoingTransaction(newOperation);
     onHandleClick();
   };
 

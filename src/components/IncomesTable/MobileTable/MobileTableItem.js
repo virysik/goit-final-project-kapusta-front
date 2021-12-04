@@ -4,7 +4,7 @@ import cliTruncate from 'cli-truncate';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { useDeleteTransactionMutation } from '../../../services/rtk-transactions';
 
-export default function MobileTableItem({ item, onLoading, onDelete }) {
+export default function MobileTableItem({ item, isLoading, onDelete }) {
   return (
     <li className={s.tableItem}>
       <div className={s.boxDescription}>
@@ -36,7 +36,7 @@ export default function MobileTableItem({ item, onLoading, onDelete }) {
           onClick={() => {
             onDelete(item._id);
           }}
-          disabled={onLoading}
+          disabled={isLoading}
           aria-label="delete"
         >
           <RiDeleteBin6Line className={s.delIcon} />

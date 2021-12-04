@@ -1,7 +1,9 @@
 import React from 'react';
 import s from './Svodka.module.css';
+import { getMonth } from 'helpers';
 
 export default function Svodka({ items }) {
+  console.log(getMonth(items));
   return (
     <div className={s.wrap}>
       <table className={s.reportHistory}>
@@ -13,12 +15,13 @@ export default function Svodka({ items }) {
           </tr>
         </thead>
         <tbody>
-          {items.map(x => (
-            <tr className={s.tr} key={x.month}>
-              <td className={s.month}>{x.month}</td>
-              <td className={s.sum}>{x.sum}</td>
-            </tr>
-          ))}
+          {items &&
+            items.map(x => (
+              <tr className={s.tr} key={x.month}>
+                <td className={s.month}>{x.month}</td>
+                <td className={s.sum}>{x.sum}</td>
+              </tr>
+            ))}
           <tr className={s.empty}>
             <td></td>
           </tr>
