@@ -91,7 +91,6 @@ const MobileTable = () => {
                     onClick={() => {
                       toggle();
                       setIdItem(_id);
-                      console.log(_id)
                     }}
                     disabled={isDeleting}
                     aria-label="delete"
