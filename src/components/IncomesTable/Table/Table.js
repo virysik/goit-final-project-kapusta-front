@@ -20,14 +20,14 @@ const TableDesktop = ({ type }) => {
   const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
   const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
   const [showDelModal, setShowDelModal] = useState(false);
+  const [idItem, setIdItem] = useState(null);
    
   function toggle() {
     setShowDelModal(!showDelModal);
   }
-  const deleteItem = (_id) => {
-    
+  const deleteItem = (_id) => {    
     dispatch(transactionsOperations.deleteTransaction(_id));
-    console.log(_id);
+    // console.log(_id);
     toggle();
   }
 
@@ -64,11 +64,11 @@ const TableDesktop = ({ type }) => {
           </tr>
         </thead>
         <tbody>
-        {transactions.map(item => (
-            <tr className={s.tr} key={item._id}>
-              <td>{`${item.day}.${item.month}.${item.year}`}</td>
-              <td data-tip={item.description}>
-                {cliTruncate(item.description, 15)}
+        {transactions.map(({_id, day, month, year, description,category,typeOftransactions,amount}) => (
+            <tr className={s.tr} key={_id}>
+              <td>{`${day}.${month}.${year}`}</td>
+              <td data-tip={description}>
+                {cliTruncate(description, 15)}
                 <button
                   onClick={() => {
                     ReactTooltip.show(this.fooRef);
@@ -77,22 +77,23 @@ const TableDesktop = ({ type }) => {
                 <ReactTooltip />
               </td>
 
-              <td>{item.category}</td>
+              <td>{category}</td>
               <td
                 className={
-                  item.typeOftransactions ? s.amountGreen : s.amountRed
+                  typeOftransactions ? s.amountGreen : s.amountRed
                 }
               >
-                {!item.typeOftransactions && `- `}
-                {item.amount}
+                {!typeOftransactions && `- `}
+                {amount}
               </td>
               <td>
-                <button
-                  type="button"
-                  className={s.deleteBtn}
+              <button
+                type="button"
+                className={s.deleteBtn}
                 onClick={() => {
                   toggle();
-                  console.log(item._id)
+                  setIdItem(_id);
+                  // console.log(_id)
                 }}
               
                 >
@@ -101,7 +102,7 @@ const TableDesktop = ({ type }) => {
                 {showDelModal && <Modal                  
                   modalTitle={"Удалить транзакцию?"}
                   handleClickRight={toggle}
-                  handleClickLeft={() => deleteItem(item._id)}
+                  handleClickLeft={() => deleteItem(idItem)}
                   onClose={toggle}
                 />
                   }

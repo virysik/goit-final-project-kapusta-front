@@ -18,6 +18,7 @@ const MobileTable = () => {
   const outTrans = useSelector(transactionsSelectors.getOutTrans);
   const incTrans = useSelector(transactionsSelectors.getIncTrans);
   const [showDelModal, setShowDelModal] = useState(false);
+  const [idItem, setIdItem] = useState(null);
 
   function toggle() {
     setShowDelModal(!showDelModal);
@@ -87,7 +88,11 @@ const MobileTable = () => {
                   <button
                     className={s.delBtn}
                     type="button"
-                    onClick={toggle}
+                    onClick={() => {
+                      toggle();
+                      setIdItem(_id);
+                      console.log(_id)
+                    }}
                     disabled={isDeleting}
                     aria-label="delete"
                   >
@@ -95,10 +100,10 @@ const MobileTable = () => {
                   </button>
                   {showDelModal && (
                     <Modal
-                      handleClickLeft={() => {
-                        deleteItem(_id);
-                      }}
                       modalTitle={'Удалить транзакцию?'}
+                      handleClickLeft={() => {
+                        deleteItem(idItem);
+                      }}
                       handleClickRight={toggle}
                       onClose={toggle}
                     />
