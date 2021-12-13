@@ -10,7 +10,6 @@ import Table from 'components/IncomesTable/Table';
 import s from './BalanceViewTab.module.css';
 import { getSummary } from 'helpers';
 
-
 export default function BalanceViewTab() {
   const [summary, setSummary] = useState([]);
   const [type, setType] = useState(false);
