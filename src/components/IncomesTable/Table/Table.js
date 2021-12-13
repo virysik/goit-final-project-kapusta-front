@@ -33,7 +33,16 @@ const TableDesktop = ({ type }) => {
    useEffect(() => {
     dispatch(transactionsOperations.getIncTransDate(date));
     dispatch(transactionsOperations.getOutTransDate(date));
-  }, [date, dispatch]);
+  }, [dispatch, date]);
+
+  //   useEffect(() => {
+  //   dispatch(transactionsOperations.getIncTransDate(date));
+  //   }, [incomeTrans.length]);
+
+  //   useEffect(() => {
+  //   dispatch(transactionsOperations.getOutTransDate(date));
+  // }, [expenseTrans.length]);
+
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
@@ -63,11 +72,13 @@ const TableDesktop = ({ type }) => {
           </tr>
         </thead>
         <tbody>
+
         {transactions.map(({_id, day, month, year, description,category,typeOftransactions,amount}) => (
             <tr className={s.tr} key={_id}>
               <td>{`${day}.${month}.${year}`}</td>
               <td data-tip={description}>
                 {cliTruncate(description, 15)}
+
                 <button
                   onClick={() => {
                     ReactTooltip.show(this.fooRef);
@@ -76,7 +87,9 @@ const TableDesktop = ({ type }) => {
                 <ReactTooltip />
               </td>
 
+
               <td>{category}</td>
+
               <td
                 className={
                   typeOftransactions ? s.amountGreen : s.amountRed
