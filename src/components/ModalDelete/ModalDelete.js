@@ -4,7 +4,7 @@ const DelModal = () => {
     const [showDelModal, setShowDelModal] = useState(false);
     
   function toggle() {
-    setShowDelModal(prevShowDelModal => !prevShowDelModal);
+    setShowDelModal(!showDelModal);
 }
 
   return {
