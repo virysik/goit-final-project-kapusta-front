@@ -55,6 +55,7 @@
 
 @media screen and (min-width: 1280px) {
   .commentWrapper {
-    right: 350px;
+    left: 440px;
+    top: 80px;
   }
 }
