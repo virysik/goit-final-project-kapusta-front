@@ -10,7 +10,6 @@ import { authOperations } from 'redux/auth';
 import s from './Table.module.css';
 import { useEffect } from 'react';
 import deleteIcon from '../../../images/svg/delete.svg';
-// import DelModal from 'components/ModalDelete';
 import Modal from 'components/Modal';
 
 
@@ -25,9 +24,9 @@ const TableDesktop = ({ type }) => {
   function toggle() {
     setShowDelModal(!showDelModal);
   }
+  
   const deleteItem = (_id) => {    
     dispatch(transactionsOperations.deleteTransaction(_id));
-    // console.log(_id);
     toggle();
   }
 
@@ -93,7 +92,6 @@ const TableDesktop = ({ type }) => {
                 onClick={() => {
                   toggle();
                   setIdItem(_id);
-                  // console.log(_id)
                 }}
               
                 >
