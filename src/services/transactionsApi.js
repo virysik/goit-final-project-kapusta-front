@@ -38,6 +38,11 @@ export async function deleteTransaction (id) {
     return id;
 };
 
+export async function updateTransaction (id) {
+    await axios.delete(`/transactions/${id}`);
+    return id;
+};
+
 export async function detailInfo (credentials) {
 const transactions = await axios.get('/transactions', {
         params: credentials,

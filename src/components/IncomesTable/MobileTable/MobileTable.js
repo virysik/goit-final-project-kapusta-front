@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import {
@@ -9,6 +9,7 @@ import s from './MobileTable.module.css';
 import cliTruncate from 'cli-truncate';
 import ReactTooltip from 'react-tooltip';
 import { authOperations } from 'redux/auth';
+import Modal from 'components/Modal';
 
 const MobileTable = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,21 @@ const MobileTable = () => {
   const isDeleting = useSelector(transactionsSelectors.getIsDeleting);
   const outTrans = useSelector(transactionsSelectors.getOutTrans);
   const incTrans = useSelector(transactionsSelectors.getIncTrans);
+  const [showDelModal, setShowDelModal] = useState(false);
+  const [idItem, setIdItem] = useState(null);
+
+  function toggle() {
+    setShowDelModal(!showDelModal);
+  }
 
   const arr = useMemo(() => {
     return [...outTrans, ...incTrans];
   }, [outTrans, incTrans]);
+
+  const deleteItem = _id => {
+    dispatch(transactionsOperations.deleteTransaction(_id));
+    toggle();
+  };
 
   useEffect(() => {
     dispatch(transactionsOperations.getOutTransDate(date));
@@ -34,51 +46,71 @@ const MobileTable = () => {
     <>
       {arr && (
         <ul className={s.listTable}>
-          {arr.map(item => (
-            <li key={item._id} className={s.tableItem}>
-              <div className={s.boxDescription}>
-                <p className={s.description} data-tip={item.description}>
-                  {cliTruncate(item.description, 6)}
-                </p>
-                <button
-                  className={s.btn}
-                  onClick={() => {
-                    ReactTooltip.show(this.fooRef);
-                  }}
-                ></button>
-                <ReactTooltip />
-                <div className={s.boxCategoryAndDate}>
-                  <span className={s.itemDate}>
-                    {item.day + '.' + item.month + '.' + item.year}
-                  </span>
-                  <span className={s.category}>{item.category}</span>
+          {arr.map(
+            ({
+              _id,
+              day,
+              month,
+              year,
+              description,
+              category,
+              typeOftransactions,
+              amount,
+            }) => (
+              <li key={_id} className={s.tableItem} id={_id}>
+                <div className={s.boxDescription}>
+                  <p className={s.description} data-tip={description}>
+                    {cliTruncate(description, 6)}
+                  </p>
+                  <button
+                    className={s.btn}
+                    onClick={() => {
+                      ReactTooltip.show(this.fooRef);
+                    }}
+                  ></button>
+                  <ReactTooltip />
+                  <div className={s.boxCategoryAndDate}>
+                    <span className={s.itemDate}>
+                      {day + '.' + month + '.' + year}
+                    </span>
+                    <span className={s.category}>{category}</span>
+                  </div>
                 </div>
-              </div>
-              <div
-                className={
-                  item.typeOftransactions ? s.boxAmountGreen : s.boxAmount
-                }
-              >
-                <span>
-                  {!item.typeOftransactions && `-`}
-                  {item.amount}
-                </span>
-                <button
-                  className={s.delBtn}
-                  type="button"
-                  onClick={() => {
-                    dispatch(
-                      transactionsOperations.deleteTransaction(item._id),
-                    );
-                  }}
-                  disabled={isDeleting}
-                  aria-label="delete"
+                <div
+                  className={
+                    typeOftransactions ? s.boxAmountGreen : s.boxAmount
+                  }
                 >
-                  <RiDeleteBin6Line className={s.delIcon} />
-                </button>
-              </div>
-            </li>
-          ))}
+                  <span>
+                    {!typeOftransactions && `-`}
+                    {amount}
+                  </span>
+                  <button
+                    className={s.delBtn}
+                    type="button"
+                    onClick={() => {
+                      toggle();
+                      setIdItem(_id);
+                    }}
+                    disabled={isDeleting}
+                    aria-label="delete"
+                  >
+                    <RiDeleteBin6Line className={s.delIcon} />
+                  </button>
+                  {showDelModal && (
+                    <Modal
+                      modalTitle={'Удалить транзакцию?'}
+                      handleClickLeft={() => {
+                        deleteItem(idItem);
+                      }}
+                      handleClickRight={toggle}
+                      onClose={toggle}
+                    />
+                  )}
+                </div>
+              </li>
+            ),
+          )}
         </ul>
       )}
     </>

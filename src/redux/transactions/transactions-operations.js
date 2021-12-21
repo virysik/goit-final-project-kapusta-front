@@ -72,6 +72,17 @@ export const deleteTransaction = createAsyncThunk(
     }
   },
 );
+export const updateTransaction = createAsyncThunk(
+  '/transactions/updateTransaction',
+  async (id, { rejectWithValue }) => {
+    try {
+      await api.updateTransaction(id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
 
 export const getDetailInfo = createAsyncThunk(
   '/transactions/detailInfo',

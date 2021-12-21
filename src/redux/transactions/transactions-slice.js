@@ -8,6 +8,7 @@ import {
   getIncTransDate,
   getDetailInfo,
   getDetailInfoForReport,
+  updateTransaction,
 } from './transactions-operations';
 
 const year = String(new Date().getFullYear());
@@ -113,6 +114,26 @@ const transactionSlice = createSlice({
       state.error = 'error';
       state.isDeleting = false;
     },
+
+    [updateTransaction.fulfilled]: (state, action) => {
+      state.transactionsOut = state.transactionsOut.filter(
+        item => item._id !== action.payload,
+      );
+      state.transactionsInc = state.transactionsInc.filter(
+        item => item._id !== action.payload,
+      );
+      state.isUpdating = false;
+      state.error = null;
+    },
+    [updateTransaction.pending]: state => {
+      state.error = null;
+      state.isUpdating = true;
+    },
+    [updateTransaction.rejected]: state => {
+      state.error = 'error';
+      state.isUpdating = false;
+    },
+
     /// Vlad
     [getDetailInfo.fulfilled](state, action) {
       state.entities = action.payload.data.data;

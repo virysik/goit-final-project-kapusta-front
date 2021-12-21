@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 const getIsDeleting = state => state.transactions.isDeleting;
-
+const getIsUpdating = state => state.transactions.isUpdating;
 // получить день, месяц,год //
 
 const getDate = state => state.transactions.date;
@@ -70,4 +70,5 @@ export {
   getIncReportMonthly,
   getExpReportMonthly,
   getRaport,
+  getIsUpdating,
 };
