@@ -12,6 +12,7 @@ import {
 } from 'redux/transactions';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 import Calendar from 'components/Calendar';
+import styles from './UpdateTrans.module.css'
 
 export default function UpdateTrans({ onHandleClick, type }) {
 const [description, setDescription] = useState('');
@@ -55,8 +56,9 @@ const handleInputChange = e => {
   }
 };
   return (
-    <div>
-      <form className={s.form} onSubmit={handleSubmit}>
+    <div className={styles.wrapper}>
+      <Calendar />
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
           name="product"
