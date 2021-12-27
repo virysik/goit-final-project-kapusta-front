@@ -1,8 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cliTruncate from 'cli-truncate';
 import ReactTooltip from 'react-tooltip';
-import {BsPencilFill} from 'react-icons/bs';
+import { BsPencilFill } from 'react-icons/bs';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import Button from '@mui/material/Button';
 import {
   transactionsSelectors,
   transactionsOperations,
@@ -13,7 +17,8 @@ import style from '../MobileTable/MobileTable.module.css';
 import { useEffect } from 'react';
 import deleteIcon from '../../../images/svg/delete.svg';
 import Modal from 'components/Modal';
-import IncomesForm from 'components/IncomesForm';
+import UpdateTrans from 'components/UpdateTrans/UpdateTrans';
+
 
 const TableDesktop = ({ type }) => {
   const dispatch = useDispatch();
@@ -21,7 +26,7 @@ const TableDesktop = ({ type }) => {
   const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
   const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
   const [showDelModal, setShowDelModal] = useState(false);
-  const [modalUpdate, setModalUpdate] = useState(false);
+  const [open, setOpen] = useState(false);
   const [idItem, setIdItem] = useState(null);
 
 
@@ -35,7 +40,7 @@ const TableDesktop = ({ type }) => {
   };
 
   function toggleUpdate() {
-    setModalUpdate(!modalUpdate);
+    setOpen(!open);
   }
 
   const handleUpdateClick = _id => {
@@ -55,6 +60,13 @@ const TableDesktop = ({ type }) => {
   // useEffect(() => {
   //   dispatch(transactionsOperations.getOutTransDate(date));
   // }, [expenseTrans.length]);
+
+  // const handleClickOpen = () => {
+    // setOpen(true);
+  // };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
@@ -132,14 +144,6 @@ const TableDesktop = ({ type }) => {
                       alt="Delete icon"
                     />
                   </button>
-                  <button type="button"
-                    className={s.deleteBtn}
-                    onClick={() => {
-                      toggleUpdate();
-                      setIdItem(_id);
-                    }}>
-                    <BsPencilFill className={style.delIcon} />
-                  </button>
                   {showDelModal &&(
                     <Modal
                       modalTitle={'Удалить транзакцию?'}
@@ -148,14 +152,35 @@ const TableDesktop = ({ type }) => {
                       onClose={toggle}
                     />
                   )}
-                  {modalUpdate &&(
-                    <IncomesForm                                     
-                      handleClickRight={toggleUpdate}
-                      handleClickLeft={() => handleUpdateClick(idItem)}
-                      onClose={toggleUpdate}
-                    
-                    />
-                  )}
+                  <button type="button"
+                    className={s.deleteBtn}
+                    onClick={() => {
+                      toggleUpdate();
+                      setIdItem(_id);
+                    }}
+                  >
+                    <BsPencilFill className={style.delIcon} />
+                  </button>
+                  <Dialog open={open} onClose={handleClose}>
+                    <DialogContent>
+                      <UpdateTrans>
+                      </UpdateTrans>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose}>НАЗАД</Button>
+                      <Button onClick={() => handleUpdateClick(idItem)}>ВВОД</Button>
+                    </DialogActions>
+                  </Dialog>
+                </td>
+                <td>
+
+                  {/* {open && ( */}
+                    {/* <UpdateModal */}
+                      {/* // handleClickRight={toggleUpdate} */}
+                      {/* // handleClickLeft={() => handleUpdateClick(_id)} */}
+                      {/* // onClose={toggleUpdate} */}
+                    {/* // /> */}
+                  {/* )} */}
                 </td>
               </tr>
             ),
