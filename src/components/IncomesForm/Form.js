@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import Calendar from 'components/Calendar';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { calendarSelectors } from '../../redux/calendar';
+import { calendarSelectors } from '../../redux/extraInfo';
 import s from './IncomesForm.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 import {
@@ -19,8 +19,8 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
   const day = useSelector(calendarSelectors.getDay);
-  const month = useSelector(calendarSelectors.getMonth);
-  const year = useSelector(calendarSelectors.getYear);
+  const monthInit = useSelector(calendarSelectors.getMonth);
+  const yearInit = useSelector(calendarSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
   const [addOutTransaction] = useAddOutTransactionMutation();
@@ -43,7 +43,16 @@ export default function IncomesForm({ onHandleClick, type }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newOperation = { category, description, amount, day, month, year };
+    const month = String(monthInit);
+    const year = String(yearInit);
+    const newOperation = {
+      category,
+      description,
+      amount,
+      day,
+      month,
+      year,
+    };
 
     type === 'incomes'
       ? addIncTransaction(newOperation)

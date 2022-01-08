@@ -2,15 +2,23 @@ import React from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import s from './ChartReport.module.css';
 import { useSelector } from 'react-redux';
-import { transactionsSelectors } from 'redux/transactions';
+import getFilteredCategory from '../../helpers/getFilteredCategory';
+import { calendarSelectors } from '../../redux/extraInfo';
+import { useDetailInfoForReportQuery } from '../../services/rtk-transactions';
+import s from './ChartReport.module.css';
 
 Chart.register(ChartDataLabels);
 function ChartReportMobile() {
-  const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
-  const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
-  const currentType = useSelector(transactionsSelectors.getCurrentType);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
+  const { data } = useDetailInfoForReportQuery({ year, month });
+  const currentType = useSelector(calendarSelectors.getCurrentType);
+  const currentCategory = useSelector(calendarSelectors.getCurrentCategory);
+  const getInfoExpenses = data?.data.expenses;
+  const getInfoIncomings = data?.data.incomings;
+  const sumExp = getFilteredCategory(getInfoExpenses, currentCategory);
+  const sumInc = getFilteredCategory(getInfoIncomings, currentCategory);
 
   function ExpSort() {
     if (sumExp) {
@@ -141,10 +149,22 @@ function ChartReportMobile() {
   return (
     <div className={s.charterReport}>
       {currentType === 'incomings' && (
-        <Bar data={dataIncomings} options={options} height={400} width={320} redraw />
+        <Bar
+          data={dataIncomings}
+          options={options}
+          height={400}
+          width={320}
+          redraw
+        />
       )}
       {currentType === 'expenses' && (
-        <Bar data={dataExpenses} options={options} height={300} width={320} redraw />
+        <Bar
+          data={dataExpenses}
+          options={options}
+          height={300}
+          width={320}
+          redraw
+        />
       )}
     </div>
   );

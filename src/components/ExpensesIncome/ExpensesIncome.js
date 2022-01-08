@@ -1,11 +1,15 @@
 import s from './ExpensesIncome.module.css';
 import SumCategoryInfo from 'components/SumCategoryInfo';
 import { useSelector } from 'react-redux';
-import { transactionsSelectors } from 'redux/transactions';
+import { calendarSelectors } from '../../redux/extraInfo';
+import { useDetailInfoQuery } from '../../services/rtk-transactions';
 
 export default function ExpensesIncome() {
-  const expenses = useSelector(transactionsSelectors.getExpReportMonthly);
-  const incomes = useSelector(transactionsSelectors.getIncReportMonthly);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
+  const { data } = useDetailInfoQuery({ year, month });
+  const expenses = data?.data.total[1].sum;
+  const incomes = data?.data.total[0].sum;
 
   return (
     <div className={s.wrapper}>

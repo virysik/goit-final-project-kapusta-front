@@ -1,15 +1,13 @@
 import sprite from '../../images/svg/icon.svg';
 import { useDispatch } from 'react-redux';
-import { transactionsReducer } from 'redux/transactions';
+import { addCurrentCategory } from 'redux/extraInfo/extraInfo-slice';
 import s from './CategoryInfo.module.css';
 
 export default function CategoryInfo({ trans }) {
-
-
   const dispatch = useDispatch();
 
   const handleClick = category => {
-    dispatch(transactionsReducer.addCurrentCategory(category));
+    dispatch(addCurrentCategory(category));
   };
 
   return (

@@ -2,16 +2,26 @@ import React from 'react';
 import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import s from './ChartReport.module.css';
 import { useSelector } from 'react-redux';
-import { transactionsSelectors } from 'redux/transactions';
+import { calendarSelectors } from '../../redux/extraInfo';
+import { useDetailInfoForReportQuery } from '../../services/rtk-transactions';
+import getFilteredCategory from '../../helpers/getFilteredCategory';
+import s from './ChartReport.module.css';
 
 Chart.register(ChartDataLabels);
 
 function ChartReport() {
-  const sumExp = useSelector(transactionsSelectors.getFilteredCategExp);
-  const sumInc = useSelector(transactionsSelectors.getFilteredCategInc);
-  const currentCategory = useSelector(transactionsSelectors.getCurrentType);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
+  const currentCategory = useSelector(calendarSelectors.getCurrentCategory);
+  const currentType = useSelector(calendarSelectors.getCurrentType);
+  const { data } = useDetailInfoForReportQuery({ year, month });
+
+  const getInfoExpenses = data?.data.expenses;
+  const getInfoIncomings = data?.data.incomings;
+
+  const sumExp = getFilteredCategory(getInfoExpenses, currentCategory);
+  const sumInc = getFilteredCategory(getInfoIncomings, currentCategory);
 
   function ExpSort() {
     if (sumExp) {
@@ -33,15 +43,12 @@ function ChartReport() {
     return res.sort((a, b) => b.nested.value - a.nested.value);
   }
 
-  const aspect = currentCategory === 'expenses' ? 3 : 3;
+  const aspect = currentType === 'expenses' ? 3 : 3;
 
   const dataIncomings = {
     datasets: [
       {
         data: IncSort(),
-        // optArr.sort((a, b) => {
-        //   return b.nested.value - a.nested.value;
-        // }),
         maxBarThickness: 38,
         borderRadius: 20,
         minBarLength: 2,
@@ -50,9 +57,6 @@ function ChartReport() {
         borderWidth: 1,
         datalabels: {
           formatter: function (value, context) {
-            // console.log(
-            //   context.chart.data.datasets[0].data[context.dataIndex].nested.value
-            // );
             return (
               context.chart.data.datasets[0].data[context.dataIndex].nested
                 .value + ' грн'
@@ -133,10 +137,10 @@ function ChartReport() {
 
   return (
     <div className={s.charterReport}>
-      {currentCategory === 'expenses' && (
+      {currentType === 'expenses' && (
         <Bar data={dataExpenses} options={options} redraw />
       )}
-      {currentCategory === 'incomings' && (
+      {currentType === 'incomings' && (
         <Bar data={dataIncomings} options={options} redraw />
       )}
     </div>

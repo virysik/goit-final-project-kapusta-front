@@ -6,14 +6,24 @@ const day = String(new Date().getDate());
 
 const initialState = {
   date: { day, month, year },
+  currentType: 'expenses',
+  currentCategory: 'Продукты',
 };
 
 const dateSlice = createSlice({
-  name: 'calendar',
+  name: 'extraInfo',
   initialState,
   reducers: {
     addDate: (state, action) => {
       state.date = action.payload;
+    },
+
+    addCurrentType: (state, action) => {
+      state.currentType = action.payload;
+    },
+
+    addCurrentCategory: (state, action) => {
+      state.currentCategory = action.payload;
     },
 
     goBackOneMonth: (state, action) => {
@@ -37,6 +47,12 @@ const dateSlice = createSlice({
   },
 });
 
-export const { addDate, goBackOneMonth, goForwardOneMonth } = dateSlice.actions;
+export const {
+  addDate,
+  addCurrentType,
+  addCurrentCategory,
+  goBackOneMonth,
+  goForwardOneMonth,
+} = dateSlice.actions;
 
 export default dateSlice.reducer;

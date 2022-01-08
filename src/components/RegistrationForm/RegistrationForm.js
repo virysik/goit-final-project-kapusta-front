@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
-import { ImWarning } from 'react-icons/im';
 import s from './RegistrationForm.module.css';
 
 const RegisterForm = ({ onClickComeBack }) => {

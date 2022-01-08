@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useSelector } from 'react-redux';
-import { calendarSelectors } from '../../redux/calendar';
+import { calendarSelectors } from '../../redux/extraInfo';
 import {
   useGetSummaryOutQuery,
   useGetSummaryIncQuery,

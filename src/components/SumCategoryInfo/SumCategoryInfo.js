@@ -1,35 +1,34 @@
-import s from './SumCategoryInfo.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import { calendarSelectors } from '../../redux/extraInfo';
+import { useDetailInfoForReportQuery } from '../../services/rtk-transactions';
 import CategoryInfo from 'components/CategoryInfo';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { transactionsReducer } from 'redux/transactions';
 import {
-  transactionsSelectors,
-  transactionsOperations,
-} from 'redux/transactions';
+  addCurrentType,
+  addCurrentCategory,
+} from 'redux/extraInfo/extraInfo-slice';
+import s from './SumCategoryInfo.module.css';
 
 export default function SumCategoryInfo() {
   const [typeTrans, setTypeTrans] = useState('expenses');
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
-  const exp = useSelector(transactionsSelectors.getInfoExpenses);
-  const inc = useSelector(transactionsSelectors.getInfoIncomings);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(transactionsOperations.getDetailInfoForReport({ year, month }));
-  }, [dispatch, year, month]);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
+  const { data } = useDetailInfoForReportQuery({ year, month });
 
   function handleClick() {
     if (typeTrans === 'incomings') {
       setTypeTrans('expenses');
-      dispatch(transactionsReducer.addCurrentType('expenses'));
+      dispatch(addCurrentType('expenses'));
+      dispatch(addCurrentCategory('Продукты'));
     }
 
     if (typeTrans === 'expenses') {
       setTypeTrans('incomings');
-      dispatch(transactionsReducer.addCurrentType('incomings'));
+      dispatch(addCurrentType('incomings'));
+      dispatch(addCurrentCategory('ЗП'));
     }
   }
 
@@ -58,9 +57,9 @@ export default function SumCategoryInfo() {
       </div>
       <>
         {typeTrans === 'expenses' ? (
-          <CategoryInfo trans={exp} />
+          <CategoryInfo trans={data?.data.expenses} />
         ) : (
-          <CategoryInfo trans={inc} />
+          <CategoryInfo trans={data?.data.incomings} />
         )}
       </>
     </div>
