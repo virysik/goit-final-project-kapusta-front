@@ -1,9 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   transactionsOperations,
-//   // transactionsSelectors,
-// } from 'redux/transactions';
+import { calendarSelectors } from '../../../redux/calendar';
 import s from './MobileTable.module.css';
 import { authOperations } from 'redux/auth';
 import {
@@ -15,22 +12,22 @@ import MobileTableItem from './MobileTableItem';
 
 const MobileTable = () => {
   const dispatch = useDispatch();
-  const date = { year: '2021', month: '12', day: '26' };
+  const date = useSelector(calendarSelectors.getDate);
 
-  // const { data: out } = useOutTransDateQuery(date);
-  // const outTrans = out?.data;
-  // const { data: inc } = useIncTransDateQuery(date);
-  // const incTrans = inc?.data;
+  const { data: out } = useOutTransDateQuery(date);
+  const outTrans = out?.data;
+  const { data: inc } = useIncTransDateQuery(date);
+  const incTrans = inc?.data;
 
   const [deleteTransaction, { isLoading }] = useDeleteTransactionMutation();
 
-  // useEffect(() => {
-  //   dispatch(authOperations.getUserBalance());
-  // }, [dispatch, outTrans, incTrans]);
+  useEffect(() => {
+    dispatch(authOperations.getUserBalance());
+  }, [dispatch, outTrans, incTrans]);
 
   return (
     <>
-      {/* {outTrans && incTrans && (
+      {outTrans && incTrans && (
         <ul className={s.listTable}>
           {[...outTrans, ...incTrans].map(item => (
             <MobileTableItem
@@ -41,7 +38,7 @@ const MobileTable = () => {
             />
           ))}
         </ul>
-      )} */}
+      )}
     </>
   );
 };

@@ -4,37 +4,33 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Calendar from 'components/Calendar';
-import {
-  transactionsSelectors,
-  transactionsOperations,
-} from 'redux/transactions';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { calendarSelectors } from '../../redux/calendar';
 import s from './IncomesForm.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
+import {
+  useAddOutTransactionMutation,
+  useAddIncTransactionMutation,
+} from '../../services/rtk-transactions';
 
 export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  // const day = useSelector(transactionsSelectors.getDay);
-  // const month = useSelector(transactionsSelectors.getMonth);
-  // const year = useSelector(transactionsSelectors.getYear);
-  const day = '26';
-  const month = '12';
-  const year = '2021';
+  const day = useSelector(calendarSelectors.getDay);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
-  const dispatch = useDispatch();
+  const [addOutTransaction] = useAddOutTransactionMutation();
+  const [addIncTransaction] = useAddIncTransactionMutation();
 
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
     type === 'incomes' ? 'Категория дохода' : 'Категория товара';
   const desc = type === 'incomes' ? 'Описание дохода' : 'Описание товара';
   const emptyLabel = '';
-
-  // const date = useSelector(transactionsSelectors.getDate);
-  const date = { year: '2021', month: '12', day: '26' };
 
   const handleChange = event => {
     setCateg(event.target.value);
@@ -50,12 +46,8 @@ export default function IncomesForm({ onHandleClick, type }) {
     const newOperation = { category, description, amount, day, month, year };
 
     type === 'incomes'
-      ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
-      : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
-
-    type === 'incomes'
-      ? dispatch(transactionsOperations.getIncTransDate(date))
-      : dispatch(transactionsOperations.getOutTransDate(date));
+      ? addIncTransaction(newOperation)
+      : addOutTransaction(newOperation);
 
     setAmount('');
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import s from './Svodka.module.css';
-import { getMonth } from 'helpers';
 
 export default function Svodka({ items }) {
-  console.log(getMonth(items));
   return (
     <div className={s.wrap}>
       <table className={s.reportHistory}>

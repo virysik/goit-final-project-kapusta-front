@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
+import { ImWarning } from 'react-icons/im';
+import s from '../../components/RegistrationForm/RegistrationForm.module.css';
 
 axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
 // axios.defaults.baseURL = 'https://kapusta-group-8.herokuapp.com/api';
@@ -18,8 +21,24 @@ export const register = createAsyncThunk(
   '/users/signup',
   async (credentials, { rejectWithValue }) => {
     try {
-      await axios.post('/users/signup', credentials)
+      await axios.post('/users/signup', credentials);
+      toast.custom(
+        <div className={s.toastDiv}>
+          <ImWarning className={s.toastIcon} /> There was sent an email
+          confirmation to your email adress: {credentials.email}. Please confirm
+          it.
+        </div>,
+      );
     } catch (error) {
+      if (error.response.status === 409) {
+        toast.custom(
+          <div className={s.toastDivWarning}>
+            <ImWarning className={s.toastIcon} /> {credentials.email} already
+            registred!
+          </div>,
+        );
+        return rejectWithValue(error.response.data);
+      }
       if (!error.response) {
         throw new Error('Register failed');
       }

@@ -16,9 +16,11 @@ export const transactionApi = createApi({
   endpoints: builder => ({
     getSummaryOut: builder.query({
       query: year => `/transactions/outgoings?year=${year}`,
+      providesTags: ['outTransactions'],
     }),
     getSummaryInc: builder.query({
       query: year => `/transactions/incomings?year=${year}`,
+      providesTags: ['incTransactions'],
     }),
     incTransDate: builder.query({
       query: credentials => ({
@@ -53,7 +55,7 @@ export const transactionApi = createApi({
       }),
       invalidatesTags: ['incTransactions', 'outTransactions'],
     }),
-    outgoingTransaction: builder.mutation({
+    addOutTransaction: builder.mutation({
       query: credentials => ({
         url: `/transactions/outgoings`,
         body: credentials,
@@ -61,7 +63,7 @@ export const transactionApi = createApi({
       }),
       invalidatesTags: ['outTransactions'],
     }),
-    incomingTransaction: builder.mutation({
+    addIncTransaction: builder.mutation({
       query: credentials => ({
         url: `/transactions/incomings`,
         method: 'POST',
@@ -78,8 +80,8 @@ export const {
   useIncTransDateQuery,
   useOutTransDateQuery,
   useDeleteTransactionMutation,
-  useOutgoingTransactionMutation,
-  useIncomingTransactionMutation,
+  useAddOutTransactionMutation,
+  useAddIncTransactionMutation,
 } = transactionApi;
 
 // axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';

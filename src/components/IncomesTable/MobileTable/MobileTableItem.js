@@ -1,10 +1,23 @@
+import { useState } from 'react';
 import s from './MobileTable.module.css';
 import ReactTooltip from 'react-tooltip';
 import cliTruncate from 'cli-truncate';
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import { useDeleteTransactionMutation } from '../../../services/rtk-transactions';
+import Modal from 'components/Modal';
 
 export default function MobileTableItem({ item, isLoading, onDelete }) {
+  const [showDelModal, setShowDelModal] = useState(false);
+  const [idItem, setIdItem] = useState(null);
+
+  function toggle() {
+    setShowDelModal(!showDelModal);
+  }
+
+  const deleteItem = _id => {
+    onDelete(item._id);
+    toggle();
+  };
+
   return (
     <li className={s.tableItem}>
       <div className={s.boxDescription}>
@@ -34,11 +47,20 @@ export default function MobileTableItem({ item, isLoading, onDelete }) {
           className={s.delBtn}
           type="button"
           onClick={() => {
-            onDelete(item._id);
+            toggle();
+            setIdItem(item._id);
           }}
           disabled={isLoading}
           aria-label="delete"
         >
+          {showDelModal && (
+            <Modal
+              modalTitle={'Удалить транзакцию?'}
+              handleClickRight={toggle}
+              handleClickLeft={() => deleteItem(idItem)}
+              onClose={toggle}
+            />
+          )}
           <RiDeleteBin6Line className={s.delIcon} />
         </button>
       </div>

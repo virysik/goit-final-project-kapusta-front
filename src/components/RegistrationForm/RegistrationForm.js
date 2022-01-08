@@ -86,12 +86,6 @@ const RegisterForm = ({ onClickComeBack }) => {
     e.preventDefault();
     onRegister();
     clearInput();
-    toast.custom(
-      <div className={s.toastDiv}>
-        <ImWarning className={s.toastIcon} /> There was sent an email
-        confirmation to your email adress: {email}. Please confirm it.
-      </div>,
-    );
   };
 
   return (

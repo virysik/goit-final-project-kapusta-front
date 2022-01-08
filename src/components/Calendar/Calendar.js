@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addDate } from 'redux/transactions/transactions-slice';
+import { addDate } from 'redux/calendar/calendar-slice';
 import { useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';

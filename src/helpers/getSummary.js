@@ -1,22 +1,17 @@
-// import * as api from '../services/transactionsApi';
-// import { getMonth } from 'helpers';
+import { getMonth } from 'helpers';
 
-// const getSummary = async (year, type, setSummary) => {
-//   let result = [];
-//   if (!type) {
-//     const { data } = await api.getSummaryOut(year);
-//     result = data.result;
-//   }
+const getSummary = async (type, setSummary, summaryOut, summaryInc) => {
+  let result = null;
+  await summaryOut;
+  await summaryInc;
+  type ? (result = summaryInc) : (result = summaryOut);
+  let res = null;
+  if (result) {
+    let result2 = result && [...result].sort((a, b) => a.month - b.month);
+    res = getMonth(result2);
+    setSummary(res);
+  }
+  return;
+};
 
-//   if (type) {
-//     const { data } = await api.getSummaryInc(year);
-//     result = data.result;
-//   }
-
-//   result.sort((a, b) => a.month - b.month);
-
-//   getMonth(result);
-//   setSummary(result);
-// };
-
-// export default getSummary;
+export default getSummary;

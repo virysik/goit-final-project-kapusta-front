@@ -3,16 +3,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import {
-//   transactionsSelectors,
-//   transactionsOperations,
-// } from 'redux/transactions';
+import { useSelector } from 'react-redux';
+import { calendarSelectors } from '../../redux/calendar';
 import {
-  useIncomingTransactionMutation,
-  useOutgoingTransactionMutation,
+  useAddOutTransactionMutation,
+  useAddIncTransactionMutation,
 } from '../../services/rtk-transactions';
 import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import s from './IncomesForm.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 
@@ -20,21 +17,16 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  // const day = useSelector(transactionsSelectors.getDay);
-  const day = '26';
-  // const month = useSelector(transactionsSelectors.getMonth);
-  const month = '12';
-  const year = '2021';
-  // const year = useSelector(transactionsSelectors.getYear);
+
+  const day = useSelector(calendarSelectors.getDay);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
   // const dispatch = useDispatch();
 
-  const [incomingTransaction] = useIncomingTransactionMutation();
-  const [outgoingTransaction] = useOutgoingTransactionMutation();
-
-  console.log(incomingTransaction);
-  console.log(outgoingTransaction);
+  const [addOutTransaction] = useAddOutTransactionMutation();
+  const [addIncTransaction] = useAddIncTransactionMutation();
 
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
@@ -56,8 +48,8 @@ export default function IncomesForm({ onHandleClick, type }) {
     const newOperation = { category, description, amount, day, month, year };
 
     type === 'incomes'
-      ? incomingTransaction(newOperation)
-      : outgoingTransaction(newOperation);
+      ? addIncTransaction(newOperation)
+      : addOutTransaction(newOperation);
     onHandleClick();
   };
 
