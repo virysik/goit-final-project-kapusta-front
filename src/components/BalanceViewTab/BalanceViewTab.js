@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useSelector } from 'react-redux';
-import { transactionsSelectors } from '../../redux/transactions/';
+import { calendarSelectors } from '../../redux/calendar';
+import {
+  useGetSummaryOutQuery,
+  useGetSummaryIncQuery,
+} from '../../services/rtk-transactions';
 import Svodka from '../Svodka';
 import Balance from 'components/Balance';
 import Container from 'components/Container';
@@ -13,13 +17,16 @@ import { getSummary } from 'helpers';
 export default function BalanceViewTab() {
   const [summary, setSummary] = useState([]);
   const [type, setType] = useState(false);
-  const year = useSelector(transactionsSelectors.getYear);
-  const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
-  const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
+  const year = useSelector(calendarSelectors.getYear);
+
+  const { data: out } = useGetSummaryOutQuery(year);
+  const { data: inc } = useGetSummaryIncQuery(year);
+  const summaryOut = out?.data.result;
+  const summaryInc = inc?.data.result;
 
   useEffect(() => {
-    getSummary(year, type, setSummary);
-  }, [type, year, incomeTrans, expenseTrans]);
+    getSummary(type, setSummary, summaryOut, summaryInc);
+  }, [summaryInc, summaryOut, type]);
 
   return (
     <Container>

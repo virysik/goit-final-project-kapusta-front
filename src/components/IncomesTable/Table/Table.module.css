@@ -76,8 +76,8 @@
   font-weight: bold;
 }
 
-/* .icon {
-  padding: 10px 5px 3px 5px;
+.icon {
+  padding: 5px 5px 5px 5px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -85,17 +85,17 @@
 }
 .delIcon {
   width: 18px;
-  height: 18px; */
-/* border-radius: 50%; */
-/* } */
-/* .icon:hover .delIcon {
+  height: 18px;
+  border-radius: 50%;
+}
+.icon:hover .delIcon {
   background-color: #f5f6fb;
   border-radius: 50%;
 }
 .icon:hover {
   background-color: #f5f6fb;
   border-radius: 50%;
-} */
+}
 @media screen and (max-width: 767px) {
   .tableContainer {
     display: none;
@@ -104,6 +104,10 @@
 
 .deleteBtn {
   background-color: transparent;
+}
+.deleteBtn:hover {
+  background-color: #ffdac0;
+  transform: scale(1.2);
 }
 
 .tr {

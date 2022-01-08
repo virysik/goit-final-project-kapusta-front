@@ -2,13 +2,6 @@ import { createSelector } from 'reselect';
 
 const getIsDeleting = state => state.transactions.isDeleting;
 
-// получить день, месяц,год //
-
-const getDate = state => state.transactions.date;
-const getMonth = state => state.transactions.date.month;
-const getYear = state => state.transactions.date.year;
-const getDay = state => state.transactions.date.day;
-
 ///////////////получить тразакции расходов/доходов для таблици на 2ой странице////////////////
 
 const getOutTrans = state => state.transactions.transactionsOut;
@@ -36,11 +29,7 @@ const getFilteredCategInc = createSelector(
   [getInfoIncomings, getCurrentCategory],
   (arr, category) => arr?.find(ar => ar.category === category)?.details,
 );
-///////////////////////////////////////
 
-// const getCurrCatExpDet = createSelector([getFilteredCategExp], arr =>
-//   arr?.map(el => el.details),
-// );
 // получить расход/доход за месяц на 3ей странице//Вера
 
 const getIncReportMonthly = state => state.transactions.entities.total[0].sum;
@@ -51,17 +40,12 @@ const getReportMonthly = createSelector(
 );
 
 export {
-  getDate,
-  getMonth,
-  getYear,
-  getDay,
   getIncTrans,
   getOutTrans,
   getIsDeleting,
   getCurrentCategory,
   getFilteredCategExp,
   getFilteredCategInc,
-  // getCurrCatExpDet,
   getInfoExpenses,
   getInfoIncomings,
   getCurrentType,

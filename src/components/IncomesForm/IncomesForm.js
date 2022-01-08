@@ -3,12 +3,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useSelector } from 'react-redux';
+import { calendarSelectors } from '../../redux/calendar';
 import {
-  transactionsSelectors,
-  transactionsOperations,
-} from 'redux/transactions';
+  useAddOutTransactionMutation,
+  useAddIncTransactionMutation,
+} from '../../services/rtk-transactions';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import s from './IncomesForm.module.css';
 import { expensesOpt, incomesOpt } from '../../data/selectOptions';
 
@@ -16,13 +17,13 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-  const day = useSelector(transactionsSelectors.getDay);
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
+  const day = useSelector(calendarSelectors.getDay);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
-  const dispatch = useDispatch();
-
+  const [addOutTransaction] = useAddOutTransactionMutation();
+  const [addIncTransaction] = useAddIncTransactionMutation();
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
     type === 'incomes' ? 'Категория дохода' : 'Категория товара';
@@ -43,8 +44,8 @@ export default function IncomesForm({ onHandleClick, type }) {
     const newOperation = { category, description, amount, day, month, year };
 
     type === 'incomes'
-      ? dispatch(transactionsOperations.addIncomingTransaction(newOperation))
-      : dispatch(transactionsOperations.addOutgoingTransaction(newOperation));
+      ? addIncTransaction(newOperation)
+      : addOutTransaction(newOperation);
     onHandleClick();
   };
 

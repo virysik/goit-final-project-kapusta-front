@@ -1,46 +1,26 @@
-import React, { useState, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import cliTruncate from 'cli-truncate';
-import ReactTooltip from 'react-tooltip';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import TableItem from './TableItem';
 import {
-  transactionsSelectors,
-  transactionsOperations,
-} from 'redux/transactions';
+  useIncTransDateQuery,
+  useOutTransDateQuery,
+  useDeleteTransactionMutation,
+} from '../../../services/rtk-transactions';
 import { authOperations } from 'redux/auth';
 import s from './Table.module.css';
 import { useEffect } from 'react';
-import deleteIcon from '../../../images/svg/delete.svg';
-import Modal from 'components/Modal';
+import { calendarSelectors } from '../../../redux/calendar';
 
 const TableDesktop = ({ type }) => {
   const dispatch = useDispatch();
-  const date = useSelector(transactionsSelectors.getDate);
-  const expenseTrans = useSelector(transactionsSelectors.getOutTrans);
-  const incomeTrans = useSelector(transactionsSelectors.getIncTrans);
-  const [showDelModal, setShowDelModal] = useState(false);
-  const [idItem, setIdItem] = useState(null);
+  const date = useSelector(calendarSelectors.getDate);
 
-  function toggle() {
-    setShowDelModal(!showDelModal);
-  }
+  const { data: inc } = useIncTransDateQuery(date);
+  const incomeTrans = inc?.data;
+  const { data: out } = useOutTransDateQuery(date);
+  const expenseTrans = out?.data;
 
-  const deleteItem = _id => {
-    dispatch(transactionsOperations.deleteTransaction(_id));
-    toggle();
-  };
-
-  useEffect(() => {
-    dispatch(transactionsOperations.getIncTransDate(date));
-    dispatch(transactionsOperations.getOutTransDate(date));
-  }, [dispatch, date]);
-
-  // useEffect(() => {
-  //   dispatch(transactionsOperations.getIncTransDate(date));
-  // }, [incomeTrans.length]);
-
-  // useEffect(() => {
-  //   dispatch(transactionsOperations.getOutTransDate(date));
-  // }, [expenseTrans.length]);
+  const [deleteTransaction] = useDeleteTransactionMutation();
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
@@ -48,15 +28,7 @@ const TableDesktop = ({ type }) => {
 
   let transactions = [];
 
-  let expTrans = useMemo(() => {
-    return [...expenseTrans];
-  }, [expenseTrans]);
-
-  let incTrans = useMemo(() => {
-    return [...incomeTrans];
-  }, [incomeTrans]);
-
-  transactions = !type ? expTrans : incTrans;
+  type ? (transactions = incomeTrans) : (transactions = expenseTrans);
 
   return (
     <div className={s.tableContainer}>
@@ -71,65 +43,14 @@ const TableDesktop = ({ type }) => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map(
-            ({
-              _id,
-              day,
-              month,
-              year,
-              description,
-              category,
-              typeOftransactions,
-              amount,
-            }) => (
-              <tr className={s.tr} key={_id}>
-                <td>{`${day}.${month}.${year}`}</td>
-                <td data-tip={description}>
-                  {cliTruncate(description, 15)}
-
-                  <button
-                    onClick={() => {
-                      ReactTooltip.show(this.fooRef);
-                    }}
-                  ></button>
-                  <ReactTooltip />
-                </td>
-
-                <td>{category}</td>
-
-                <td
-                  className={typeOftransactions ? s.amountGreen : s.amountRed}
-                >
-                  {!typeOftransactions && `- `}
-                  {amount}
-                </td>
-                <td>
-                  <button
-                    type="button"
-                    className={s.deleteBtn}
-                    onClick={() => {
-                      toggle();
-                      setIdItem(_id);
-                    }}
-                  >
-                    <img
-                      className={s.icon}
-                      src={deleteIcon}
-                      alt="Delete icon"
-                    />
-                  </button>
-                  {showDelModal && (
-                    <Modal
-                      modalTitle={'Удалить транзакцию?'}
-                      handleClickRight={toggle}
-                      handleClickLeft={() => deleteItem(idItem)}
-                      onClose={toggle}
-                    />
-                  )}
-                </td>
-              </tr>
-            ),
-          )}
+          {transactions &&
+            transactions.map(item => (
+              <TableItem
+                key={item._id}
+                item={item}
+                onDelete={deleteTransaction}
+              />
+            ))}
         </tbody>
       </table>
     </div>

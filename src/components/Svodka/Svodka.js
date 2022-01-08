@@ -13,12 +13,13 @@ export default function Svodka({ items }) {
           </tr>
         </thead>
         <tbody>
-          {items.map(x => (
-            <tr className={s.tr} key={x.month}>
-              <td className={s.month}>{x.month}</td>
-              <td className={s.sum}>{x.sum}</td>
-            </tr>
-          ))}
+          {items &&
+            items.map(x => (
+              <tr className={s.tr} key={x.month}>
+                <td className={s.month}>{x.month}</td>
+                <td className={s.sum}>{x.sum}</td>
+              </tr>
+            ))}
           <tr className={s.empty}>
             <td></td>
           </tr>
