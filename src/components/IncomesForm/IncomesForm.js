@@ -17,17 +17,13 @@ export default function IncomesForm({ onHandleClick, type }) {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
-
   const day = useSelector(calendarSelectors.getDay);
   const month = useSelector(calendarSelectors.getMonth);
   const year = useSelector(calendarSelectors.getYear);
   const [showLabel, setShowlabel] = useState(false);
   const [categ, setCateg] = useState('');
-  // const dispatch = useDispatch();
-
   const [addOutTransaction] = useAddOutTransactionMutation();
   const [addIncTransaction] = useAddIncTransactionMutation();
-
   const data = type === 'incomes' ? incomesOpt : expensesOpt;
   const categoryLabel =
     type === 'incomes' ? 'Категория дохода' : 'Категория товара';
