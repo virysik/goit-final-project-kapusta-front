@@ -3,11 +3,8 @@ import { Chart } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import s from './ChartReport.module.css';
-// import { expensesOpt, incomesOpt } from '../../data/optionsChart';
-// import { expensesOpt } from '../../pages/ReportsView/index';
 import { useSelector } from 'react-redux';
 import { transactionsSelectors } from 'redux/transactions';
-import cliTruncate from 'cli-truncate';
 
 Chart.register(ChartDataLabels);
 

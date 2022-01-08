@@ -45,8 +45,7 @@
 
 @media screen and (min-width: 768px) {
   .commentWrapper {
-    max-width: 292px;
-    right: 250px;
+    left: -264px;
   }
   .commentText {
     line-height: 1.33;
@@ -55,6 +54,7 @@
 
 @media screen and (min-width: 1280px) {
   .commentWrapper {
-    right: 350px;
+    left: 424px;
+    top: 80px;
   }
 }
