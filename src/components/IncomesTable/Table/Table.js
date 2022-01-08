@@ -9,7 +9,7 @@ import {
 import { authOperations } from 'redux/auth';
 import s from './Table.module.css';
 import { useEffect } from 'react';
-import { calendarSelectors } from '../../../redux/calendar';
+import { calendarSelectors } from '../../../redux/extraInfo';
 
 const TableDesktop = ({ type }) => {
   const dispatch = useDispatch();

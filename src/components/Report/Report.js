@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { transactionsSelectors } from 'redux/transactions';
 import {
   goBackOneMonth,
   goForwardOneMonth,
-} from 'redux/transactions/transactions-slice';
+} from 'redux/extraInfo/extraInfo-slice';
+import { calendarSelectors } from '../../redux/extraInfo';
 import months from '../../data/month.json';
 import s from './Report.module.css';
 
 const Report = () => {
   const dispatch = useDispatch();
 
-  const month = useSelector(transactionsSelectors.getMonth);
-  const year = useSelector(transactionsSelectors.getYear);
+  const month = useSelector(calendarSelectors.getMonth);
+  const year = useSelector(calendarSelectors.getYear);
+
   const correctMonth = months.find(el => Number(el.id) === Number(month));
 
   const onHandleClickLeft = () => {

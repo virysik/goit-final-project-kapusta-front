@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector } from 'react-redux';
-import { calendarSelectors } from '../../redux/calendar';
+import { calendarSelectors } from '../../redux/extraInfo';
 import {
   useAddOutTransactionMutation,
   useAddIncTransactionMutation,

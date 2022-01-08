@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { calendarSelectors } from '../../../redux/calendar';
+import { calendarSelectors } from '../../../redux/extraInfo';
 import s from './MobileTable.module.css';
 import { authOperations } from 'redux/auth';
 import {

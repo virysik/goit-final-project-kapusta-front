@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { addDate } from 'redux/calendar/calendar-slice';
 import { useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useState } from 'react';
+import { addDate } from 'redux/extraInfo/extraInfo-slice';
 import s from './Calendar.module.css';
 
 export default function Calendar() {

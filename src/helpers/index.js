@@ -1,4 +1,5 @@
-import getMonth from './getMonth'
-import getSummary from './getSummary'
+import getMonth from './getMonth';
+import getSummary from './getSummary';
+import getFilteredCategory from './getFilteredCategory';
 
-export { getMonth, getSummary }
+export { getMonth, getSummary, getFilteredCategory };

@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-slice';
-import dateReducer from './calendar/calendar-slice';
+import extraInfoReducer from './extraInfo/extraInfo-slice';
 
 import { transactionApi } from '../services/rtk-transactions';
 
@@ -19,7 +19,7 @@ const middleware = [thunk, transactionApi.middleware];
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    calendar: dateReducer,
+    extraInfo: extraInfoReducer,
     [transactionApi.reducerPath]: transactionApi.reducer,
   },
   middleware,

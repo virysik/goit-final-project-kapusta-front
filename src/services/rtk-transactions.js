@@ -47,6 +47,7 @@ export const transactionApi = createApi({
         url: `/transactions/forReports`,
         params: credentials,
       }),
+      providesTags: ['outTransactions', 'incTransactions'],
     }),
     deleteTransaction: builder.mutation({
       query: id => ({
@@ -82,6 +83,8 @@ export const {
   useDeleteTransactionMutation,
   useAddOutTransactionMutation,
   useAddIncTransactionMutation,
+  useDetailInfoQuery,
+  useDetailInfoForReportQuery,
 } = transactionApi;
 
 // axios.defaults.baseURL = 'https://kapusta-team-project.herokuapp.com/api';
