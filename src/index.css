@@ -8,7 +8,7 @@
 
   --white-color: #ffffff;
   --accent-color: #ff751d;
-   --balance-minus: #e53935;
+  --balance-minus: #e53935;
   --secondary-accent-color: #ffdac0;
 
   --grey-bg-auth-color: #f6f7fb;
@@ -23,6 +23,7 @@
   --font-family: 'Roboto', sans-serif;
   --primary-line-height: 1.67;
   --primary-font-size: 14px;
+  --dark-theme-color: #939397;
 }
 
 body {
