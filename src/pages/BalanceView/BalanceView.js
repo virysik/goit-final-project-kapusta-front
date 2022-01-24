@@ -3,7 +3,6 @@ import BalanceViewTab from 'components/BalanceViewTab';
 import BalanceViewMob from 'components/BalanceViewMob';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import s from './BalanceView.module.css';
-console.log(s.themaGray);
 
 const BalanceView = () => {
   const viewPort = useWindowDimensions();
