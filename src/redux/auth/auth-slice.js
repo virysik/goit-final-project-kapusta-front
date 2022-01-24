@@ -1,8 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authOperations } from '.';
 
+// type tuser = {
+//   name: string | null,
+//   email: string | null,
+//   balance: string | null
+// };
+
+// interface IinitialState {
+//   user: tuser,
+//   token: string | null,
+//   isLoggedIn: boolean,
+//   isFetchingCurrentUser: boolean,
+//   error: string | null,
+// }
+
 const initialState = {
-  user: { name: null, email: null, balance: null },
+  user: { name: null, email: null, balance: null},
   token: null,
   isLoggedIn: false,
   isFetchingCurrentUser: false,

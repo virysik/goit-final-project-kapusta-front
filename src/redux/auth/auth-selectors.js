@@ -1,15 +1,32 @@
-export const getIsLoggedIn = state => state.auth.isLoggedIn;
+// type tuser = {
+//   name: string | null,
+//   email: string | null,
+//   balance: string | null
+// };
 
-export const getUserName = state => state.auth.user.name;
+// interface IinitialState {
+//   user: tuser,
+//   token: string | null,
+//   isLoggedIn: boolean,
+//   isFetchingCurrentUser: boolean,
+//   error: string | null,
+// }
 
-export const getCurrentUser = state => state.auth.current.user.name;
 
-export const getUserEmail = state => state.auth.user.email;
+export const getIsLoggedIn = (state) => 
+{  console.log(state);
+return state.auth.isLoggedIn;}
 
-export const getUserBalance = state => state.auth.user.balance;
+export const getUserName = (state) => state.auth.user.name;
 
-export const getToken = state => state.auth.token;
+export const getCurrentUser = (state) => state.auth.current.user.name;
 
-export const getIsFetchingCurrent = state => state.auth.isFetchingCurrentUser;
+export const getUserEmail = (state) => state.auth.user.email;
 
-export const getError = state => state.auth.error;
+export const getUserBalance = (state) => state.auth.user.balance;
+
+export const getToken = (state) => state.auth.token;
+
+export const getIsFetchingCurrent = (state) => state.auth.isFetchingCurrentUser;
+
+export const getError = (state) => state.auth.error;

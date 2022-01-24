@@ -1,1 +1,1 @@
-export { default } from './BalanceViewMob';
+export { default } from './BalanceViewMob.jsx';
