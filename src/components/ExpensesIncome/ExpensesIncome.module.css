@@ -41,7 +41,7 @@
 .divExp::after {
   position: absolute;
   top: -14px;
-  right: -12px;
+  right: -32px;
   content: '';
   width: 1px;
   height: 70px;
@@ -72,7 +72,7 @@
   }
   .divExp::after {
     top: -9px;
-    right: -15px;
+    right: -32px;
     height: 36px;
   }
 
@@ -97,6 +97,6 @@
   }
 
   .divExp::after {
-    right: -23px;
+    right: -20px;
   }
 }
