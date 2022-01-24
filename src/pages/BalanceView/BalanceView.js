@@ -3,12 +3,13 @@ import BalanceViewTab from 'components/BalanceViewTab';
 import BalanceViewMob from 'components/BalanceViewMob';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import s from './BalanceView.module.css';
+console.log(s.themaGray);
 
 const BalanceView = () => {
   const viewPort = useWindowDimensions();
 
   return (
-    <section className={s.section + s.themaGray}>
+    <section className={s.section}>
       {viewPort.width < 768 && <BalanceViewMob />}
       {viewPort.width >= 768 && <BalanceViewTab />}
     </section>
