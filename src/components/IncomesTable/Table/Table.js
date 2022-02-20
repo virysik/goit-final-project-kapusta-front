@@ -5,6 +5,7 @@ import {
   useIncTransDateQuery,
   useOutTransDateQuery,
   useDeleteTransactionMutation,
+  useUpdateTransactionMutation,
 } from '../../../services/rtk-transactions';
 import { authOperations } from 'redux/auth';
 import s from './Table.module.css';
@@ -21,6 +22,7 @@ const TableDesktop = ({ type }) => {
   const expenseTrans = out?.data;
 
   const [deleteTransaction] = useDeleteTransactionMutation();
+  const [updateTransaction] = useUpdateTransactionMutation();
 
   useEffect(() => {
     dispatch(authOperations.getUserBalance());
@@ -49,6 +51,7 @@ const TableDesktop = ({ type }) => {
                 key={item._id}
                 item={item}
                 onDelete={deleteTransaction}
+                onChange={updateTransaction}
               />
             ))}
         </tbody>

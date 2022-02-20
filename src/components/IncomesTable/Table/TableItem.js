@@ -4,10 +4,16 @@ import ReactTooltip from 'react-tooltip';
 import s from './Table.module.css';
 import deleteIcon from '../../../images/svg/delete.svg';
 import Modal from 'components/Modal';
+import { BsPencilFill } from 'react-icons/bs';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import Button from '@mui/material/Button';
 
-export default function TableItem({ item, onDelete }) {
+export default function TableItem({ item, onDelete, onChange }) {
   const [showDelModal, setShowDelModal] = useState(false);
   const [idItem, setIdItem] = useState(null);
+  const [open, setOpen] = useState(false);
 
   function toggle() {
     setShowDelModal(!showDelModal);
@@ -16,6 +22,17 @@ export default function TableItem({ item, onDelete }) {
   const deleteItem = _id => {
     onDelete(item._id);
     toggle();
+  };
+  function toggleUpdate() {
+    setOpen(!open);
+  }
+
+  const handleUpdateClick = _id => {
+    onChange(item._id)
+    toggleUpdate()
+  }
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -55,6 +72,27 @@ export default function TableItem({ item, onDelete }) {
             onClose={toggle}
           />
         )}
+      </td>
+      <td>
+      <button type="button"
+                    className={s.deleteBtn}
+                    onClick={() => {
+                      toggleUpdate();
+                      setIdItem(item._id);
+                    }}
+                  >
+                    <BsPencilFill className={s.Icon} />
+                  </button>
+                  <Dialog open={open} onClose={handleClose}>
+                    <DialogContent>
+                      {/* <UpdateTrans> */}
+                      {/* </UpdateTrans> */}
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose}>НАЗАД</Button>
+                      <Button onClick={() => handleUpdateClick(idItem)}>ВВОД</Button>
+                    </DialogActions>
+                  </Dialog>
       </td>
     </tr>
   );

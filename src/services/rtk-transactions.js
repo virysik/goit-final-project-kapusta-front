@@ -56,6 +56,15 @@ export const transactionApi = createApi({
       }),
       invalidatesTags: ['incTransactions', 'outTransactions'],
     }),
+
+    updateTransaction: builder.mutation({
+      query: id => ({
+        url: `/transactions/${id}`,
+        method: 'PUT',
+      }),
+      invalidatesTags: ['incTransactions', 'outTransactions'],
+    }),
+
     addOutTransaction: builder.mutation({
       query: credentials => ({
         url: `/transactions/outgoings`,
@@ -81,6 +90,7 @@ export const {
   useIncTransDateQuery,
   useOutTransDateQuery,
   useDeleteTransactionMutation,
+  useUpdateTransactionMutation,
   useAddOutTransactionMutation,
   useAddIncTransactionMutation,
   useDetailInfoQuery,
